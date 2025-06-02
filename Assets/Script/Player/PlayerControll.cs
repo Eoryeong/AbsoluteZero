@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
-    // ÇÃ·¹ÀÌ¾î ÀÌµ¿ ¼Óµµ
+    // í”Œë ˆì´ì–´ ì´ë™ ì†ë„ 
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float sitSpeed = 2f;
@@ -13,7 +13,7 @@ public class PlayerControll : MonoBehaviour
     private bool isRun = false;
     private bool isSit = false;
 
-    // Ä«¸Ş¶ó
+    // ì¹´ë©”ë¼
     public Transform cameraTransform;
     [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 1.6f, 0f);
     [SerializeField] private Vector3 sitCameraOffset;
@@ -28,16 +28,16 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private float cameraLerpSpeed = 5f;
 
 
-    // ¹Ù´Ú Ãæµ¹ °¨Áö
+    // ë°”ë‹¥ ì¶©ëŒ ê°ì§€
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private Transform groundCheckOffset;
     [SerializeField] private LayerMask groundLayer;
     private bool isGround;
 
-    // ¶óÀÌÆ®
+    // ë¼ì´íŠ¸
     [SerializeField] private Light playerLight;
 
-    // ±âÅ¸ ÄÄÆ÷³ÍÆ®
+    // ê¸°íƒ€ ì»´í¬ë„ŒíŠ¸
     private Rigidbody rb;
     private PlayerStatus playerStatus;
 
@@ -64,10 +64,10 @@ public class PlayerControll : MonoBehaviour
         HandleMouseLook();
     }
 
-    // LateUpdate¿¡¼­ Ä«¸Ş¶ó À§Ä¡ ÃßÁ¾ ¡æ ¿òÁ÷ÀÓ ÈÄ µô·¹ÀÌ ¾øÀÌ ºÎµå·´°Ô
+    // LateUpdateì—ì„œ ì¹´ë©”ë¼ ìœ„ì¹˜ ì¶”ì¢… â†’ ì›€ì§ì„ í›„ ë”œë ˆì´ ì—†ì´ ë¶€ë“œëŸ½ê²Œ
     private void LateUpdate()
     {
-        // ÇöÀç Ä«¸Ş¶ó ¿ÀÇÁ¼Â¿¡¼­ Å¸°Ù Ä«¸Ş¶ó ¿ÀÇÁ¼ÂÀ¸·Î ÀÚ¿¬½º·´°Ô ÀÌµ¿
+        // í˜„ì¬ ì¹´ë©”ë¼ ì˜¤í”„ì…‹ì—ì„œ íƒ€ê²Ÿ ì¹´ë©”ë¼ ì˜¤í”„ì…‹ìœ¼ë¡œ ìì—°ìŠ¤ëŸ½ê²Œ ì´ë™
         currentCameraOffset = Vector3.Lerp(currentCameraOffset, targetCameraOffset, Time.deltaTime * cameraLerpSpeed);
 
         FollowCamera();
@@ -124,7 +124,7 @@ public class PlayerControll : MonoBehaviour
     {
         isSit = true;
         applySpeed = sitSpeed;
-        // Å¸°Ù Ä«¸Ş¶ó ¿ÀÇÁ¼ÂÀ» ¾ÉÀº»óÅÂ ¿ÀÇÁ¼ÂÀ¸·Î º¯°æ
+        // íƒ€ê²Ÿ ì¹´ë©”ë¼ ì˜¤í”„ì…‹ì„ ì•‰ì€ìƒíƒœ ì˜¤í”„ì…‹ìœ¼ë¡œ ë³€ê²½
         targetCameraOffset = sitCameraOffset;
     }
 
@@ -132,13 +132,13 @@ public class PlayerControll : MonoBehaviour
     {
         isSit = false;
         applySpeed = walkSpeed;
-        // Å¸°Ù Ä«¸Ş¶ó ¿ÀÇÁ¼ÂÀ» Æò»óÅÂ ¿ÀÇÁ¼ÂÀ¸·Î º¯°æ
+        // íƒ€ê²Ÿ ì¹´ë©”ë¼ ì˜¤í”„ì…‹ì„ í‰ìƒíƒœ ì˜¤í”„ì…‹ìœ¼ë¡œ ë³€ê²½
         targetCameraOffset = cameraOffset;
     }
 
     private void PlayerJump()
     {
-        // ¾É¾ÒÀ»¶§ Á¡ÇÁ ½Ãµµ ¾ÉÀº »óÅÂ ÇØÁ¦
+        // ì•‰ì•˜ì„ë•Œ ì í”„ ì‹œë„ ì•‰ì€ ìƒíƒœ í•´ì œ
         if (isSit)
         {
             PlayerSitCancel();

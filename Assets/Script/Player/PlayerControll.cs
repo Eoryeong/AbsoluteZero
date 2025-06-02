@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
-
+    // 플레이어 이동 속도
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float sitSpeed = 2f;

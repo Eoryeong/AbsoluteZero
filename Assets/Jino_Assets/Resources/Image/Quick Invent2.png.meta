@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: c317dd7e09efbf341ab1f523d6e93185
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5123867492030459897
+    second: Quick Invent2_0
+  - first:
+      213: 1973730042384427784
+    second: Quick Invent2_1
+  - first:
+      213: 4273101843121231094
+    second: Quick Invent2_2
+  - first:
+      213: 1811139286858649331
+    second: Quick Invent2_3
+  - first:
+      213: 4677042437375009348
+    second: Quick Invent2_4
+  - first:
+      213: -1647681246404181340
+    second: Quick Invent2_5
+  - first:
+      213: -7953513406818576370
+    second: Quick Invent2_6
+  - first:
+      213: 3853277662668510728
+    second: Quick Invent2_7
+  - first:
+      213: 403785189442331538
+    second: Quick Invent2_8
+  - first:
+      213: 2805976917162821470
+    second: Quick Invent2_9
+  - first:
+      213: -760297296560406354
+    second: Quick Invent2_10
+  - first:
+      213: 1078408404085230328
+    second: Quick Invent2_11
+  - first:
+      213: -1786474484970185884
+    second: Quick Invent2_12
+  - first:
+      213: 2081793027339979538
+    second: Quick Invent2_13
+  - first:
+      213: -8216901786733567091
+    second: Quick Invent2_14
+  - first:
+      213: 7803075249344497445
+    second: Quick Invent2_15
+  - first:
+      213: -6532861434263100202
+    second: Quick Invent2_16
+  - first:
+      213: -56940226685258978
+    second: Quick Invent2_17
+  - first:
+      213: -7921374470180598604
+    second: Quick Invent2_18
+  - first:
+      213: 3149091742775917901
+    second: Quick Invent2_19
+  - first:
+      213: -5053351832056273083
+    second: Quick Invent2_20
+  - first:
+      213: -6066100157837245268
+    second: Quick Invent2_21
+  - first:
+      213: -4083166931123868181
+    second: Quick Invent2_22
+  - first:
+      213: 5738467974839281401
+    second: Quick Invent2_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Quick Invent2_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 407
+        width: 348
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eeb35b7b16214940b07ca5f71a74d72
+      internalID: -5123867492030459897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_1
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 435
+        width: 45
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032932d663f9bcc469ddae1a7a5e8b85
+      internalID: 1973730042384427784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_2
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 437
+        width: 43
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c414c22b2c97234d8a00f5f8801d1ec
+      internalID: 4273101843121231094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 382
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470b4eeffc9ff164fb8a3ecd617de6ef
+      internalID: 1811139286858649331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_4
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 383
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76d63cc75227ff42a253b07c7d1f498
+      internalID: 4677042437375009348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 353
+        width: 104
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af67df3ec49332b47a5cd17dda653438
+      internalID: -1647681246404181340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_6
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 334
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ebab57dec38da4aa9e7c41ea783359
+      internalID: -7953513406818576370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_7
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80fbb085cd8fe44386878e1b6c147be
+      internalID: 3853277662668510728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_8
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 343
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9579126fb75ce2b429b5ae61eb829c63
+      internalID: 403785189442331538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_9
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc60149f787fd5643aee570a4fcd3322
+      internalID: 2805976917162821470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_10
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af58ec640d6ba7148bb0cf47c04b9356
+      internalID: -760297296560406354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_11
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 342
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ece21aeab6378a41bb97e8c1ade1d69
+      internalID: 1078408404085230328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_12
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67994174774d2ab4590770ef7213c271
+      internalID: -1786474484970185884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_13
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72416bfd05ee1a49bd149300bba0c47
+      internalID: 2081793027339979538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_14
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 930fd5acd91c33f4ab5b1b720ceac49f
+      internalID: -8216901786733567091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_15
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 343
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1e42c02f68d97f4ab83163ec15ba7ab
+      internalID: 7803075249344497445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_16
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 315
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da13d690c69a15744908ce7451887b11
+      internalID: -6532861434263100202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_17
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 315
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a69bf36e5bf7d49b052f0103a2c8ad
+      internalID: -56940226685258978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_18
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 261
+        width: 195
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5677c9f84fd43a740ae704776b4b6d5f
+      internalID: -7921374470180598604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_19
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 254
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944da63d61f49b34aae1f0bd0e8f978e
+      internalID: 3149091742775917901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_20
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 207
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa911a5d0a6f88a48ab8014301e2b14c
+      internalID: -5053351832056273083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_21
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 207
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3975313999ed6b2498bc43866f7d84d0
+      internalID: -6066100157837245268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_22
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 207
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4b8fccf56c0544a96ff89553fb7306
+      internalID: -4083166931123868181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quick Invent2_23
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 207
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a31f16ed8ae65b4f94c4787a844cee7
+      internalID: 5738467974839281401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Quick Invent2_0: -5123867492030459897
+      Quick Invent2_1: 1973730042384427784
+      Quick Invent2_10: -760297296560406354
+      Quick Invent2_11: 1078408404085230328
+      Quick Invent2_12: -1786474484970185884
+      Quick Invent2_13: 2081793027339979538
+      Quick Invent2_14: -8216901786733567091
+      Quick Invent2_15: 7803075249344497445
+      Quick Invent2_16: -6532861434263100202
+      Quick Invent2_17: -56940226685258978
+      Quick Invent2_18: -7921374470180598604
+      Quick Invent2_19: 3149091742775917901
+      Quick Invent2_2: 4273101843121231094
+      Quick Invent2_20: -5053351832056273083
+      Quick Invent2_21: -6066100157837245268
+      Quick Invent2_22: -4083166931123868181
+      Quick Invent2_23: 5738467974839281401
+      Quick Invent2_3: 1811139286858649331
+      Quick Invent2_4: 4677042437375009348
+      Quick Invent2_5: -1647681246404181340
+      Quick Invent2_6: -7953513406818576370
+      Quick Invent2_7: 3853277662668510728
+      Quick Invent2_8: 403785189442331538
+      Quick Invent2_9: 2805976917162821470
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

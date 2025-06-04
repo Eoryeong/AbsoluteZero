@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class AnimalState
 {
-    public Animal anim;
+    public Animal animal;
     public AnimalState(Animal animal)   
     {
-        anim = animal;
+        this.animal = animal;
     }
     public virtual void EnterState()
     {

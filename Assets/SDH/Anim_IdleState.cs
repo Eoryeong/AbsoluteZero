@@ -1,26 +1,26 @@
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
-public class IdleState : AnimalState
+public class Anim_IdleState : AnimalState
 {
-    public IdleState(Animal animal) : base(animal)
+    public Anim_IdleState(Animal animal) : base(animal)
     {
     }
 
     public override void EnterState()
     {
         base.EnterState();
-        anim.agent.isStopped = true; // 정지 상태로 설정
         Debug.Log("Idle State Entered");
+        animal.agent.ResetPath();
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-                
-        if(anim.distanceToTarget <= anim.detectionRange)
+
+        if (animal.distanceToTarget <= animal.detectionRange)
         {
-            anim.ChangeState(anim.chaseState);
+            animal.ChangeState(animal.chaseState);
         }
         else
         {
@@ -31,7 +31,6 @@ public class IdleState : AnimalState
     public override void ExitState()
     {
         base.ExitState();
-        anim.agent.isStopped = false; // 이동 가능 상태로 설정
     }
 
 

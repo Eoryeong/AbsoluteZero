@@ -6,6 +6,6 @@ public class Wolf : Animal
     {
         base.Awake();
         detectionRange = 15f;
-        speed = 5f;
+        speed = 6f;
     }
 }

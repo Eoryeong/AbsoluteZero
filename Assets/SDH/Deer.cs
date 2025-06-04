@@ -6,6 +6,6 @@ public class Deer : Animal
     {
         base.Awake();
         detectionRange = 10f; 
-        speed = 3f; 
+        speed = 4f; 
     }
 }

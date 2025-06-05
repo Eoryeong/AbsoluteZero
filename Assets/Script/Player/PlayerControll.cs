@@ -38,11 +38,24 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Light playerLight;
 
     // 기타 컴포넌트
-    private Rigidbody rb;
+    public Rigidbody rb;
     private PlayerStatus playerStatus;
 
-    private void Start()
+    #region State
+    private PlayerStateMachine stateMachine;
+    public PlayerIdleStete idleStete;
+    public PlayerWalkState walkState;
+    public PlayerRunState runState;
+    public PlayerSitState sitState;
+    public PlayerSitWalkState sitWalkState;
+    public PlayerJumpState jumpState;
+    public PlayerAirState airState;
+	#endregion
+
+	private void Start()
     {
+        InitState();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
@@ -58,9 +71,11 @@ public class PlayerControll : MonoBehaviour
     private void Update()
     {
         if (playerStatus.playerFreeze) return;
-        InputCheck();
+
+        stateMachine.Update();
+        //InputCheck();
         GroundCheck();
-        HandleMovement();
+        //HandleMovement();
         HandleMouseLook();
     }
 
@@ -71,6 +86,21 @@ public class PlayerControll : MonoBehaviour
         currentCameraOffset = Vector3.Lerp(currentCameraOffset, targetCameraOffset, Time.deltaTime * cameraLerpSpeed);
 
         FollowCamera();
+    }
+
+    private void InitState()
+    {
+        stateMachine = new PlayerStateMachine();
+
+        idleStete = new PlayerIdleStete(this, stateMachine, "Idle");
+        walkState = new PlayerWalkState(this, stateMachine, "Walk");
+        runState = new PlayerRunState(this, stateMachine, "Run");
+        sitState = new PlayerSitState(this, stateMachine, "Sit");
+        sitWalkState = new PlayerSitWalkState(this, stateMachine, "SitWalk");
+        jumpState = new PlayerJumpState(this, stateMachine, "Jump");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
+
+        stateMachine.InitState(idleStete);
     }
 
     private void InputCheck()
@@ -176,9 +206,10 @@ public class PlayerControll : MonoBehaviour
         cameraTransform.position = transform.position + currentCameraOffset;
     }
 
-    private void GroundCheck()
+    public bool GroundCheck()
     {
         isGround = Physics.CheckSphere(groundCheckOffset.position, groundCheckRadius, groundLayer);
+        return isGround;
     }
 
     private void OnDrawGizmosSelected()

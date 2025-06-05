@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Iventory/Tetris/Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Tetris/Item")]
 public class TetrisItem : ScriptableObject
 {
     public Sprite itemIcon;

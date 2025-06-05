@@ -64,7 +64,7 @@ public class PickupItem : MonoBehaviour
 
     IEnumerator CloseUIAndDestroyDelay()
     {
-        yield return null; // ÇÑ ÇÁ·¹ÀÓ ´ë±â
+        yield return null; // í•œ í”„ë ˆìž„ ëŒ€ê¸°
         UIManager.instance.CloseMenu();
         Destroy(gameObject);
     }
@@ -76,7 +76,7 @@ public class PickupItem : MonoBehaviour
             Destroy(previewObj);
         }
 
-        previewObj = Instantiate(data.previewPrefab, UIManager.instance.menuItemPreviewPos.position, Quaternion.identity);
+        previewObj = Instantiate(data.previewPrefab, UIManager.instance.menuItemPreviewPos.position, data.previewPrefab.gameObject.transform.rotation);
         previewObj.layer = LayerMask.NameToLayer("ItemPreview");
 
         foreach (Transform child in previewObj.GetComponentsInChildren<Transform>())

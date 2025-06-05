@@ -13,6 +13,8 @@ public class Anim_IdleState : AnimalState
     public override void EnterState()
     {
         base.EnterState();
+        animal.OnIdleEnter();
+
         Debug.Log("Idle State Entered");
         animal.agent.ResetPath();
 
@@ -22,6 +24,7 @@ public class Anim_IdleState : AnimalState
     public override void UpdateState()
     {
         base.UpdateState();
+        animal.OnIdleUpdate();
 
         if (animal.distanceToTarget <= animal.detectionRange)
         {
@@ -45,6 +48,8 @@ public class Anim_IdleState : AnimalState
     public override void ExitState()
     {
         base.ExitState();
+        animal.OnIdleExit();
+
     }
 
 

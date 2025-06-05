@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Anim_ChaseState : AnimalState
 {
+
     public Anim_ChaseState(Animal animal) : base(animal)
     {
     }
@@ -9,6 +10,8 @@ public class Anim_ChaseState : AnimalState
     public override void EnterState()
     {
         base.EnterState();
+        animal.OnChaseEnter();
+
         Debug.Log("Chase State Entered");
         animal.animator.SetBool("isRun", true);
     }
@@ -16,6 +19,8 @@ public class Anim_ChaseState : AnimalState
     public override void UpdateState()
     {
         base.UpdateState();
+        animal.OnChaseUpdate();
+
         animal.agent.SetDestination(animal.target.position);
         if (animal.distanceToTarget <= animal.attackRange)
         {
@@ -37,6 +42,8 @@ public class Anim_ChaseState : AnimalState
     public override void ExitState()
     {
         base.ExitState();
+        animal.OnChaseExit();
+
         animal.animator.SetBool("isRun", false);
     }
 

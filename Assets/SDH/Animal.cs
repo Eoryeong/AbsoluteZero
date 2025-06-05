@@ -30,19 +30,23 @@ public class Animal : MonoBehaviour
     public float wanderProbability = 0.5f;
     public float idleProbability = 0.5f;
     public AnimalType animalType = AnimalType.Predator;
+    bool isInDamagedState = false;
 
     // 컴포넌트
     public NavMeshAgent agent;
     public Transform target;
     public Animator animator;
+    public Collider col;
 
     // 스테이트
-    AnimalState currentState;
+    public AnimalState currentState;
     public Anim_ChaseState chaseState;
     public Anim_IdleState idleState;
     public Anim_AttackState attackState;
     public Anim_WanderState wanderState;
     public Anim_FleeState fleeState;
+    public Anim_DamagedState damagedState;
+    public Anim_DeadState deadState;
 
     // 런타임 변수
     public float distanceToTarget;
@@ -67,6 +71,7 @@ public class Animal : MonoBehaviour
 
     public void ChangeState(AnimalState newState)
     {
+        isInDamagedState = (newState == damagedState);
         if (currentState != null)
             currentState.ExitState();
 
@@ -80,6 +85,7 @@ public class Animal : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        col = GetComponent<Collider>();
         target = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
@@ -90,6 +96,8 @@ public class Animal : MonoBehaviour
         attackState = new Anim_AttackState(this);
         wanderState = new Anim_WanderState(this);
         fleeState = new Anim_FleeState(this);
+        damagedState = new Anim_DamagedState(this);
+        deadState = new Anim_DeadState(this);
     }
 
     protected virtual void InitializeStatus()
@@ -132,20 +140,42 @@ public class Animal : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (isDead) return;
+        if (isDead || isInDamagedState) return;
 
         HP -= damage;
         if (HP <= 0)
         {
             Die();
         }
+        else
+        {
+            ChangeState(damagedState);
+        }
     }
 
     protected virtual void Die()
     {
-        isDead = true;
-        agent.enabled = false;
-
-        //기타 죽음 관련 로직(애니메이션, 사운드, 이펙트, 아이템 드랍, 오브젝트 제거나 풀링으로 돌리기?)
+        ChangeState(deadState);
     }
+
+    public virtual void OnIdleEnter() { }
+    public virtual void OnIdleUpdate() { }
+    public virtual void OnIdleExit() { }
+
+    public virtual void OnAttackEnter() { }
+    public virtual void OnAttackUpdate() { }
+    public virtual void OnAttackExit() { }
+
+    public virtual void OnWanderEnter() { }
+    public virtual void OnWanderUpdate() { }
+    public virtual void OnWanderExit() { }
+
+    public virtual void OnFleeEnter() { }
+    public virtual void OnFleeUpdate() { }
+    public virtual void OnFleeExit() { }
+
+    public virtual void OnChaseEnter() { }
+    public virtual void OnChaseUpdate() { }
+    public virtual void OnChaseExit() { }
+
 }

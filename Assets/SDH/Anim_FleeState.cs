@@ -16,6 +16,8 @@ public class Anim_FleeState : AnimalState
     public override void EnterState()
     {
         base.EnterState();
+        animal.OnFleeEnter();
+
         Debug.Log("Flee State Entered");
         fleeTimer = animal.fleeTime;
         SetFleeDestination();
@@ -26,6 +28,8 @@ public class Anim_FleeState : AnimalState
     public override void UpdateState()
     {
         base.UpdateState();
+        animal.OnFleeUpdate();
+
 
         if (!animal.agent.pathPending && (!animal.agent.hasPath || animal.agent.remainingDistance < 0.5f))
         {
@@ -50,6 +54,8 @@ public class Anim_FleeState : AnimalState
     public override void ExitState()
     {
         base.ExitState();
+        animal.OnFleeExit();
+
         animal.animator.SetBool("isRun", false);
         animal.agent.speed = animal.speed;
     }

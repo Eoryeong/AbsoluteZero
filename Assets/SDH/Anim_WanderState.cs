@@ -14,6 +14,8 @@ public class Anim_WanderState : AnimalState
     public override void EnterState()
     {
         base.EnterState();
+        animal.OnWanderEnter();
+
         animal.animator.SetBool("isWalk", true); 
         wanderTime = Random.Range(animal.wanderTimeMin, animal.wanderTimeMax);
         SetRandomDestination();
@@ -23,6 +25,8 @@ public class Anim_WanderState : AnimalState
     public override void UpdateState()
     {
         base.UpdateState();
+        animal.OnWanderUpdate();
+
 
         if (animal.distanceToTarget <= animal.detectionRange)
         {
@@ -52,6 +56,8 @@ public class Anim_WanderState : AnimalState
     public override void ExitState()
     {
         base.ExitState();
+        animal.OnWanderExit();
+
         animal.animator.SetBool("isWalk", false);
         animal.agent.speed = animal.speed;
     }

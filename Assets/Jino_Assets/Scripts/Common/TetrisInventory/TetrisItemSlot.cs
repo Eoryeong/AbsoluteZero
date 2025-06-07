@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] Vector2 size = new Vector2(70f, 70f);
-    public TetrisItem item;
+    public PickupItemData item;
 
     public Vector2 startPosition;
     public Vector2 oldPosition;

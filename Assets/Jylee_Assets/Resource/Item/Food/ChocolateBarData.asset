@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5bd74f60a4198b4bb4580678605dae2, type: 3}
-  m_Name: TomatoSoupV2
+  m_Name: ChocolateBarData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Tomato Soup
-  itemCode: 1
-  itemLore: Emergency food
-  previewPrefab: {fileID: 1677736209965622403, guid: bcb4a1191dbca444489513416d50099e, type: 3}
+  itemName: Chocolate Bar
+  itemCode: 2
+  itemLore: This is sweet
+  previewPrefab: {fileID: 2065093534574123761, guid: 6dce7d15e51a6914a9c28a0def81b89c, type: 3}

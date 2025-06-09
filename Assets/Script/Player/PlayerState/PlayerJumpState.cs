@@ -16,7 +16,6 @@ public class PlayerJumpState : PlayerState
 	public override void Update()
 	{
 		base.Update();
-		SetCurrentVelocity();
 		ChangeState();
 	}
 
@@ -32,13 +31,7 @@ public class PlayerJumpState : PlayerState
 	}
 
 	private void JumpLogic()
-	{
+	{			
 		player.rb.AddForce(Vector3.up * player.jumpForce, ForceMode.Impulse);
-	}
-	private void SetCurrentVelocity()
-	{
-		Vector3 currentVelocity = new Vector3(player.rb.linearVelocity.x, 0f, player.rb.linearVelocity.z);
-
-		player.rb.linearVelocity = new Vector3(currentVelocity.x, player.rb.linearVelocity.y, currentVelocity.z);
 	}
 }

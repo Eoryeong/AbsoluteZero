@@ -7,7 +7,7 @@ public class PlayerControll : MonoBehaviour
     public float runSpeed = 8f;
     public float sitSpeed = 2f;
 
-    public float jumpForce = 2f;
+    public float jumpForce  = 2f;
 
     // 카메라
     public Transform cameraTransform;
@@ -34,7 +34,7 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Light playerLight;
 
     // 기타 컴포넌트
-    public Rigidbody rb;
+    public Rigidbody rb { get; private set; }
     private PlayerStatus playerStatus;
 
     #region State

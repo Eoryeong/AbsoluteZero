@@ -3944,6 +3944,14 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8948286730240676595, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948286730240676595, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8951761375093697966, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
     m_RemovedGameObjects: []

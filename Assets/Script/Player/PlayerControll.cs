@@ -6,12 +6,8 @@ public class PlayerControll : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float sitSpeed = 2f;
-    public float applySpeed;
 
     public float jumpForce = 2f;
-
-    private bool isRun = false;
-    private bool isSit = false;
 
     // 카메라
     public Transform cameraTransform;
@@ -53,29 +49,25 @@ public class PlayerControll : MonoBehaviour
 	#endregion
 
 	private void Start()
-    {
-        InitState();
+	{
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        rb = GetComponent<Rigidbody>();
-        playerStatus = GetComponent<PlayerStatus>();
+		InitState();
+		InitComponent();
 
-        applySpeed = walkSpeed;
-        sitCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - sitCameraDown, cameraOffset.z);
-        currentCameraOffset = cameraOffset;
-        targetCameraOffset = cameraOffset;
-        playerLight.enabled = false;
-    }
+		sitCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - sitCameraDown, cameraOffset.z);
+		currentCameraOffset = cameraOffset;
+		targetCameraOffset = cameraOffset;
+		playerLight.enabled = false;
+	}
 
-    private void Update()
+	private void Update()
     {
         if (playerStatus.playerFreeze) return;
 
         stateMachine.Update();
-        //InputCheck();
         GroundCheck();
-        //HandleMovement();
         HandleMouseLook();
     }
 
@@ -103,90 +95,11 @@ public class PlayerControll : MonoBehaviour
         stateMachine.InitState(idleStete);
     }
 
-    private void InputCheck()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayerRunStart();
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && !isSit)
-        {
-            PlayerRunCancel();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (!isSit)
-            {
-                PlayerSitStart();
-            }
-            else
-            {
-                PlayerSitCancel();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && isGround)
-        {
-            PlayerJump();
-        }
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            playerLight.enabled = !playerLight.enabled;
-        }
-    }
-
-    private void PlayerRunStart()
-    {
-        if (isSit)
-        {
-            PlayerSitCancel();
-        }
-        isRun = true;
-        applySpeed = runSpeed;
-    }
-
-    private void PlayerRunCancel()
-    {
-        isRun = false;
-        applySpeed = walkSpeed;
-    }
-
-    private void PlayerSitStart()
-    {
-        isSit = true;
-        applySpeed = sitSpeed;
-        // 타겟 카메라 오프셋을 앉은상태 오프셋으로 변경
-        targetCameraOffset = sitCameraOffset;
-    }
-
-    private void PlayerSitCancel()
-    {
-        isSit = false;
-        applySpeed = walkSpeed;
-        // 타겟 카메라 오프셋을 평상태 오프셋으로 변경
-        targetCameraOffset = cameraOffset;
-    }
-
-    private void PlayerJump()
-    {
-        // 앉았을때 점프 시도 앉은 상태 해제
-        if (isSit)
-        {
-            PlayerSitCancel();
-        }
-        rb.linearVelocity = transform.up * jumpForce;
-    }
-
-    private void HandleMovement()
-    {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        Vector3 velocity = move * applySpeed;
-
-        Vector3 newPosition = rb.position + velocity * Time.deltaTime;
-        rb.MovePosition(newPosition);
-    }
+	private void InitComponent()
+	{
+		rb = GetComponent<Rigidbody>();
+		playerStatus = GetComponent<PlayerStatus>();
+	}
 
     private void HandleMouseLook()
     {

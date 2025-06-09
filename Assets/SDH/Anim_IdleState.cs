@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
 public class Anim_IdleState : AnimalState
 {
+    float idleTime;
+
     public Anim_IdleState(Animal animal) : base(animal)
     {
     }
@@ -10,27 +13,43 @@ public class Anim_IdleState : AnimalState
     public override void EnterState()
     {
         base.EnterState();
+        animal.OnIdleEnter();
+
         Debug.Log("Idle State Entered");
         animal.agent.ResetPath();
+
+        idleTime = Random.Range(animal.idleTimeMin, animal.idleTimeMax);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+        animal.OnIdleUpdate();
 
         if (animal.distanceToTarget <= animal.detectionRange)
         {
-            animal.ChangeState(animal.chaseState);
+            animal.TakeActiontoTarget();
+            return;
         }
-        else
+        idleTime -= Time.deltaTime;
+        if (idleTime <= 0f)
         {
-            //추적 안할때
+            if (Random.Range(0f, 1f) < animal.wanderProbability)
+            {
+                animal.ChangeState(animal.wanderState);
+            }
+            else
+            {
+                idleTime = Random.Range(animal.idleTimeMin, animal.idleTimeMax);
+            }
         }
     }
 
     public override void ExitState()
     {
         base.ExitState();
+        animal.OnIdleExit();
+
     }
 
 

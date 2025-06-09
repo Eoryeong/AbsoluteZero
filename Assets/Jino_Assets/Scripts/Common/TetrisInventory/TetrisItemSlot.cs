@@ -14,27 +14,80 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     TetrisSlot slots;
 
+    private bool isDragging = false;
+    private bool isRotated = false;
+
 
     void Start()
     {
+
+        UpdateItemSize();
+
+        slots = TetrisSlot.instanceSlot;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    void Update()
+    {
+        if (isDragging && Input.GetKeyDown(KeyCode.R))
+        {
+            // x와 y 크기를 교환
+            float tempSize = item.itemSize.x;
+            item.itemSize.x = item.itemSize.y;
+            item.itemSize.y = tempSize;
+
+            // UI 크기 업데이트
+            UpdateItemSize();
+        }
+    }
+
+
+    public void UpdateItemSize()
+    {
+        // 기본 크기 설정
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.itemSize.y * size.y);
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.itemSize.x * size.x);
 
         foreach (RectTransform child in transform)
         {
-            child.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.itemSize.y * child.rect.height);
-            child.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.itemSize.x * child.rect.width);
+            // 자식 오브젝트의 원래 크기를 저장
+            float originalHeight = size.y;
+            float originalWidth = size.x;
 
-            foreach (RectTransform iconChild in child)
+            // 크기 설정 시 원래 크기에 itemSize만 곱함
+            child.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.itemSize.y * originalHeight);
+            child.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.itemSize.x * originalWidth);
+
+            if (!isDragging)
             {
-                iconChild.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.itemSize.y * iconChild.rect.height);
-                iconChild.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.itemSize.x * iconChild.rect.width);
-                iconChild.localPosition = new Vector2(child.localPosition.x + child.rect.width / 2, child.localPosition.y + child.rect.height / 2 * -1f);
+                foreach (RectTransform iconChild in child)
+                {
+                    iconChild.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, item.itemSize.y * iconChild.rect.height);
+                    iconChild.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, item.itemSize.x * iconChild.rect.width);
+                    iconChild.localPosition = new Vector2(child.localPosition.x + child.rect.width / 2, child.localPosition.y + child.rect.height / 2 * -1f);
+                }
             }
-
+            else
+            {
+                foreach (RectTransform iconChild in child)
+                {
+                    if (!isRotated)
+                    {
+                        // 아이콘 90도 회전
+                        iconChild.rotation = Quaternion.Euler(0, 0, 90);
+                        isRotated = true;
+                    }
+                    else
+                    {
+                        // 원래 상태로 되돌리기
+                        iconChild.rotation = Quaternion.Euler(0, 0, 0);
+                        isRotated = false;
+                    }
+                }
+            }
         }
-
-        slots = TetrisSlot.instanceSlot;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -42,24 +95,35 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         oldPosition = transform.GetComponent<RectTransform>().anchoredPosition;
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        isDragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.position;
 
-        for (int i = 0; i < item.itemSize.y; i++)
-        {
-            for (int j = 0; j < item.itemSize.x; j++)
-            {
-                slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+        // 배열 범위 체크 추가
+        int maxX = (int)startPosition.x + (int)item.itemSize.x;
+        int maxY = (int)startPosition.y + (int)item.itemSize.y;
 
+        if (maxX <= slots.maxGridX && maxY <= slots.maxGridY)
+        {
+            for (int i = 0; i < item.itemSize.y; i++)
+            {
+                for (int j = 0; j < item.itemSize.x; j++)
+                {
+                    if ((int)startPosition.x + j >= 0 && (int)startPosition.y + i >= 0)
+                    {
+                        slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                    }
+                }
             }
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         if (EventSystem.current.IsPointerOverGameObject())
         {
             Vector2 finalPos = GetComponent<RectTransform>().anchoredPosition;
@@ -68,14 +132,21 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             finalSlot.x = Mathf.Floor(finalPos.x / size.x);
             finalSlot.y = Mathf.Floor(-finalPos.y / size.y);
 
-            if (((int)(finalSlot.x) + (int)(item.itemSize.x) - 1) < slots.maxGridX && ((int)(finalSlot.y) + (int)(item.itemSize.y) - 1) < slots.maxGridY && ((int)(finalSlot.x)) >= 0 && (int)finalSlot.y >= 0)
+            // 배열 범위 체크를 더 엄격하게 수정
+            bool isValidPosition = ((int)finalSlot.x + (int)item.itemSize.x) <= slots.maxGridX &&
+                                 ((int)finalSlot.y + (int)item.itemSize.y) <= slots.maxGridY &&
+                                 (int)finalSlot.x >= 0 &&
+                                 (int)finalSlot.y >= 0;
+
+            if (isValidPosition)
             {
                 List<Vector2> newPosItem = new List<Vector2>();
-                bool fit = false;
+                bool fit = true; // 초기값을 true로 변경
 
-                for (int sizeY = 0; sizeY < item.itemSize.y; sizeY++)
+                // 새로운 위치가 유효한지 먼저 확인
+                for (int sizeY = 0; sizeY < item.itemSize.y && fit; sizeY++)
                 {
-                    for (int sizeX = 0; sizeX < item.itemSize.x; sizeX++)
+                    for (int sizeX = 0; sizeX < item.itemSize.x && fit; sizeX++)
                     {
                         if (slots.grid[(int)finalSlot.x + sizeX, (int)finalSlot.y + sizeY] != 1)
                         {
@@ -83,64 +154,89 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                             pos.x = (int)finalSlot.x + sizeX;
                             pos.y = (int)finalSlot.y + sizeY;
                             newPosItem.Add(pos);
-                            fit = true;
                         }
                         else
                         {
                             fit = false;
-                            Debug.Log("nao deu" + startPosition);
-
-                            this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition; //back to old pos
-                            sizeX = (int)item.itemSize.x;
-                            sizeY = (int)item.itemSize.y;
                             newPosItem.Clear();
-
                         }
-
                     }
                 }
 
-                if (fit)
+                if (fit && newPosItem.Count == (item.itemSize.x * item.itemSize.y))
                 {
-                    for (int i = 0; i < item.itemSize.y; i++) //through item Y
-                    {
-                        for (int j = 0; j < item.itemSize.x; j++) //through item X
-                        {
-                            slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0; //clean old pos
+                    // 이전 위치 초기화 전에 범위 체크
+                    bool canClearOld = (int)startPosition.x >= 0 &&
+                                     (int)startPosition.y >= 0 &&
+                                     ((int)startPosition.x + (int)item.itemSize.x) <= slots.maxGridX &&
+                                     ((int)startPosition.y + (int)item.itemSize.y) <= slots.maxGridY;
 
+                    if (canClearOld)
+                    {
+                        // 이전 위치 초기화
+                        for (int i = 0; i < item.itemSize.y; i++)
+                        {
+                            for (int j = 0; j < item.itemSize.x; j++)
+                            {
+                                slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                            }
                         }
                     }
 
-                    for (int i = 0; i < newPosItem.Count; i++)
+                    // 새 위치에 아이템 배치
+                    foreach (Vector2 pos in newPosItem)
                     {
-                        slots.grid[(int)newPosItem[i].x, (int)newPosItem[i].y] = 1; // add new pos
+                        slots.grid[(int)pos.x, (int)pos.y] = 1;
                     }
 
-                    this.startPosition = newPosItem[0]; // set new start position
+                    startPosition = newPosItem[0];
                     transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(newPosItem[0].x * size.x, -newPosItem[0].y * size.y);
-                    Debug.Log("Position: " + transform.GetComponent<RectTransform>().anchoredPosition);
                 }
-                else //item voltou pra mesma posição da bag e marca com 1
+                else
                 {
-                    for (int i = 0; i < item.itemSize.y; i++) //through item Y
+                    // 원래 위치로 되돌리기
+                    transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
+                    // 원래 위치의 grid 상태 복원
+                    if ((int)startPosition.x >= 0 &&
+                        (int)startPosition.y >= 0 &&
+                        ((int)startPosition.x + (int)item.itemSize.x) <= slots.maxGridX &&
+                        ((int)startPosition.y + (int)item.itemSize.y) <= slots.maxGridY)
                     {
-                        for (int j = 0; j < item.itemSize.x; j++) //through item X
+                        for (int i = 0; i < item.itemSize.y; i++)
                         {
-                            slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 1; //back to position 1;
-
+                            for (int j = 0; j < item.itemSize.x; j++)
+                            {
+                                slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 1;
+                            }
                         }
                     }
                 }
-
             }
             else
-            { // out of index, back to the old pos
-                this.transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
+            {
+                transform.GetComponent<RectTransform>().anchoredPosition = oldPosition;
             }
         }
         else
         {
             //템 떨구기
+            PlayerControll player;
+            player = FindFirstObjectByType<PlayerControll>();
+
+            TetrisListItems itemInGame; // list of items prefab to could be instantiated when dropping item.
+            itemInGame = FindFirstObjectByType<TetrisListItems>();
+
+            for (int t = 0; t < itemInGame.prefabs.Length; t++)
+            {
+                if (itemInGame.items[t].itemName == item.itemName)
+                {
+                    Instantiate(itemInGame.prefabs[t].gameObject, new Vector3(player.transform.position.x, player.transform.position.y + 1f, player.transform.position.z + 1.5f), Quaternion.identity); //dropa o item
+
+                    Destroy(this.gameObject);
+                    break;
+                }
+
+            }
         }
 
         GetComponent<CanvasGroup>().blocksRaycasts = true;

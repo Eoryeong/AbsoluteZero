@@ -14,7 +14,7 @@ public class TetrisSlot : MonoBehaviour
 
     TetrisInventory Inventory;
 
-    public List<TetrisItemSlot> itensInBag = new List<TetrisItemSlot>();
+    public List<TetrisItemSlot> itemsInBag = new List<TetrisItemSlot>();
 
     public int maxGridX;
     public int maxGridY;
@@ -72,7 +72,7 @@ public class TetrisSlot : MonoBehaviour
             }
         }
 
-        if (posItemNaBag.Count == (contX * contY))  //이미 아이템 있을 때
+        if (posItemNaBag.Count == (contX * contY))
         {
             TetrisItemSlot myItem = Instantiate(prefabSlot);
             myItem.startPosition = new Vector2(posItemNaBag[0].x, posItemNaBag[0].y);
@@ -84,9 +84,9 @@ public class TetrisSlot : MonoBehaviour
             myItem.transform.SetParent(this.GetComponent<RectTransform>(), false);
             myItem.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             myItem.GetComponent<RectTransform>().anchoredPosition = new Vector2(myItem.startPosition.x * cellSize.x, -myItem.startPosition.y * cellSize.y);
-            itensInBag.Add(myItem);
+            itemsInBag.Add(myItem);
 
-            for (int k = 0; k < posItemNaBag.Count; k++) //upgrade matrix
+            for (int k = 0; k < posItemNaBag.Count; k++)
             {
                 int posToAddX = (int)posItemNaBag[k].x;
                 int posToAddY = (int)posItemNaBag[k].y;

@@ -37,6 +37,7 @@ public class Anim_ChaseState : AnimalState
                 animal.ChangeState(animal.wanderState);
             }
         }
+        
     }
 
     public override void ExitState()

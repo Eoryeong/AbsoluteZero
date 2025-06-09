@@ -29,6 +29,7 @@ public class Animal : MonoBehaviour
     public float idleTimeMax = 3f;
     public float wanderProbability = 0.5f;
     public float idleProbability = 0.5f;
+
     public AnimalType animalType = AnimalType.Predator;
     bool isInDamagedState = false;
 

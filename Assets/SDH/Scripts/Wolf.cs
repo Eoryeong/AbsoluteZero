@@ -7,6 +7,14 @@ public class Wolf : Animal
     float howlTimer = 10f;
     public Anim_ResponseHowlState responseHowlState;
 
+
+
+
+    protected override void Start()
+    {
+        base.Start();
+        agent.stoppingDistance = attackRange - 0.1f;
+    }
     protected override void InitializeStatus()
     {
         maxHP = 120f;
@@ -14,9 +22,9 @@ public class Wolf : Animal
         wanderSpeed = 3f;
         fleeSpeed = 8f;
         detectionRange = 15f;
-        attackRange = 3f;
+        attackRange = 2.5f;
         attackDamage = 5f;
-        attackCooldown = 3f;
+        attackCooldown = 2.5f;
         wanderRadius = 20f;
         wanderTimeMin = 5f;
         wanderTimeMax = 7f;
@@ -39,6 +47,7 @@ public class Wolf : Animal
     protected override AnimalState GetInitState()
     {
         return Random.Range(0f, 1f) < wanderProbability ? wanderState : idleState;
+        
     }
 
 

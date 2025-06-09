@@ -65,6 +65,7 @@ public class PickupItem : MonoBehaviour
     IEnumerator CloseUIAndDestroyDelay()
     {
         yield return null; // 한 프레임 대기
+        TetrisSlot.instanceSlot.addInFirstSpace(data);
         UIManager.instance.CloseMenu();
         Destroy(gameObject);
     }

@@ -17,5 +17,7 @@ public class PickupItemData : ScriptableObject
     public int itemCode;
     public string itemLore;
     public GameObject previewPrefab;
+    public Sprite itemIcon;
+    public Vector2 itemSize;
 
 }

@@ -17,3 +17,5 @@ MonoBehaviour:
   itemCode: 1
   itemLore: Emergency food
   previewPrefab: {fileID: 8501894133212684738, guid: 4946408ea63fdb340ae15c14722a7ce1, type: 3}
+  itemIcon: {fileID: 0}
+  itemSize: {x: 0, y: 0}

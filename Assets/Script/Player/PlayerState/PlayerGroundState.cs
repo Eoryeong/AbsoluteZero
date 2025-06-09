@@ -25,11 +25,10 @@ public class PlayerGroundState : PlayerState
 
 	protected void MoveLogic()
 	{
-		Vector3 move = player.transform.right * xInput + player.transform.forward * zInput;
+		Vector3 move = (player.transform.right * xInput + player.transform.forward * zInput).normalized;
 		Vector3 velocity = move * applySpeed;
 
-		Vector3 newPosition = player.rb.position + velocity * Time.deltaTime;
-		player.rb.MovePosition(newPosition);
+		player.rb.linearVelocity = velocity;
 	}
 
 	protected override void ChangeState()

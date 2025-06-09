@@ -15,7 +15,6 @@ public class PlayerAirState : PlayerState
 	public override void Update()
 	{
 		base.Update();
-		SetCurrentVelocity();
 		ChangeState();
 	}
 
@@ -28,12 +27,5 @@ public class PlayerAirState : PlayerState
 	{
 		if (player.GroundCheck())
 			stateMachine.ChangeState(player.idleStete);
-	}
-
-	private void SetCurrentVelocity()
-	{
-		Vector3 currentVelocity = new Vector3(player.rb.linearVelocity.x, 0f, player.rb.linearVelocity.z);
-
-		player.rb.linearVelocity = new Vector3(currentVelocity.x, player.rb.linearVelocity.y, currentVelocity.z);
 	}
 }

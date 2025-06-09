@@ -10,12 +10,13 @@ public enum BGM
 public enum SFX
 {
     Snow_Foot_Sound,
+    ui_button_click,
     COUNT
 }
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager Instance;
 
     public Transform BGMTrs;
     public Transform SFXTrs;
@@ -30,7 +31,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
 
         LoadBGMPlayer();
         LoadSFXPlayer();

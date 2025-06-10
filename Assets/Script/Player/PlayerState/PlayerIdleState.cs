@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerIdleStete : PlayerGroundState
+public class PlayerIdleState : PlayerGroundState
 {
-	public PlayerIdleStete(PlayerControll player, PlayerStateMachine stateMachine, string animBoolName) 
+	public PlayerIdleState(PlayerControll player, PlayerStateMachine stateMachine, string animBoolName) 
 		: base(player, stateMachine, animBoolName)
 	{
 	}

@@ -1,3 +1,4 @@
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public class PlayerJumpState : PlayerState
@@ -26,12 +27,12 @@ public class PlayerJumpState : PlayerState
 
 	protected override void ChangeState()
 	{
-		if (player.rb.linearVelocity.y < 0)
+		if (player.velocity.y < 0)
 			stateMachine.ChangeState(player.airState);
 	}
 
 	private void JumpLogic()
-	{			
-		player.rb.AddForce(Vector3.up * player.jumpForce, ForceMode.Impulse);
+	{
+		player.velocity.y = Mathf.Sqrt(player.jumpForce * -2f * player.gravity);
 	}
 }

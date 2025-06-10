@@ -33,7 +33,7 @@ public class Wolf : Animal
         idleTimeMax = 10f;
         wanderProbability = 0.7f;
         idleProbability = 0.4f;
-        fleeTime = 6f;
+        fleeTime = 10f;
         animalType = AnimalType.Predator;
 
         base.InitializeStatus();
@@ -118,4 +118,12 @@ public class Wolf : Animal
         animator.SetTrigger("Dig");
     }
 
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if(HP <= maxHP* 0.25f && currentState != fleeState && !isDead)
+        {
+            ChangeState(fleeState);
+        }
+    }
 }

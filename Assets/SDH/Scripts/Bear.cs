@@ -12,7 +12,7 @@ public class Bear : Animal
     {
         maxHP = 200f;
         speed = 6f;
-        wanderSpeed = 3f;
+        wanderSpeed = 2f;
         fleeSpeed = 8f;
         detectionRange = 15f;
         attackRange = 3f;

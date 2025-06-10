@@ -10,18 +10,20 @@ public class PlayerAirState : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
-		applySpeed = player.walkSpeed;
 	}
 
 	public override void Update()
 	{
 		base.Update();
+		player.characterController.Move(player.velocity * Time.deltaTime);
 		ChangeState();
 	}
 
 	public override void Exit()
 	{
 		base.Exit();
+		player.velocity.x = 0;
+		player.velocity.z = 0;
 	}
 
 	protected override void ChangeState()

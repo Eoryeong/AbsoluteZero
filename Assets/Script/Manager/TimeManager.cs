@@ -20,7 +20,7 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 
 	private void Update()
 	{
-		SetTime();
+		TimeUpdate();
 	}
 
 	public void InitTime()
@@ -30,7 +30,7 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 		gameSecond = StartSecond;
 	}
 
-	private void SetTime()
+	private void TimeUpdate()
 	{
 		gameSecond += Time.deltaTime * timeScale;
 

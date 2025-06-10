@@ -44,13 +44,27 @@ public class PlayerControll : MonoBehaviour
     private NavMeshObstacle navMeshObstacle;
 
     // CharacterController 관련
-    private Vector3 velocity;
-    [SerializeField] private float gravity = -9.81f;
+    public Vector3 velocity;
+    public float gravity { get; private set; } = -9.81f;
 
-    private void Start()
+    #region State
+    public PlayerStateMachine stateMachine;
+    public PlayerIdleState idleState;
+    public PlayerWalkState walkState;
+    public PlayerRunState runState;
+    public PlayerSitState sitState;
+    public PlayerSitWalkState sitWalkState;
+    public PlayerJumpState jumpState;
+    public PlayerAirState airState;
+	#endregion
+
+	private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        InitState();
+
         characterController = GetComponent<CharacterController>();
         playerStatus = GetComponent<PlayerStatus>();
 
@@ -72,9 +86,11 @@ public class PlayerControll : MonoBehaviour
     private void Update()
     {
         if (playerStatus.playerFreeze) return;
-        InputCheck();
+
+        stateMachine.Update();
+       // InputCheck();
         GroundCheck();
-        HandleMovement();
+      //  HandleMovement();
         HandleMouseLook();
     }
 
@@ -85,6 +101,21 @@ public class PlayerControll : MonoBehaviour
         currentCameraOffset = Vector3.Lerp(currentCameraOffset, targetCameraOffset, Time.deltaTime * cameraLerpSpeed);
 
         FollowCamera();
+    }
+
+    private void InitState()
+    {
+        stateMachine = new PlayerStateMachine();
+
+        idleState = new PlayerIdleState(this, stateMachine, "Idle");
+        walkState = new PlayerWalkState(this, stateMachine, "Walk");
+        runState = new PlayerRunState(this, stateMachine, "Run");
+        sitState = new PlayerSitState(this, stateMachine, "Sit");
+        sitWalkState = new PlayerSitWalkState(this, stateMachine, "SitWalk");
+        jumpState = new PlayerJumpState(this, stateMachine, "Jump");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
+
+        stateMachine.InitState(idleState);
     }
 
     private void InputCheck()

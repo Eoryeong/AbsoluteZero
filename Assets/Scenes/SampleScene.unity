@@ -3846,6 +3846,31 @@ MonoBehaviour:
   maxPlayerSanity: 100
   currentPlayerSanity: 0
   playerFreeze: 0
+--- !u!143 &2145523785
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040574536}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3649388376615891377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4014,6 +4039,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8303924324699139556, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2145523778}
+    - targetCorrespondingSourceObject: {fileID: 8303924324699139556, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2145523785}
   m_SourcePrefab: {fileID: 100100000, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
 --- !u!1001 &6240270517446848222
 PrefabInstance:

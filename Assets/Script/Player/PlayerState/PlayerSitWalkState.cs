@@ -28,7 +28,7 @@ public class PlayerSitWalkState : PlayerGroundState
 	protected override void ChangeState()
 	{
 		if (Input.GetKeyUp(KeyCode.LeftControl))
-			stateMachine.ChangeState(player.idleStete);
+			stateMachine.ChangeState(player.idleState);
 		else if (xInput == 0 && zInput == 0)
 			stateMachine.ChangeState(player.sitState);
 	}

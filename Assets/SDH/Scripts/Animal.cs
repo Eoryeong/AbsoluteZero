@@ -10,6 +10,7 @@ public class Animal : MonoBehaviour
         Prey
     }
     // 기본 스탯
+    [Header("Status")]
     public float HP = 100f;
     public float maxHP = 100f;
     public float speed = 3.5f;
@@ -22,6 +23,7 @@ public class Animal : MonoBehaviour
     public float fleeTime = 5f;
 
     // 기타 변수
+    [Header("Settings Variables")]
     public float wanderRadius = 5f;
     public float wanderTimeMin = 2f;
     public float wanderTimeMax = 5f;
@@ -29,11 +31,11 @@ public class Animal : MonoBehaviour
     public float idleTimeMax = 3f;
     public float wanderProbability = 0.5f;
     public float idleProbability = 0.5f;
-
     public AnimalType animalType = AnimalType.Predator;
     bool isInDamagedState = false;
 
     // 컴포넌트
+    [Header("Components")]
     public NavMeshAgent agent;
     public Transform target;
     public Animator animator;
@@ -50,8 +52,11 @@ public class Animal : MonoBehaviour
     public Anim_DeadState deadState;
 
     // 런타임 변수
+    [Header("Runtime Variables")]
     public float distanceToTarget;
     public bool isDead = false;
+
+    public GameObject dropItemPrefab;
 
 
     protected virtual void Awake()
@@ -164,6 +169,14 @@ public class Animal : MonoBehaviour
         ChangeState(deadState);
     }
 
+    public void DropItem()
+    {
+        if (dropItemPrefab != null)
+        {
+            Instantiate(dropItemPrefab, transform.position + Vector3.up, Quaternion.identity);
+        }
+    }
+
     public virtual void OnIdleEnter() { }
     public virtual void OnIdleUpdate() { }
     public virtual void OnIdleExit() { }
@@ -183,5 +196,9 @@ public class Animal : MonoBehaviour
     public virtual void OnChaseEnter() { }
     public virtual void OnChaseUpdate() { }
     public virtual void OnChaseExit() { }
+
+    public virtual void OnDeadEnter() { }
+    public virtual void OnDeadUpdate() { }
+    public virtual void OnDeadExit() { }
 
 }

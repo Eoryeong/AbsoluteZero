@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Wolf : Animal
@@ -116,4 +117,5 @@ public class Wolf : Animal
     {
         animator.SetTrigger("Dig");
     }
+
 }

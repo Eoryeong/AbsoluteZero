@@ -6,6 +6,7 @@ public class Bear : Animal
     float sleepProbability = 0.2f;
     float sleepChangeTimer = 10f;
     public Anim_SleepState sleepState;
+    public float angerGauge = 0f;
 
     protected override void InitializeStatus()
     {
@@ -20,8 +21,8 @@ public class Bear : Animal
         wanderRadius = 20f;
         wanderTimeMin = 10f;
         wanderTimeMax = 15f;
-        idleTimeMin = 25;
-        idleTimeMax = 30f;
+        idleTimeMin = 10;
+        idleTimeMax = 15f;
         wanderProbability = 0.3f;
         idleProbability = 0.6f;
         fleeTime = 6f;
@@ -44,7 +45,23 @@ public class Bear : Animal
 
     public override void Attack()
     {
-        //랜덤공격을 넣을까
+        if(angerGauge >= 100f)
+        {
+            animator.SetTrigger("StrongAtt");
+            angerGauge = 0f;
+        }
+        else
+        {
+            if(Random.Range(0f, 1f) < 0.5f)
+            {
+                animator.SetTrigger("Att");
+            }
+            else
+            {
+                animator.SetTrigger("Att2");
+            }
+            angerGauge += 10f;
+        }
     }
 
     void Trysleep()
@@ -64,5 +81,17 @@ public class Bear : Animal
             sleepChangeTimer = 10f;
         }
 
+    }
+
+    public override void OnChaseUpdate()
+    {
+        angerGauge += Time.deltaTime * 5f;
+    }
+
+    public override void OnAttackExit()
+    {
+        animator.ResetTrigger("Att");
+        animator.ResetTrigger("Att2");
+        animator.ResetTrigger("StrongAtt");
     }
 }

@@ -35,7 +35,7 @@ public class Anim_AttackState : AnimalState
         {
             RotateTowardsTarget();
         }
-        if (attackCooldownTimer <= 0f)
+        if (attackCooldownTimer >= 2.0f)
         {
             isRotate = false;
             animal.animator.SetBool("isRotate", false);
@@ -47,7 +47,7 @@ public class Anim_AttackState : AnimalState
             {
                 animal.ChangeState(animal.attackState);
             }
-            attackCooldownTimer = animal.attackCooldown;
+            attackCooldownTimer = 0;
         }
 
     }

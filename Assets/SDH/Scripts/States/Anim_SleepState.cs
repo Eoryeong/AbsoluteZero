@@ -13,7 +13,7 @@ public class Anim_SleepState : AnimalState
         base.EnterState();
         animal.agent.isStopped = true;
         animal.animator.SetTrigger("Sleep");
-        sleepTimer = 30f;
+        sleepTimer = 20f;
     }
 
     public override void UpdateState()
@@ -37,6 +37,7 @@ public class Anim_SleepState : AnimalState
     {
         base.ExitState();
         animal.agent.isStopped = false;
+        animal.animator.SetTrigger("WakeUp");
     }
-       
+
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &214028948364071943
+--- !u!1 &1651194722622744994
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 401762149445013848}
-  - component: {fileID: 1762606992034919069}
-  - component: {fileID: 7607753831092953974}
-  - component: {fileID: 7564456496573416962}
-  - component: {fileID: 3829484823087085545}
-  - component: {fileID: 167279017282820799}
-  - component: {fileID: 6790626383547070246}
+  - component: {fileID: 1626095135507084494}
+  - component: {fileID: 5586769901828514058}
+  - component: {fileID: 3368012667610288432}
+  - component: {fileID: 4027452666729744475}
+  - component: {fileID: 7850531504601368752}
+  - component: {fileID: 2963790039377479865}
+  - component: {fileID: 8962765805769269687}
   m_Layer: 3
-  m_Name: RawMeatPreview
+  m_Name: CookedMeatPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &401762149445013848
+--- !u!4 &1626095135507084494
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 205.588, y: 0.082, z: 195.45879}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &1762606992034919069
+--- !u!114 &5586769901828514058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
@@ -545,18 +545,18 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7003
+  m_VersionIndex: 7006
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &7607753831092953974
+--- !u!114 &3368012667610288432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ca002da428252441b92f28d83c8a65f, type: 3}
@@ -574,13 +574,13 @@ MonoBehaviour:
     - rid: 5610048284877652049
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data: 
---- !u!23 &7564456496573416962
+--- !u!23 &4027452666729744475
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -597,7 +597,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fc3e16f5dc8c73145b33b1d2727d595c, type: 2}
+  - {fileID: 2100000, guid: 653e890162e086f4a9c374d45a8d94c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -619,21 +619,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &3829484823087085545
+--- !u!33 &7850531504601368752
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   m_Mesh: {fileID: 0}
---- !u!64 &167279017282820799
+--- !u!64 &2963790039377479865
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -649,13 +649,13 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &6790626383547070246
+--- !u!114 &8962765805769269687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 214028948364071943}
+  m_GameObject: {fileID: 1651194722622744994}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 719f8d720170cb34baa6ae3f638fa315, type: 3}

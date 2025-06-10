@@ -35,16 +35,16 @@ public abstract class PlayerState
 
     }
 
-    protected abstract void ChangeState();
-
 	private void GetInput()
 	{
 		xInput = Input.GetAxisRaw("Horizontal");
 		zInput = Input.GetAxisRaw("Vertical");
 	}
 
+    protected abstract void ChangeState();
+
 	protected void Gravity()
-    {
+	{
 		if (player.characterController.isGrounded && player.velocity.y < 0)
 		{
 			player.velocity.y = -2f; // 바닥에 붙어있도록

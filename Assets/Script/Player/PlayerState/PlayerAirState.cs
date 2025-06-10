@@ -10,6 +10,7 @@ public class PlayerAirState : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
+		applySpeed = player.walkSpeed;
 	}
 
 	public override void Update()

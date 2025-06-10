@@ -88,9 +88,9 @@ public class PlayerControll : MonoBehaviour
         if (playerStatus.playerFreeze) return;
 
         stateMachine.Update();
-       // InputCheck();
-        GroundCheck();
-      //  HandleMovement();
+        //InputCheck();
+        //GroundCheck();
+        //HandleMovement();
         HandleMouseLook();
     }
 

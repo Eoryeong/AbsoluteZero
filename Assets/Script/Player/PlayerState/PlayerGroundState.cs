@@ -25,15 +25,16 @@ public class PlayerGroundState : PlayerState
 
 	protected void MoveLogic()
 	{
-		Vector3 move = (player.transform.right * xInput + player.transform.forward * zInput).normalized;
-		Vector3 velocity = move * applySpeed;
+		Vector3 move = player.transform.right * xInput+ player.transform.forward * zInput;
+		move = move.normalized * applySpeed;
 
-		player.rb.linearVelocity = velocity;
+		Vector3 finalMove = move * Time.deltaTime + Vector3.up * player.velocity.y * Time.deltaTime;
+		player.characterController.Move(finalMove);
 	}
 
 	protected override void ChangeState()
 	{
-		if (!player.GroundCheck())
+		if (!player.characterController.isGrounded)
 			stateMachine.ChangeState(player.airState);
 	}
 }

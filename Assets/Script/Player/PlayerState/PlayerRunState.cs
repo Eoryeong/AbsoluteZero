@@ -32,7 +32,7 @@ public class PlayerRunState : PlayerGroundState
 			if (xInput != 0 || zInput != 0)
 				stateMachine.ChangeState(player.walkState);
 			else if(xInput == 0 && zInput == 0)
-				stateMachine.ChangeState(player.idleStete);
+				stateMachine.ChangeState(player.idleState);
 		}
 		else if(Input.GetKeyDown(KeyCode.LeftControl))
 			stateMachine.ChangeState(player.sitState);

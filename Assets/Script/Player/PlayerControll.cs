@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -38,15 +39,28 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] private Light playerLight;
 
     // 기타 컴포넌트
-    private Rigidbody rb;
+    public CharacterController characterController { get; private set; }
     private PlayerStatus playerStatus;
+    private NavMeshObstacle navMeshObstacle;
+
+    // CharacterController 관련
+    private Vector3 velocity;
+    [SerializeField] private float gravity = -9.81f;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         playerStatus = GetComponent<PlayerStatus>();
+
+        // NavMeshObstacle 컴포넌트 추가 또는 가져오기
+        navMeshObstacle = GetComponent<NavMeshObstacle>();
+        if (navMeshObstacle == null)
+        {
+            navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
+        }
+        SetupNavMeshObstacle();
 
         applySpeed = walkSpeed;
         sitCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - sitCameraDown, cameraOffset.z);
@@ -126,6 +140,7 @@ public class PlayerControll : MonoBehaviour
         applySpeed = sitSpeed;
         // 타겟 카메라 오프셋을 앉은상태 오프셋으로 변경
         targetCameraOffset = sitCameraOffset;
+        UpdateNavMeshObstacleHeight();
     }
 
     private void PlayerSitCancel()
@@ -134,6 +149,7 @@ public class PlayerControll : MonoBehaviour
         applySpeed = walkSpeed;
         // 타겟 카메라 오프셋을 평상태 오프셋으로 변경
         targetCameraOffset = cameraOffset;
+        UpdateNavMeshObstacleHeight();
     }
 
     private void PlayerJump()
@@ -143,7 +159,11 @@ public class PlayerControll : MonoBehaviour
         {
             PlayerSitCancel();
         }
-        rb.linearVelocity = transform.up * jumpForce;
+
+        if (isGround)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
     }
 
     private void HandleMovement()
@@ -152,10 +172,21 @@ public class PlayerControll : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        Vector3 velocity = move * applySpeed;
+        move = move.normalized * applySpeed;
 
-        Vector3 newPosition = rb.position + velocity * Time.deltaTime;
-        rb.MovePosition(newPosition);
+        // 중력 적용
+        if (characterController.isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f; // 바닥에 붙어있도록
+        }
+        else
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+
+        // 최종 이동 벡터 (수평 이동 + 수직 이동)
+        Vector3 finalMove = move * Time.deltaTime + Vector3.up * velocity.y * Time.deltaTime;
+        characterController.Move(finalMove);
     }
 
     private void HandleMouseLook()
@@ -178,12 +209,49 @@ public class PlayerControll : MonoBehaviour
 
     private void GroundCheck()
     {
-        isGround = Physics.CheckSphere(groundCheckOffset.position, groundCheckRadius, groundLayer);
+        // CharacterController의 isGrounded를 기본으로 사용
+        // 추가적인 체크가 필요한 경우에만 Physics.CheckSphere 사용
+        isGround = characterController.isGrounded;
+
+        // 더 정확한 바닥 감지가 필요한 경우 추가 체크
+        if (!isGround && groundCheckOffset != null)
+        {
+            isGround = Physics.CheckSphere(groundCheckOffset.position, groundCheckRadius, groundLayer);
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(groundCheckOffset.position, groundCheckRadius);
+    }
+
+    private void SetupNavMeshObstacle()
+    {
+        if (navMeshObstacle != null && characterController != null)
+        {
+            // CharacterController의 크기에 맞춰 NavMeshObstacle 설정
+            navMeshObstacle.shape = NavMeshObstacleShape.Capsule;
+            navMeshObstacle.radius = characterController.radius;
+            navMeshObstacle.height = characterController.height;
+            navMeshObstacle.center = characterController.center;
+            navMeshObstacle.carving = true; // 동적으로 NavMesh를 조각내기
+        }
+    }
+
+    // 앉기 상태에 따라 NavMeshObstacle 크기 조정
+    private void UpdateNavMeshObstacleHeight()
+    {
+        if (navMeshObstacle != null)
+        {
+            if (isSit)
+            {
+                navMeshObstacle.height = characterController.height * 0.5f; // 앉은 상태
+            }
+            else
+            {
+                navMeshObstacle.height = characterController.height; // 서있는 상태
+            }
+        }
     }
 }

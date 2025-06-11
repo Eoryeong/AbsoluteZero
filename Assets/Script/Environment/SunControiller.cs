@@ -6,6 +6,7 @@ public class SunControiller : MonoBehaviour
 	[SerializeField] private Light sunLight; 
 	private float sunBaseAngle = -90f; // 자정 기준 각도 (동쪽 지평선 아래)
 
+
 	void Update()
     {
         SunRotate();

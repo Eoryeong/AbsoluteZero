@@ -14,12 +14,15 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     TetrisSlot slots;
 
+    private Vector2 originalSize;
+
     private bool isDragging = false;
     private bool isRotated = false;
 
 
     void Start()
     {
+        originalSize = item.itemSize;
 
         UpdateItemSize();
 
@@ -33,6 +36,9 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (isDragging && Input.GetKeyDown(KeyCode.R))
         {
+            // 회전 전에 현재 위치의 그리드를 완전히 초기화
+            ClearCurrentGridPosition();
+
             // x와 y 크기를 교환
             float tempSize = item.itemSize.x;
             item.itemSize.x = item.itemSize.y;
@@ -85,6 +91,23 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                         iconChild.rotation = Quaternion.Euler(0, 0, 0);
                         isRotated = false;
                     }
+                }
+            }
+        }
+    }
+
+    private void ClearCurrentGridPosition()
+    {
+        if ((int)startPosition.x >= 0 &&
+            (int)startPosition.y >= 0 &&
+            ((int)startPosition.x + (int)item.itemSize.x) <= slots.maxGridX &&
+            ((int)startPosition.y + (int)item.itemSize.y) <= slots.maxGridY)
+        {
+            for (int i = 0; i < item.itemSize.y; i++)
+            {
+                for (int j = 0; j < item.itemSize.x; j++)
+                {
+                    slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
                 }
             }
         }
@@ -220,6 +243,8 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         else
         {
             //템 떨구기
+            item.itemSize = originalSize;
+
             PlayerControll player;
             player = FindFirstObjectByType<PlayerControll>();
 

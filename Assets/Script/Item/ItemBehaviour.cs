@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ItemBehaviour
 {
-    protected PickupItemData data;
+    public PickupItemData data;
 
     public ItemBehaviour(PickupItemData _data)
     {

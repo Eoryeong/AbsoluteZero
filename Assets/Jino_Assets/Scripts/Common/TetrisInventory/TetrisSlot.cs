@@ -34,10 +34,10 @@ public class TetrisSlot : MonoBehaviour
         grid = new int[maxGridX, maxGridY];
     }
 
-    public bool addInFirstSpace(PickupItemData item)
+    public bool addInFirstSpace(ItemBehaviour item)
     {
-        int contX = (int)item.itemSize.x;
-        int contY = (int)item.itemSize.y;
+        int contX = (int)item.data.itemSize.x;
+        int contY = (int)item.data.itemSize.y;
 
         for (int i = 0; i < maxGridX; i++)
         {
@@ -76,8 +76,8 @@ public class TetrisSlot : MonoBehaviour
         {
             TetrisItemSlot myItem = Instantiate(prefabSlot);
             myItem.startPosition = new Vector2(posItemNaBag[0].x, posItemNaBag[0].y);
-            myItem.item = item;
-            myItem.icon.sprite = item.itemIcon;
+            myItem.item = item.data;
+            myItem.icon.sprite = item.data.itemIcon;
             myItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             myItem.GetComponent<RectTransform>().anchorMax = new Vector2(0f, 1f);
             myItem.GetComponent<RectTransform>().anchorMin = new Vector2(0f, 1f);

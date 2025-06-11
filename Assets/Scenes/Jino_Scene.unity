@@ -2346,15 +2346,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 728576751314082672, guid: c2f6a8962aac3814aa56cb9647c93470, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 728576751314082672, guid: c2f6a8962aac3814aa56cb9647c93470, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 728576751314082672, guid: c2f6a8962aac3814aa56cb9647c93470, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 728576751314082672, guid: c2f6a8962aac3814aa56cb9647c93470, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6253,7 +6253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3355863556564456857
 GameObject:
   m_ObjectHideFlags: 0
@@ -6832,6 +6832,7 @@ SceneRoots:
   - {fileID: 1885380254}
   - {fileID: 1247008945}
   - {fileID: 448491884}
+  - {fileID: 1040294003}
   - {fileID: 4374325514039075259}
   - {fileID: 295835186}
   - {fileID: 1964206195}
@@ -6840,7 +6841,6 @@ SceneRoots:
   - {fileID: 1854769969}
   - {fileID: 1045898487}
   - {fileID: 1804304749}
-  - {fileID: 1040294003}
   - {fileID: 1308649913}
   - {fileID: 1608518957}
   - {fileID: 1520577897}

@@ -11,13 +11,13 @@ public class PlayerJumpState : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
-		applySpeed = player.walkSpeed;
 		JumpLogic();
 	}
 
 	public override void Update()
 	{
 		base.Update();
+		player.characterController.Move(player.velocity * Time.deltaTime);
 		ChangeState();
 	}
 
@@ -34,6 +34,6 @@ public class PlayerJumpState : PlayerState
 
 	private void JumpLogic()
 	{
-		player.velocity.y = Mathf.Sqrt(player.jumpForce * 2f * player.gravity);
+		player.velocity.y = Mathf.Sqrt(player.jumpForce * 2f * -player.gravity);
 	}
 }

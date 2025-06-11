@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 410087040}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1248,6 +1248,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419640738}
   m_CullTransparentMesh: 1
+--- !u!1 &490819935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490819937}
+  - component: {fileID: 490819936}
+  m_Layer: 0
+  m_Name: SunController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &490819936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490819935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a637750e11a760646abe5ef667ce65fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunLight: {fileID: 410087040}
+--- !u!4 &490819937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490819935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.357108, y: 14.731848, z: 1.7063408}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &554774322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,6 +2950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e670b43105f10548acfe955a09fd625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameHour: 0
+  gameMinute: 0
   StartHour: 20
   StartMinute: 0
   StartSecond: 0
@@ -3817,6 +3864,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8290692074236519115, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
+      propertyPath: jumpForce
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290692074236519115, guid: e3421de2ea1c85148b4f13cdd3bc41bf, type: 3}
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 330585546}
@@ -4042,3 +4093,4 @@ SceneRoots:
   - {fileID: 1045898487}
   - {fileID: 1804304749}
   - {fileID: 1792151096}
+  - {fileID: 490819937}

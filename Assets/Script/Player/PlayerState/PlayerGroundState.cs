@@ -21,14 +21,25 @@ public class PlayerGroundState : PlayerState
 	public override void Exit()
 	{
 		base.Exit();
+		SetCurrentVelocity();
+	}
+
+	private void SetCurrentVelocity()
+	{
+		Vector3 inputDir = player.transform.right * xInput + player.transform.forward * zInput;
+		inputDir = inputDir.normalized * applySpeed;
+
+		player.velocity.x = inputDir.x;
+		player.velocity.z = inputDir.z;
 	}
 
 	protected void MoveLogic()
 	{
 		Vector3 move = player.transform.right * xInput + player.transform.forward * zInput;
-		move = move.normalized * applySpeed * Time.deltaTime;
+		move = move.normalized * applySpeed;
 
-		player.characterController.Move(move);
+		Vector3 finalMove = move + Vector3.up * player.velocity.y;
+		player.characterController.Move(finalMove * Time.deltaTime);
 	}
 
 	protected override void ChangeState()

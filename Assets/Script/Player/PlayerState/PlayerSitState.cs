@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerSitState : PlayerGroundState
 {
@@ -11,6 +12,8 @@ public class PlayerSitState : PlayerGroundState
 	{
 		base.Enter();
 		applySpeed = 0f;
+		if(player.navMeshObstacle != null)
+			player.navMeshObstacle.height = player.characterController.height * 0.5f;
 	}
 
 	public override void Update()
@@ -22,6 +25,8 @@ public class PlayerSitState : PlayerGroundState
 	public override void Exit()
 	{
 		base.Exit();
+		if (player.navMeshObstacle != null)
+			player.navMeshObstacle.height = player.characterController.height;
 	}
 
 	protected override void ChangeState()

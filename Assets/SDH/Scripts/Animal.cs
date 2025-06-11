@@ -73,6 +73,15 @@ public class Animal : MonoBehaviour
     {
         currentState?.UpdateState();
         CheckTargetDistance();
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log($"Agent Position: {agent.transform.position}");
+            Debug.Log($"Agent Destination: {agent.destination}");
+            Debug.Log($"Remaining Distance: {agent.remainingDistance}");
+            Debug.Log($"Path Status: {agent.pathStatus}");
+            Debug.Log($"Is On NavMesh: {agent.isOnNavMesh}");
+            Debug.Log($"Obstacle Avoidance: {agent.obstacleAvoidanceType}");
+        }
     }
 
     public void ChangeState(AnimalState newState)

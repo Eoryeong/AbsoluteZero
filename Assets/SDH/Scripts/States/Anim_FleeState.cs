@@ -23,6 +23,7 @@ public class Anim_FleeState : AnimalState
         SetFleeDestination();
         animal.agent.speed = animal.fleeSpeed;
         animal.animator.SetBool("isRun", true);
+        animal.agent.isStopped = false;
     }
 
     public override void UpdateState()
@@ -82,6 +83,7 @@ public class Anim_FleeState : AnimalState
             {
                 fleeDestination = hit.position;
                 animal.agent.SetDestination(fleeDestination);
+                Debug.Log("목표설정완료");
                 animal.agent.isStopped = false;
             }
             else

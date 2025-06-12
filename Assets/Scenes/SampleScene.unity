@@ -2872,7 +2872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578319538}
-  - component: {fileID: 1578319537}
+  - component: {fileID: 1578319539}
   m_Layer: 0
   m_Name: WeatherController
   m_TagString: Untagged
@@ -2880,29 +2880,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1578319537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578319536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d3f56559d2fca64ebc34311f34f408e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentWeatherType: 0
-  weatherDuration: 0
-  lightCompo: {fileID: 410087040}
-  mistPrefab: {fileID: 6669026163843401270, guid: 4e2ed79fbe7eefc459e4c09e362025d0, type: 3}
-  snowPrefab: {fileID: 5874219034154910665, guid: ef1cf33c29d82054eb1252630f850229, type: 3}
-  sunnyAfternoonSkyBox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  sunnyNightSkyBox: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
-  CloduyAfternoonSkyBox: {fileID: 2100000, guid: 8b7dd0809c7c6498789fa32a61eaa6cb, type: 2}
-  CloduyNightSkyBox: {fileID: 2100000, guid: b9be0c15efe8ad9489fdeead114d8ec5, type: 2}
-  sunnyIntensity: 2
-  cloudyIntensity: 0
 --- !u!4 &1578319538
 Transform:
   m_ObjectHideFlags: 0
@@ -2918,6 +2895,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578319539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578319536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469afbaf5b324c94486aabed5c223142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeatherType: 0
+  weatherDuration: 0
+  lightCompo: {fileID: 410087040}
+  mistPrefab: {fileID: 6669026163843401270, guid: 4e2ed79fbe7eefc459e4c09e362025d0, type: 3}
+  snowPrefab: {fileID: 5874219034154910665, guid: ef1cf33c29d82054eb1252630f850229, type: 3}
+  sunnyAfternoonSkyBox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  sunnyNightSkyBox: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
+  CloduyAfternoonSkyBox: {fileID: 2100000, guid: 2d796ced94d61438fbab81b194038162, type: 2}
+  CloduyNightSkyBox: {fileID: 2100000, guid: b9be0c15efe8ad9489fdeead114d8ec5, type: 2}
+  sunnyIntensity: 0
+  cloudyIntensity: 0
 --- !u!1 &1592668623
 GameObject:
   m_ObjectHideFlags: 0

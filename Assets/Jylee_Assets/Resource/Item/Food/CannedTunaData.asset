@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CannedTunaData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Canned Tuna
+  itemName: "\uCC38\uCE58 \uCE94"
   itemCode: 8
-  itemLore: It's precious now
+  itemLore: "\uC774\uC81C\uB294 \uADC0\uD55C \uC2DD\uD488"
   previewPrefab: {fileID: 5719767233922128188, guid: f9c7ddf76680de74c9469b0cfb29cdab, type: 3}
   itemIcon: {fileID: 0}
   itemSize: {x: 0, y: 0}

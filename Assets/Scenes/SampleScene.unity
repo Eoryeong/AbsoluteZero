@@ -2897,8 +2897,12 @@ MonoBehaviour:
   lightCompo: {fileID: 410087040}
   mistPrefab: {fileID: 6669026163843401270, guid: 4e2ed79fbe7eefc459e4c09e362025d0, type: 3}
   snowPrefab: {fileID: 5874219034154910665, guid: ef1cf33c29d82054eb1252630f850229, type: 3}
-  sunnySkyBox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  CloduySkyBox: {fileID: 2100000, guid: b4f152e0498484391a9f0d5a1facf03b, type: 2}
+  sunnyAfternoonSkyBox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  sunnyNightSkyBox: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
+  CloduyAfternoonSkyBox: {fileID: 2100000, guid: 8b7dd0809c7c6498789fa32a61eaa6cb, type: 2}
+  CloduyNightSkyBox: {fileID: 2100000, guid: b9be0c15efe8ad9489fdeead114d8ec5, type: 2}
+  sunnyIntensity: 2
+  cloudyIntensity: 0
 --- !u!4 &1578319538
 Transform:
   m_ObjectHideFlags: 0
@@ -3390,6 +3394,13 @@ MonoBehaviour:
   menuItemLore: {fileID: 419640740}
   menuItemMouseLeft: {fileID: 1385131228}
   menuItemMouseRight: {fileID: 18134376}
+  recordPanel: {fileID: 0}
+  totalSurvivedTime: {fileID: 0}
+  totalTraveledDistance: {fileID: 0}
+  totalSleepTime: {fileID: 0}
+  totalEatFood: {fileID: 0}
+  totalDrinkWater: {fileID: 0}
+  test: {fileID: 0}
   menuBackBtn: {fileID: 695933356}
   menuAcceptBtn: {fileID: 2143163696}
   menuItemPreviewPos: {fileID: 1854769969}
@@ -3836,7 +3847,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143845636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14b18d963c44508419dd057d88320fa0, type: 3}
   m_Name: 

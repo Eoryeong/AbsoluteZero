@@ -4373,7 +4373,7 @@ GameObject:
   - component: {fileID: 1362970376}
   - component: {fileID: 1362970375}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: SnowDump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4463,7 +4463,7 @@ Transform:
   m_GameObject: {fileID: 1362970374}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204.10254, y: 0.30745944, z: 198.59673}
+  m_LocalPosition: {x: 204.10254, y: 0.38, z: 198.59673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5892,6 +5892,13 @@ MonoBehaviour:
   menuItemLore: {fileID: 419640740}
   menuItemMouseLeft: {fileID: 1385131228}
   menuItemMouseRight: {fileID: 18134376}
+  recordPanel: {fileID: 0}
+  totalSurvivedTime: {fileID: 0}
+  totalTraveledDistance: {fileID: 0}
+  totalSleepTime: {fileID: 0}
+  totalEatFood: {fileID: 0}
+  totalDrinkWater: {fileID: 0}
+  test: {fileID: 0}
   menuBackBtn: {fileID: 695933356}
   menuAcceptBtn: {fileID: 2143163696}
   menuItemPreviewPos: {fileID: 1854769969}

@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5366320254881127739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141480616607606851}
+  - component: {fileID: 2587375189498032325}
+  - component: {fileID: 794514024545320600}
+  - component: {fileID: 6358139124917456962}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1141480616607606851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366320254881127739}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 640.5882, y: 405.4692, z: -160.4588}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2587375189498032325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366320254881127739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b18d963c44508419dd057d88320fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionalLight: {fileID: 0}
+  daySkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  nightSkybox: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &794514024545320600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366320254881127739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5328e80fce7ff604f945e69af00febe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalSurvivedTime: 0
+  totalTraveledDistance: 0
+  totalSleepTime: 0
+  totalEatFood: 0
+  totalDrinkWater: 0
+  totalGunFire: 0
+  totalShootHit: 0
+  totalSuccessHunt: 0
+  totalAttacked: 0
+  test: 0
+--- !u!114 &6358139124917456962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366320254881127739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593ad0bdca5729b41ba65bbab9374d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabList:
+  - {fileID: 5002929451309085141, guid: 244cdac444d1b0740a89256c2b9d525c, type: 3}
+  - {fileID: 3423784494679824461, guid: b0e9fca7462392c49a7f47a42085ffbd, type: 3}
+  - {fileID: 7819433077830444667, guid: b9a97763a6eedd245892ec9880436c74, type: 3}
+  - {fileID: 72487741350568521, guid: da7973f53b0a7714089b665f25b4dc93, type: 3}
+  - {fileID: 7228782835900396805, guid: 97a18bbe3e4aaf14b86e9832da960fa4, type: 3}
+  - {fileID: 4008298497870050542, guid: 4c23b6aa78015734c9876ebf50bbd336, type: 3}
+  - {fileID: 3998879330008071264, guid: e989a428f51e82c409c20bc162d42a59, type: 3}
+  - {fileID: 3302679681154012207, guid: d4b514ec0d2b70c47a9f8b09d0a33ab1, type: 3}
+  - {fileID: 3188281967307058585, guid: 257d5a0a3d12e1044b5a2d577bf6ae2b, type: 3}
+  - {fileID: 4564525245146026104, guid: fedec870379f5e1458deda99d06bcf67, type: 3}
+  - {fileID: 7635640504653572114, guid: c9f063108869f40478f107b5ab8f35c4, type: 3}
+  - {fileID: 2342995990418444921, guid: f8e04bc2fcfe47940ab5d3400d27c60a, type: 3}

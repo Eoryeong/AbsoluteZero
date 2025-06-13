@@ -53,7 +53,7 @@ public class WeatherController : MonoBehaviour
 		player = PlayerManager.Instance.player;
 
 		mist = Instantiate(mistPrefab, player.transform.position, Quaternion.identity, player.transform);
-		snow = Instantiate(snowPrefab, player.transform.position, Quaternion.identity, player.transform);
+        snow = Instantiate(snowPrefab);
 
 		mist.gameObject.SetActive(false);
 		snow.gameObject.SetActive(false);

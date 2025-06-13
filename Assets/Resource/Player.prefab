@@ -208,7 +208,6 @@ MonoBehaviour:
   walkSpeed: 5
   runSpeed: 8
   sitSpeed: 2
-  applySpeed: 8
   jumpForce: 5
   cameraTransform: {fileID: 0}
   cameraOffset: {x: 0, y: 1.6, z: 0}
@@ -216,12 +215,8 @@ MonoBehaviour:
   mouseSensitivity: 2
   sitCameraDown: 1
   cameraLerpSpeed: 5
-  groundCheckRadius: 0.2
-  groundCheckOffset: {fileID: 3475992824074735119}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 320
   playerLight: {fileID: 3927981835857225910}
+  navMeshObstacle: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!33 &35065721042987816
 MeshFilter:
@@ -353,6 +348,12 @@ MonoBehaviour:
   currentPlayerHp: 0
   maxPlayerHunger: 100
   currentPlayerHunger: 0
+  playerHungerDecreaseRate: 0.1
+  isHungerDebuffed: 0
+  maxPlayerThirst: 0
+  currentPlayerThirst: 0
+  playerThirstDecreaseRate: 0.1
+  isThirstDebuffed: 0
   maxPlayerSanity: 100
   currentPlayerSanity: 0
   playerFreeze: 0

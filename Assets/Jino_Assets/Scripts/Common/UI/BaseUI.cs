@@ -64,6 +64,8 @@ public class BaseUI : MonoBehaviour
         m_OnClose = null;
 
         gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public virtual void OnClickCloseButton()

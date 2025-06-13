@@ -549,6 +549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8668421751682097156}
+  - component: {fileID: -2625982186315559421}
   m_Layer: 7
   m_Name: HunterRifle
   m_TagString: Item
@@ -573,6 +574,19 @@ Transform:
   - {fileID: 2818478329540614990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2625982186315559421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635640504653572114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562ee14282bd4d9448401a392814d99a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 9632be0346bcec54ba11ccd63ba351a8, type: 2}
 --- !u!1 &8337077737521586707
 GameObject:
   m_ObjectHideFlags: 0

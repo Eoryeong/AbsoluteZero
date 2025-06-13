@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bd74f60a4198b4bb4580678605dae2, type: 3}
+  m_Name: CannedHamData
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemName: Canned Ham
+  itemCode: 9
+  itemLore: This is the perfect gift
+  previewPrefab: {fileID: 6734026647045441479, guid: 0bbaf9b44dddea146ba832df9d3016cf, type: 3}
+  itemIcon: {fileID: 0}
+  itemSize: {x: 0, y: 0}

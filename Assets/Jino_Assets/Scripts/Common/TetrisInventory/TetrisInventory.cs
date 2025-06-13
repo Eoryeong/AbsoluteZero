@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TetrisInventory : MonoBehaviour
+public class TetrisInventory : BaseUI
 {
     public static TetrisInventory instanceTetris;
 

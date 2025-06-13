@@ -28,8 +28,13 @@ public class WeatherController : MonoBehaviour
     private GameObject mist;
     private GameObject snow;
 
-    [SerializeField] private Material sunnySkyBox;
-    [SerializeField] private Material CloduySkyBox;
+    [SerializeField] private Material sunnyAfternoonSkyBox;
+    [SerializeField] private Material sunnyNightSkyBox;
+    [SerializeField] private Material CloduyAfternoonSkyBox;
+    [SerializeField] private Material CloduyNightSkyBox;
+
+    [SerializeField] private float sunnyIntensity;
+    [SerializeField] private float cloudyIntensity;
 
     void Start()
 	{
@@ -48,7 +53,7 @@ public class WeatherController : MonoBehaviour
 		player = PlayerManager.Instance.player;
 
 		mist = Instantiate(mistPrefab, player.transform.position, Quaternion.identity, player.transform);
-		snow = Instantiate(snowPrefab, player.transform.position, Quaternion.identity, player.transform);
+        snow = Instantiate(snowPrefab);
 
 		mist.gameObject.SetActive(false);
 		snow.gameObject.SetActive(false);
@@ -65,23 +70,23 @@ public class WeatherController : MonoBehaviour
         if (weather < 5)
         {
             currentWeatherType = WeatherType.Sunny;
-            currentIntensity = 2;
+            currentIntensity = sunnyIntensity;
         }
         else if (weather < 8)
         {
             currentWeatherType = WeatherType.Cloudy;
-            currentIntensity = 0.5f;
+            currentIntensity = cloudyIntensity;
         }
         else if (weather < 9)
         {
             currentWeatherType = WeatherType.Foggy;
-            currentIntensity = 0.5f;
+            currentIntensity = cloudyIntensity;
             SpawnParticle(currentWeatherType);
         }
         else if(weather < 10)
         {
             currentWeatherType = WeatherType.Snowy;
-            currentIntensity = 0.5f;
+            currentIntensity = cloudyIntensity;
             SpawnParticle(currentWeatherType);
         }
 
@@ -110,14 +115,29 @@ public class WeatherController : MonoBehaviour
 
     private void SetSkyBox()
     {
-        if(currentWeatherType == WeatherType.Sunny)
+        if(TimeManager.Instance.gameHour > 9)
         {
-            RenderSettings.skybox = sunnySkyBox;
+            if(currentWeatherType == WeatherType.Sunny)
+            {
+                RenderSettings.skybox = sunnyAfternoonSkyBox;
+            }
+            else
+            {
+                RenderSettings.skybox = CloduyAfternoonSkyBox;
+            }
         }
         else
         {
-            RenderSettings.skybox = CloduySkyBox;
-        }
+			if (currentWeatherType == WeatherType.Sunny)
+			{
+				RenderSettings.skybox = sunnyNightSkyBox;
+			}
+			else
+			{
+				RenderSettings.skybox = CloduyNightSkyBox;
+			}
+		}
+
 
         DynamicGI.UpdateEnvironment();
 

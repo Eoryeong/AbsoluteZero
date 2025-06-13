@@ -21,6 +21,7 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	private void Update()
 	{
 		TimeUpdate();
+		DebugMode();
 	}
 
 	public void InitTime()
@@ -58,7 +59,7 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	{
 		gameHour += hour;
 
-		if(hour > 24)
+		if(gameHour > 24)
 		{
 			gameDay += gameHour/24;
 			gameHour = gameHour%24;
@@ -73,6 +74,12 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 		{
 			gameHour += gameMinute / 60;
 			gameMinute = gameMinute % 60;
+
+			if (gameHour > 24)
+			{
+				gameDay += gameHour / 24;
+				gameHour = gameHour % 24;
+			}
 		}
 	}
 	public void PauseGame(bool isPause)
@@ -81,5 +88,11 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 			Time.timeScale = 0;
 		else
 			Time.timeScale = 1;
+	}
+
+	private void DebugMode()
+	{
+		if (Input.GetKeyDown(KeyCode.PageUp))
+			AddHour(1);
 	}
 }

@@ -21,9 +21,13 @@ public class PlayerInteract : MonoBehaviour
         if (playerStatus.playerFreeze) return;
 
         TryInteract();
-        if (Input.GetMouseButtonDown(0) && isFocus)
+        if (Input.GetMouseButtonDown(0) && isFocus && hitObject != null)
         {
-            hitObject.GetComponent<InteractObject>().TryInteractObject();
+            InteractObject interactable = hitObject.GetComponentInParent<InteractObject>();
+            if(interactable != null)
+            {
+                interactable.TryInteractObject();
+            }
         }
     }
 
@@ -33,23 +37,40 @@ public class PlayerInteract : MonoBehaviour
 
         if(Physics.Raycast(ray, out RaycastHit hit, interactRange, interactLayer))
         {
-            if (!isFocus)
+            GameObject target = hit.collider.gameObject;
+
+            // 자식 오브젝트인 경우 부모 오브젝트 검사
+            InteractObject interactable = target.GetComponentInParent<InteractObject>();
+
+            if(interactable != null)
             {
-                isFocus = true;
+                if (!isFocus || interactable.gameObject != hitObject)
+                {
+                    isFocus = true;
+                    hitObject = interactable.gameObject;
 
-                hitObject = hit.collider.gameObject;
-                string objName = hitObject.GetComponent<InteractObject>().InteractNameUpdate();
-
-                UIManager.instance.FocusInItem(objName);
+                    string objName = interactable.GetComponent<InteractObject>().InteractNameUpdate();
+                    UIManager.instance.FocusInItem(objName);
+                }
+            }
+            else
+            {
+                ClearFocus();
             }
         }
         else
         {
-            if (isFocus)
-            {
-                isFocus = false;
-                UIManager.instance.FocusOutItem();
-            }
+            ClearFocus();
+        }
+    }
+
+    private void ClearFocus()
+    {
+        if (isFocus)
+        {
+            isFocus = false;
+            hitObject = null;
+            UIManager.instance.FocusOutItem();
         }
     }
 

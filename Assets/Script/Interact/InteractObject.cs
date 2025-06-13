@@ -34,6 +34,9 @@ public class InteractObject : MonoBehaviour
             case InteractionType.Bed:
                 GetComponent<ObjectBed>().TryUseBed();
                 break;
+            case InteractionType.Door:
+                GetComponent<AreaSwitcher>().TryOpenDoor();
+                break;
         }
     }
 

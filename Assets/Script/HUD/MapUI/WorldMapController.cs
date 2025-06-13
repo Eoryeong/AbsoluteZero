@@ -84,7 +84,7 @@ public class WorldMapController : MonoBehaviour
 
     void HandleToggle()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             worldmapPanel.SetActive(!worldmapPanel.activeSelf);
         }

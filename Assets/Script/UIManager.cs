@@ -29,6 +29,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI menuItemLore;
     [SerializeField] private TextMeshProUGUI menuItemMouseLeft;
     [SerializeField] private TextMeshProUGUI menuItemMouseRight;
+    [SerializeField] private GameObject recordPanel;
+    [SerializeField] private TextMeshProUGUI totalSurvivedTime;
+    [SerializeField] private TextMeshProUGUI totalTraveledDistance;
+    [SerializeField] private TextMeshProUGUI totalSleepTime;
+    [SerializeField] private TextMeshProUGUI totalEatFood;
+    [SerializeField] private TextMeshProUGUI totalDrinkWater;
+    [SerializeField] private TextMeshProUGUI test;
     [SerializeField] private Button menuBackBtn;
     [SerializeField] private Button menuAcceptBtn;
     public Transform menuItemPreviewPos;
@@ -49,6 +56,15 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         UpdateUI();
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            RecordMenuOpen();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            CloseMenu();
+        }
     }
 
     private void UpdateUI()
@@ -60,7 +76,7 @@ public class UIManager : MonoBehaviour
         uiPlayerSanity.text = "Sanity : " + playerData.currentPlayerSanity;
     }
 
-    private void CursorVisible(bool value)
+    public void CursorVisible(bool value)
     {
         if (value)
         {
@@ -158,5 +174,26 @@ public class UIManager : MonoBehaviour
         menuItemMouseRight.gameObject.SetActive(false);
         menuBackBtn.gameObject.SetActive(false);
         menuAcceptBtn.gameObject.SetActive(false);
+        recordPanel.gameObject.SetActive(false);
+    }
+
+    public void RecordMenuOpen()
+    {
+        MenuElementAllDisable();
+
+        SetPlayerUICanvas(false);
+        playerData.SetPlayerFreeze(true);
+        SetMenuUICanvas(true);
+
+        GameRecode.instance.AddRecord(GameRecordEvent.Test);
+
+        menuTitle.gameObject.SetActive(true);
+        recordPanel.gameObject.SetActive(true);
+        totalSurvivedTime.text = "생존한 시간 : " + GameRecode.instance.totalSurvivedTime;
+        totalTraveledDistance.text = "이동한 거리 : " + GameRecode.instance.totalTraveledDistance;
+        totalSleepTime.text = "잠을 잔 시간 : " + GameRecode.instance.totalSleepTime;
+        totalEatFood.text = "먹은 음식의 수 : " + GameRecode.instance.totalEatFood;
+        totalDrinkWater.text = "마신 물의 양 : " + GameRecode.instance.totalDrinkWater;
+        test.text = "해당 메뉴를 열은 횟수 : " + GameRecode.instance.test;
     }
 }

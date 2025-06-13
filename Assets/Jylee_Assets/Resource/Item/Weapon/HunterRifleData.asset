@@ -17,3 +17,5 @@ MonoBehaviour:
   itemCode: 10
   itemLore: be a hunting rifle
   previewPrefab: {fileID: 7694597754047989336, guid: 1dd5a89ddf5c2f242aef66ab34d9a169, type: 3}
+  itemIcon: {fileID: 0}
+  itemSize: {x: 0, y: 0}

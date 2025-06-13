@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TetrisListItems : MonoBehaviour
 {
+    [SerializeField] GameObject Inventory;
     public GameObject[] prefabs;
     public List<PickupItemData> items = new List<PickupItemData>();
 
@@ -14,4 +15,13 @@ public class TetrisListItems : MonoBehaviour
             items.Add(prefabs[i].GetComponent<PickupItem>().data);
         }
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Inventory.SetActive(true);
+        }
+    }
+
 }

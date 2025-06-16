@@ -6,6 +6,7 @@ public enum ItemTypes
     Food,
     Weapon,
     Tool,
+    Clothing,
     Material,
     Etc,
 }

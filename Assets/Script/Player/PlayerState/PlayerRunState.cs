@@ -27,6 +27,7 @@ public class PlayerRunState : PlayerGroundState
 
 	protected override void ChangeState()
 	{
+		base.ChangeState();
 		if(Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			if (xInput != 0 || zInput != 0)

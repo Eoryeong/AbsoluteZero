@@ -8,7 +8,6 @@ public class WeatherParticleController : MonoBehaviour
     private PlayerControll player;
 
     [SerializeField] private GameObject weatherParticle;
-
 	private GameObject[] particles = new GameObject[3];
 
 	private int index = 0;
@@ -16,12 +15,12 @@ public class WeatherParticleController : MonoBehaviour
 	private void Start()
 	{
         player = PlayerManager.Instance.player;		
-		InitSnowEffect();		
+		InitWeatherParticle();		
 	}
 
 	private void OnEnable()
 	{
-		InitSnowEffect();		
+		InitWeatherParticle();		
 	}
 
 	private void OnDisable()
@@ -40,12 +39,12 @@ public class WeatherParticleController : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			SetSnowEffect(index);
+			SetWeatherParticle(index);
 		}
 	}
 
 
-	private void InitSnowEffect()
+	private void InitWeatherParticle()
 	{
 		transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 9, player.transform.position.z);
 
@@ -65,7 +64,7 @@ public class WeatherParticleController : MonoBehaviour
 		}
 	}
 
-	private void SetSnowEffect(int index)
+	private void SetWeatherParticle(int index)
 	{
 		transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 9, player.transform.position.z);
 

@@ -7,12 +7,14 @@ public class PlayerControll : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float sitSpeed = 2f;
+    public float slideSpeed = 5f;
 
     public float jumpForce = 2f;
+    public float slideAngleThreshold = 50f;//미끄러지는 경사면각도
 
 
-    // 카메라
-    public Transform cameraTransform;
+	// 카메라
+	public Transform cameraTransform;
     [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 1.6f, 0f);
     [SerializeField] private Vector3 sitCameraOffset;
 
@@ -36,6 +38,7 @@ public class PlayerControll : MonoBehaviour
     // CharacterController 관련
     public Vector3 velocity;
     public float gravity { get; private set; } = -9.81f;
+    public float maxGravity = -60;
 
     #region State
     public PlayerStateMachine stateMachine;
@@ -44,6 +47,7 @@ public class PlayerControll : MonoBehaviour
     public PlayerRunState runState;
     public PlayerSitState sitState;
     public PlayerSitWalkState sitWalkState;
+    public PlayerSlideState slideState;
     public PlayerJumpState jumpState;
     public PlayerAirState airState;
     #endregion
@@ -103,6 +107,7 @@ public class PlayerControll : MonoBehaviour
         runState = new PlayerRunState(this, stateMachine, "Run");
         sitState = new PlayerSitState(this, stateMachine, "Sit");
         sitWalkState = new PlayerSitWalkState(this, stateMachine, "SitWalk");
+        slideState = new PlayerSlideState(this, stateMachine, "Slide");
         jumpState = new PlayerJumpState(this, stateMachine, "Jump");
         airState = new PlayerAirState(this, stateMachine, "Fall");
 
@@ -138,5 +143,16 @@ public class PlayerControll : MonoBehaviour
             navMeshObstacle.center = characterController.center;
             navMeshObstacle.carving = true; // 동적으로 NavMesh를 조각내기
         }
+    }
+
+    public bool IsOnSteepSlope()
+    {
+		if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f))
+		{
+			float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+            Debug.Log(slopeAngle);
+			return slopeAngle > slideAngleThreshold;
+		}
+		return false;
     }
 }

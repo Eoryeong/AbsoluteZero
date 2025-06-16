@@ -11,6 +11,8 @@ public class PlayerIdleState : PlayerGroundState
 	{
 		base.Enter();
 		applySpeed = 0f;
+		if (player.navMeshObstacle != null)
+			player.navMeshObstacle.height = player.characterController.height;
 	}
 
 	public override void Update()
@@ -26,6 +28,7 @@ public class PlayerIdleState : PlayerGroundState
 
 	protected override void ChangeState()
 	{
+		base.ChangeState();
 		if(xInput != 0 || zInput != 0)
 		{
 			if (Input.GetKeyDown(KeyCode.LeftShift))

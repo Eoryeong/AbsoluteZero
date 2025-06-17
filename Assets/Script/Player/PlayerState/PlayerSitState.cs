@@ -12,6 +12,10 @@ public class PlayerSitState : PlayerGroundState
 	{
 		base.Enter();
 		applySpeed = 0f;
+
+		player.ChangeCameraCrouch();
+		player.isCrouch = true;
+
 		if(player.navMeshObstacle != null)
 			player.navMeshObstacle.height = player.characterController.height * 0.5f;
 	}
@@ -19,20 +23,21 @@ public class PlayerSitState : PlayerGroundState
 	public override void Update()
 	{
 		base.Update();
-		ChangeState();
+        MoveLogic();
+        ChangeState();
 	}
 
 	public override void Exit()
 	{
 		base.Exit();
-		if (player.navMeshObstacle != null)
+        if (player.navMeshObstacle != null)
 			player.navMeshObstacle.height = player.characterController.height;
 	}
 
 	protected override void ChangeState()
 	{
 		base.ChangeState();
-		if (Input.GetKeyUp(KeyCode.LeftShift))
+		if (Input.GetKeyUp(KeyCode.LeftControl))
 			stateMachine.ChangeState(player.idleState);
 		else if (xInput != 0 || zInput != 0)
 			stateMachine.ChangeState(player.sitWalkState);

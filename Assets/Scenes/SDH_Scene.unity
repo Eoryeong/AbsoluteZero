@@ -364,6 +364,54 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &63288688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63288690}
+  - component: {fileID: 63288689}
+  m_Layer: 0
+  m_Name: data
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &63288689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63288688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eadc9aefc74c924dbbbcef20e34c12c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableDebugLog: 1
+  autoSave: 1
+  autoSaveInterval: 300
+  maxBackupFiles: 5
+--- !u!4 &63288690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63288688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 216.89, y: 1.3600001, z: 191.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &105165665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3291,6 +3339,13 @@ MonoBehaviour:
   menuItemLore: {fileID: 419640740}
   menuItemMouseLeft: {fileID: 1385131228}
   menuItemMouseRight: {fileID: 18134376}
+  recordPanel: {fileID: 0}
+  totalSurvivedTime: {fileID: 0}
+  totalTraveledDistance: {fileID: 0}
+  totalSleepTime: {fileID: 0}
+  totalEatFood: {fileID: 0}
+  totalDrinkWater: {fileID: 0}
+  test: {fileID: 0}
   menuBackBtn: {fileID: 695933356}
   menuAcceptBtn: {fileID: 2143163696}
   menuItemPreviewPos: {fileID: 1854769969}
@@ -4081,3 +4136,4 @@ SceneRoots:
   - {fileID: 1804304749}
   - {fileID: 2028125206}
   - {fileID: 803374243}
+  - {fileID: 63288690}

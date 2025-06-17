@@ -13,13 +13,14 @@ public class PlayerControll : MonoBehaviour
     public float slideAngleThreshold = 50f;//미끄러지는 경사면각도
 
 
-	// 카메라
-	public Transform cameraTransform;
+    // 카메라
+    public Transform cameraTransform;
     [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 1.6f, 0f);
-    [SerializeField] private Vector3 sitCameraOffset;
+    [SerializeField] private Transform cameraPoint;
+    [SerializeField] private Vector3 crouchCameraOffset;
 
     public float mouseSensitivity = 2f;
-    public float sitCameraDown = 1f;
+    public float crouchCameraDown = 1f;
     private float verticalRotation = 0f;
     private float verticalLookLimit = 80f;
 
@@ -34,11 +35,15 @@ public class PlayerControll : MonoBehaviour
     public CharacterController characterController { get; private set; }
     public NavMeshObstacle navMeshObstacle;
     private PlayerStatus playerStatus;
+    public Animator anim;
 
     // CharacterController 관련
     public Vector3 velocity;
     public float gravity { get; private set; } = -9.81f;
     public float maxGravity = -60;
+
+    // 기타 제어변수
+    public bool isCrouch;
 
     #region State
     public PlayerStateMachine stateMachine;
@@ -53,21 +58,23 @@ public class PlayerControll : MonoBehaviour
     #endregion
 
     private void Start()
-	{
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+    {
+        anim = GetComponent<Animator>();
 
-		InitState();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-		InitComponent();
+        InitState();
 
-		sitCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - sitCameraDown, cameraOffset.z);
-		currentCameraOffset = cameraOffset;
-		targetCameraOffset = cameraOffset;
-		playerLight.enabled = false;
-	}
+        InitComponent();
 
-	private void Update()
+        crouchCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - crouchCameraDown, cameraOffset.z);
+        currentCameraOffset = cameraOffset;
+        targetCameraOffset = cameraOffset;
+        playerLight.enabled = false;
+    }
+
+    private void Update()
     {
         if (playerStatus.playerFreeze) return;
 
@@ -84,19 +91,19 @@ public class PlayerControll : MonoBehaviour
         FollowCamera();
     }
 
-	private void InitComponent()
-	{
-		characterController = GetComponent<CharacterController>();
-		playerStatus = GetComponent<PlayerStatus>();
+    private void InitComponent()
+    {
+        characterController = GetComponent<CharacterController>();
+        playerStatus = GetComponent<PlayerStatus>();
 
-		// NavMeshObstacle 컴포넌트 추가 또는 가져오기
-		navMeshObstacle = GetComponent<NavMeshObstacle>();
-		if (navMeshObstacle == null)
-		{
-			navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
-		}
-		SetupNavMeshObstacle();
-	}
+        // NavMeshObstacle 컴포넌트 추가 또는 가져오기
+        navMeshObstacle = GetComponent<NavMeshObstacle>();
+        if (navMeshObstacle == null)
+        {
+            navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
+        }
+        SetupNavMeshObstacle();
+    }
 
     private void InitState()
     {
@@ -129,7 +136,8 @@ public class PlayerControll : MonoBehaviour
 
     private void FollowCamera()
     {
-        cameraTransform.position = transform.position + currentCameraOffset;
+        // cameraTransform.position = transform.position + currentCameraOffset;
+        cameraTransform.position = cameraPoint.position + currentCameraOffset;
     }
 
     private void SetupNavMeshObstacle()
@@ -147,12 +155,22 @@ public class PlayerControll : MonoBehaviour
 
     public bool IsOnSteepSlope()
     {
-		if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f))
-		{
-			float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f))
+        {
+            float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
             Debug.Log(slopeAngle);
-			return slopeAngle > slideAngleThreshold;
-		}
-		return false;
+            return slopeAngle > slideAngleThreshold;
+        }
+        return false;
+    }
+
+    public void ChangeCameraCrouch()
+    {
+        targetCameraOffset = crouchCameraOffset;
+    }
+
+    public void ChangeCameraStand()
+    {
+        targetCameraOffset = cameraOffset;
     }
 }

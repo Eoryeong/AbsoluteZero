@@ -11,7 +11,11 @@ public class PlayerIdleState : PlayerGroundState
 	{
 		base.Enter();
 		applySpeed = 0f;
-		if (player.navMeshObstacle != null)
+
+        player.ChangeCameraStand();
+        player.isCrouch = false;
+
+        if (player.navMeshObstacle != null)
 			player.navMeshObstacle.height = player.characterController.height;
 	}
 
@@ -19,7 +23,8 @@ public class PlayerIdleState : PlayerGroundState
 	{
 		base.Update();
 		ChangeState();
-	}
+        MoveLogic();
+    }
 
 	public override void Exit()
 	{

@@ -14,7 +14,7 @@ public class WeatherParticleController : MonoBehaviour
 
 	private void Start()
 	{
-        player = PlayerManager.Instance.player;		
+        player = PlayerManager.Instance.PlayerController;		
 		InitWeatherParticle();		
 	}
 

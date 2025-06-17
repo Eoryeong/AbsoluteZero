@@ -15,7 +15,6 @@ public class PlayerGroundState : PlayerState
 	public override void Update()
 	{
 		base.Update();
-		ChangeState();
 	}
 
 	public override void Exit()
@@ -46,5 +45,7 @@ public class PlayerGroundState : PlayerState
 	{
 		if (!player.characterController.isGrounded)
 			stateMachine.ChangeState(player.airState);
+		else if (player.IsOnSteepSlope())
+			stateMachine.ChangeState(player.slideState);
 	}
 }

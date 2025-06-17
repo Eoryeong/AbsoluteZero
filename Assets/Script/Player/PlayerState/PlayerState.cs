@@ -52,6 +52,9 @@ public abstract class PlayerState
 		else
 		{
 			player.velocity.y += player.gravity * Time.deltaTime;
+
+			if(player.velocity.y < player.maxGravity)
+				player.velocity.y = player.maxGravity;
 		}
 	}
 }

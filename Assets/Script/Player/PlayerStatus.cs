@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
+    public int playerLevel;
+    public float playerExp;
+
     public float maxPlayerHp;
     public float currentPlayerHp;
 

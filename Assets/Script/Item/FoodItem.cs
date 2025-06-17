@@ -11,9 +11,17 @@ public class FoodItem : ItemBehaviour
         Debug.Log(data.itemName + " 먹기");
     }
 
+
+
     void Heal(PlayerStatus playerStatus)
     {
         playerStatus.Heal(data.healAmount);
+    }
+
+    void Cure(PlayerStatus playerStatus)
+    {
+        playerStatus.CureHungerDebuff();
+        playerStatus.CureThirstDebuff();
     }
 
     void Eat(PlayerStatus playerStatus)

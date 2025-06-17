@@ -1258,7 +1258,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1473,7 +1473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &410087040
 Light:
   m_ObjectHideFlags: 0
@@ -2418,6 +2418,79 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &678442744
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 561.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 271.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 821680223616fae4b97f1b6d257536b6, type: 2}
+    - target: {fileID: 919132149155446097, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
+      propertyPath: m_Name
+      value: AuroraPlaneTut
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db5f9276a4fca2a4799c976a7d1d1912, type: 3}
 --- !u!1 &695933354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,7 +3181,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
+  weight: 0.19
   sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
 --- !u!4 &832575519
 Transform:
@@ -3784,7 +3857,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -7693,3 +7766,4 @@ SceneRoots:
   - {fileID: 4397594430959645331}
   - {fileID: 1101252547}
   - {fileID: 1926642686}
+  - {fileID: 678442744}

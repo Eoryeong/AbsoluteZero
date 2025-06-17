@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4967483978438821623}
   - component: {fileID: 5637984706170868989}
   - component: {fileID: 5237734474838811102}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Right
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -477,9 +477,9 @@ GameObject:
   - component: {fileID: 5792903814128436639}
   - component: {fileID: 4619982132877166227}
   - component: {fileID: 6836977184327580088}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Neck
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,9 +903,9 @@ GameObject:
   - component: {fileID: 1272281507683103740}
   - component: {fileID: 7823789944820505378}
   - component: {fileID: 8889843417280359928}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Left
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1367,9 +1367,9 @@ GameObject:
   - component: {fileID: 8263053802338274738}
   - component: {fileID: 6334987285767075940}
   - component: {fileID: 6368929489858400451}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: DownJacketPreview
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

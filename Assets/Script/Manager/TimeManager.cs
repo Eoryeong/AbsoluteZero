@@ -12,6 +12,7 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	[SerializeField] private float StartSecond = 0f;
 
 	[SerializeField] private float timeScale = 5f;
+	[HideInInspector] public bool isPause = false;
 
 	private void Start()
 	{
@@ -82,12 +83,18 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 			}
 		}
 	}
-	public void PauseGame(bool isPause)
+	public void PauseGame(bool pause)
 	{
-		if (isPause)
+		if (pause)
+		{
 			Time.timeScale = 0;
+			isPause = pause;
+		}
 		else
+		{
 			Time.timeScale = 1;
+			isPause= pause;
+		}
 	}
 
 	private void DebugMode()

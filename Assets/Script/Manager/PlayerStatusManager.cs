@@ -1,0 +1,227 @@
+using UnityEditor.MPE;
+using UnityEngine;
+
+public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
+{
+    private PlayerControll player = PlayerManager.Instance.PlayerController;
+
+	#region 스테이터스 정보
+	[Header("스테이터스 최대치")]
+	[SerializeField] private float maxHp = 100f;
+    [SerializeField] private float maxHunger = 100f;
+    [SerializeField] private float maxThirst = 100f;
+    [SerializeField] private float maxCold = 100f;
+
+	private float currentHp;
+    private float currentHunger;
+    private float currentThirst;
+    private float currentCold;
+
+    [Header("스테이터스 감소율")]
+	[SerializeField] private float hungerDecreaseRate = 1f;
+    [SerializeField] private float thirstDecreaseRate = 1f;
+    [SerializeField] private float coldDecreascRate = 1f;
+
+	[Header("스테이터스별 데미지")]
+	[SerializeField] private float hungerDamage = 15f;
+	[SerializeField] private float thirstDamage = 10f;
+	[SerializeField] private float coldDamage = 20f;
+	#endregion
+
+	#region 쿨타임
+	[Header("내부 쿨타임")]
+	[SerializeField] private float statusCoolDown = 1.0f;
+	[SerializeField] private float hungerDamageCoolDown = 1.0f;	
+	[SerializeField] private float thirstDamageCoolDown = 1.0f;	
+	[SerializeField] private float coldDamageCoolDown = 1.0f;
+
+	private float statusTimer;
+	private float hungerDamageTimer;
+	private float thirstDamageTimer;
+	private float coldrDamageTimer;
+	#endregion
+
+	#region getter
+	public float CurrentHp { get { return currentHp; } }
+	public float CurrentHpPercent { get { return currentHp / maxHp; } }
+	public float CurrentHunger { get { return currentHunger; } }  
+	public float CurrentHungerPercent { get { return currentHunger / maxHunger; } }  
+    public float CurrentThirst { get { return currentThirst; } }
+    public float CurrentThirstPercent { get { return currentThirst / maxThirst; } }
+    public float CurrentCold { get { return currentCold; } }
+    public float CurrentColdPercont { get { return currentCold / maxCold; } }
+	#endregion
+
+	[HideInInspector] public bool isDead = false;
+	[HideInInspector] public bool isHunger = false;
+	[HideInInspector] public bool isThirst = false;
+	[HideInInspector] public bool isCold = false;
+
+	private void Start()
+	{
+        InitStatus();
+	}
+
+	private void Update()
+	{
+        UpdateStatus();
+	}
+
+	private void InitStatus()
+    {
+		currentHp = maxHp;
+        currentHunger = maxHunger;
+        currentThirst = maxThirst;
+        currentCold = maxCold;
+    }
+
+    private void UpdateStatus()
+	{
+		if (TimeManager.Instance.isPause)
+			return;
+
+		statusTimer += Time.deltaTime;
+
+		if(statusTimer > statusCoolDown)
+		{
+			currentHunger -= hungerDecreaseRate;
+			currentThirst -= thirstDecreaseRate;
+			currentCold -= coldDecreascRate;
+
+			statusTimer = 0;
+		}
+
+		HungerEvent();
+		ThirstEvent();
+		ColdEvent();
+	}
+
+	private void HungerEvent()
+	{
+		if(currentHunger <= 0)
+		{
+			hungerDamageTimer += Time.deltaTime;
+
+			if(hungerDamageTimer > hungerDamageCoolDown)
+			{
+				TakeDamage(hungerDamage);
+				hungerDamageTimer = 0;
+			}
+
+			currentHunger = 0;
+		}
+		else if (currentHunger / maxHunger < 10 && !isHunger)
+		{
+			player.runSpeed = 5;
+			player.walkSpeed = 3;
+			player.sitSpeed = 1;
+			isHunger = true;
+		}
+		else if (isHunger)
+		{
+			player.runSpeed = 8;
+			player.walkSpeed = 5;
+			player.sitSpeed = 3;
+			isHunger = false;
+		}
+	}
+
+	private void ThirstEvent()
+	{
+		if(currentThirst <= 0)
+		{
+			thirstDamageTimer += Time.deltaTime;
+
+			if (thirstDamageTimer > thirstDamageCoolDown)
+			{
+				TakeDamage(thirstDamage);
+				thirstDamageTimer = 0;
+			}
+
+			currentThirst = 0;
+		}
+		else if (currentThirst / maxThirst < 10 && !isThirst)
+		{
+			isThirst = true;
+		}
+		else if (isThirst)
+		{
+			isThirst = false;
+		}
+	}
+
+	private void ColdEvent()
+	{
+		if(currentCold <= 0)
+		{
+			coldrDamageTimer += Time.deltaTime;
+
+			if (coldrDamageTimer > coldDamageCoolDown)
+			{
+				TakeDamage(coldDamage);
+				coldrDamageTimer = 0;
+			}
+
+			currentCold = 0;
+		}
+		else if (currentCold / maxCold < 10 && !isCold)
+		{
+			isCold = true;
+		}
+		else if (isCold)
+		{
+			isCold = false;
+		}
+	}
+
+	public void SetHungerDecreaseRate(float decreaseRate)
+    {
+        hungerDecreaseRate = decreaseRate;
+    }
+
+	public void SetThirstDecreaseRate(float decreaseRate)
+	{
+		thirstDecreaseRate = decreaseRate;
+	}
+
+	public void SetColdDecreaseRate(float decreaseRate)
+	{
+		coldDecreascRate = decreaseRate;
+	}
+
+    public void AddCurrentHunger(float addHunger)
+    {
+        currentHunger += addHunger;
+        if (currentHunger > maxHunger)
+            currentHunger = maxHunger;
+
+	}
+
+    public void AddCurrentThirst(float addThiirst)
+    {
+        currentThirst += addThiirst;
+        if (currentThirst > maxThirst)
+            currentThirst = maxThirst;
+    }
+
+    public void AddCurrentCold(float addCold)
+    {
+        currentCold += addCold;
+        if (currentCold > maxCold)
+            currentCold = maxCold;
+    }
+
+	public void TakeDamage(float damage)
+	{
+		currentHp -= damage;
+		if(currentHp <= 0)
+			isDead = transform;
+	}
+
+	public void Heal(float amout)
+	{
+		currentHp += amout;
+		if(currentHp > maxHp)
+			currentHp = maxHp;
+	}
+}

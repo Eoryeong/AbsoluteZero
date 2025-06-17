@@ -50,7 +50,7 @@ public class WeatherController : MonoBehaviour
 
 	private void Init()
 	{
-		player = PlayerManager.Instance.player;
+		player = PlayerManager.Instance.PlayerController;
 
 		fog = Instantiate(fogPrefab);
         snow = Instantiate(snowPrefab);

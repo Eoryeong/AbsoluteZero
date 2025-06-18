@@ -15,7 +15,6 @@ public class PlayerGroundState : PlayerState
 	public override void Update()
 	{
 		base.Update();
-		ChangeState();
 	}
 
 	public override void Exit()
@@ -40,11 +39,23 @@ public class PlayerGroundState : PlayerState
 
 		Vector3 finalMove = move + Vector3.up * player.velocity.y;
 		player.characterController.Move(finalMove * Time.deltaTime);
-	}
+
+		if (player.isCrouch)
+		{
+			// 애니메이션 적용시 교체
+            player.anim.SetFloat("ForwardSpeed", applySpeed, 0.2f, Time.deltaTime);
+        }
+		else
+		{
+            player.anim.SetFloat("ForwardSpeed", applySpeed, 0.2f, Time.deltaTime);
+        }
+    }
 
 	protected override void ChangeState()
 	{
 		if (!player.characterController.isGrounded)
 			stateMachine.ChangeState(player.airState);
+		else if (player.IsOnSteepSlope())
+			stateMachine.ChangeState(player.slideState);
 	}
 }

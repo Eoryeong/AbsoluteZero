@@ -23,10 +23,11 @@ public class PlayerRunState : PlayerGroundState
 	public override void Exit()
 	{
 		base.Exit();
-	}
+    }
 
 	protected override void ChangeState()
 	{
+		base.ChangeState();
 		if(Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			if (xInput != 0 || zInput != 0)

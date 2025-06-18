@@ -23,9 +23,9 @@ public class WeatherController : MonoBehaviour
 
     private float currentIntensity;
 
-    [SerializeField] private GameObject mistPrefab;
+    [SerializeField] private GameObject fogPrefab;
     [SerializeField] private GameObject snowPrefab;
-    private GameObject mist;
+    private GameObject fog;
     private GameObject snow;
 
     [SerializeField] private Material sunnyAfternoonSkyBox;
@@ -50,12 +50,12 @@ public class WeatherController : MonoBehaviour
 
 	private void Init()
 	{
-		player = PlayerManager.Instance.player;
+		player = PlayerManager.Instance.PlayerController;
 
-		mist = Instantiate(mistPrefab, player.transform.position, Quaternion.identity, player.transform);
+		fog = Instantiate(fogPrefab);
         snow = Instantiate(snowPrefab);
 
-		mist.gameObject.SetActive(false);
+		fog.gameObject.SetActive(false);
 		snow.gameObject.SetActive(false);
 	}
 
@@ -148,7 +148,7 @@ public class WeatherController : MonoBehaviour
         switch(weatherType)
         {
             case WeatherType.Foggy:
-                mist.gameObject.SetActive(true); 
+                fog.gameObject.SetActive(true); 
                 break;
             case WeatherType.Snowy:
                 snow.gameObject.SetActive(true);
@@ -164,7 +164,7 @@ public class WeatherController : MonoBehaviour
         switch(weatherType)
         {
             case WeatherType.Foggy:
-                mist.gameObject.SetActive(false);
+                fog.gameObject.SetActive(false);
                 break;
             case WeatherType.Snowy:
                 snow.gameObject.SetActive(false);

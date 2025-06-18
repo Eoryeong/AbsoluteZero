@@ -23,11 +23,11 @@ public class PlayerWalkState : PlayerGroundState
 	public override void Exit()
 	{
 		base.Exit();
-
-	}
+    }
 
 	protected override void ChangeState()
 	{
+		base.ChangeState();
 		if (xInput == 0 && zInput == 0)
 			stateMachine.ChangeState(player.idleState);
 		else if (Input.GetKeyDown(KeyCode.LeftShift))

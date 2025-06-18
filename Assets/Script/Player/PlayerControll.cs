@@ -44,6 +44,7 @@ public class PlayerControll : MonoBehaviour
 
     // 기타 제어변수
     public bool isCrouch;
+    public bool onRifle;
 
     #region State
     public PlayerStateMachine stateMachine;
@@ -55,6 +56,13 @@ public class PlayerControll : MonoBehaviour
     public PlayerSlideState slideState;
     public PlayerJumpState jumpState;
     public PlayerAirState airState;
+    public PlayerRifleIdleState rifleIdleState;
+    public PlayerRifleWalkState rifleWalkState;
+    public PlayerRifleRunState rifleRunState;
+    public PlayerRifleAimState rifleAimState;
+    public PlayerRifleSitIdleState rifleSitIdleState;
+    public PlayerRifleSitWalkState rifleSitWalkState;
+    public PlayerRifleSitAimState rifleSitAimState;
     #endregion
 
     private void Start()
@@ -116,6 +124,14 @@ public class PlayerControll : MonoBehaviour
         sitWalkState = new PlayerSitWalkState(this, stateMachine, "SitWalk");
         slideState = new PlayerSlideState(this, stateMachine, "Slide");
         jumpState = new PlayerJumpState(this, stateMachine, "Jump");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
+
+        rifleIdleState = new PlayerRifleIdleState(this, stateMachine, "Fall");
+        rifleWalkState = new PlayerRifleWalkState(this, stateMachine, "Fall");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
+        airState = new PlayerAirState(this, stateMachine, "Fall");
         airState = new PlayerAirState(this, stateMachine, "Fall");
 
         stateMachine.InitState(idleState);

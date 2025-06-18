@@ -129,7 +129,7 @@ public class SceneLoader : MonoBehaviour
 
         if (loadingText != null)
         {
-            loadingText.text = $"Loading {sceneName}... {Mathf.RoundToInt(progress * 100)}%";
+            loadingText.text = $"Loading ... {Mathf.RoundToInt(progress * 100)}%";
         }
     }
 

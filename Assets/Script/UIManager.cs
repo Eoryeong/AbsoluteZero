@@ -12,9 +12,11 @@ public class UIManager : MonoBehaviour
 
     [Header("PlayerUI")]
     [SerializeField] private GameObject playerUICanvas;
-    [SerializeField] private TextMeshProUGUI uiPlayerHp;
-    [SerializeField] private TextMeshProUGUI uiPlayerHunger;
-    [SerializeField] private TextMeshProUGUI uiPlayerSanity;
+    [SerializeField] private Image uiPlayerHpBar;
+    [SerializeField] private Image uiPlayerHungerBar;
+    [SerializeField] private Image uiPlayerTirstBar;
+    [SerializeField] private Image uiPlayerMentalityBar;
+    [SerializeField] private Image uiPlayerColdBar;
 
     [SerializeField] private TextMeshProUGUI uiSelectItem;
 
@@ -69,11 +71,13 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (playerData == null) return;
+        if (PlayerStatusManager.Instance == null) return;
 
-        uiPlayerHp.text = "Hp : " + playerData.currentPlayerHp;
-        uiPlayerHunger.text = "Hunger : " + playerData.currentPlayerHunger;
-        uiPlayerSanity.text = "Sanity : " + playerData.currentPlayerSanity;
+        uiPlayerHpBar.fillAmount = PlayerStatusManager.Instance.CurrentHpPercent;
+		uiPlayerHungerBar.fillAmount = PlayerStatusManager.Instance.CurrentHungerPercent;
+		uiPlayerTirstBar.fillAmount = PlayerStatusManager.Instance.CurrentThirstPercent;
+		uiPlayerMentalityBar.fillAmount = PlayerStatusManager.Instance.CurrentMentalityPercent;
+		uiPlayerColdBar.fillAmount = PlayerStatusManager.Instance.CurrentColdPercent;
     }
 
     public void CursorVisible(bool value)
@@ -128,8 +132,8 @@ public class UIManager : MonoBehaviour
     {
         SetPlayerUICanvas(false);
         CursorVisible(true);
-        playerData.SetPlayerFreeze(true);
-        MenuElementAllDisable();
+		playerData.SetPlayerFreeze(true);
+		MenuElementAllDisable();
 
         menuTitle.gameObject.SetActive(true);
         menuAcceptBtn.gameObject.SetActive(true);
@@ -142,8 +146,8 @@ public class UIManager : MonoBehaviour
     {
         MenuElementAllDisable();
 
-        SetPlayerUICanvas(false);
-        playerData.SetPlayerFreeze(true);
+		SetPlayerUICanvas(false);
+		playerData.SetPlayerFreeze(true);
         SetMenuUICanvas(true);
         menuItemName.gameObject.SetActive(true);
         menuItemLore.gameObject.SetActive(true);
@@ -162,8 +166,8 @@ public class UIManager : MonoBehaviour
         SetMenuUICanvas(false);
         SetPlayerUICanvas(true);
         CursorVisible(false);
-        playerData.SetPlayerFreeze(false);
-    }
+		playerData.SetPlayerFreeze(true);
+	}
 
     public void MenuElementAllDisable()
     {
@@ -182,8 +186,8 @@ public class UIManager : MonoBehaviour
         MenuElementAllDisable();
 
         SetPlayerUICanvas(false);
-        playerData.SetPlayerFreeze(true);
-        SetMenuUICanvas(true);
+		playerData.SetPlayerFreeze(true);
+		SetMenuUICanvas(true);
 
         GameRecode.instance.AddRecord(GameRecordEvent.Test);
 

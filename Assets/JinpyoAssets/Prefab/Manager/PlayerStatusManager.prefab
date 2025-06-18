@@ -47,18 +47,23 @@ MonoBehaviour:
   maxHp: 100
   maxHunger: 100
   maxThirst: 100
+  maxMentality: 100
   maxCold: 100
   hungerDecreaseRate: 1
   thirstDecreaseRate: 1
+  mentalityDecreaseRate: 1
   coldDecreascRate: 1
   hungerDamage: 15
   thirstDamage: 10
+  mentalityDamage: 10
   coldDamage: 20
   statusCoolDown: 1
   hungerDamageCoolDown: 1
   thirstDamageCoolDown: 1
+  mentalityDamageCoolDown: 1
   coldDamageCoolDown: 1
   isDead: 0
   isHunger: 0
   isThirst: 0
+  isTired: 0
   isCold: 0

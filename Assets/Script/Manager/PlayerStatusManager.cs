@@ -3,28 +3,32 @@ using UnityEngine;
 
 public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 {
-    private PlayerControll player = PlayerManager.Instance.PlayerController;
+    private PlayerControll player => PlayerManager.Instance.PlayerController;
 
 	#region 스테이터스 정보
 	[Header("스테이터스 최대치")]
 	[SerializeField] private float maxHp = 100f;
     [SerializeField] private float maxHunger = 100f;
     [SerializeField] private float maxThirst = 100f;
+	[SerializeField] private float maxMentality = 100f;
     [SerializeField] private float maxCold = 100f;
 
 	private float currentHp;
     private float currentHunger;
     private float currentThirst;
+	private float currentMentality;
     private float currentCold;
 
     [Header("스테이터스 감소율")]
 	[SerializeField] private float hungerDecreaseRate = 1f;
     [SerializeField] private float thirstDecreaseRate = 1f;
-    [SerializeField] private float coldDecreascRate = 1f;
+	[SerializeField] private float mentalityDecreaseRate = 1f;
+	[SerializeField] private float coldDecreascRate = 1f;
 
 	[Header("스테이터스별 데미지")]
 	[SerializeField] private float hungerDamage = 15f;
 	[SerializeField] private float thirstDamage = 10f;
+	[SerializeField] private float mentalityDamage = 10f;
 	[SerializeField] private float coldDamage = 20f;
 	#endregion
 
@@ -32,12 +36,14 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 	[Header("내부 쿨타임")]
 	[SerializeField] private float statusCoolDown = 1.0f;
 	[SerializeField] private float hungerDamageCoolDown = 1.0f;	
-	[SerializeField] private float thirstDamageCoolDown = 1.0f;	
+	[SerializeField] private float thirstDamageCoolDown = 1.0f;
+	[SerializeField] private float mentalityDamageCoolDown = 1.0f;
 	[SerializeField] private float coldDamageCoolDown = 1.0f;
 
 	private float statusTimer;
 	private float hungerDamageTimer;
 	private float thirstDamageTimer;
+	private float mentalityTimer;
 	private float coldrDamageTimer;
 	#endregion
 
@@ -48,13 +54,16 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 	public float CurrentHungerPercent { get { return currentHunger / maxHunger; } }  
     public float CurrentThirst { get { return currentThirst; } }
     public float CurrentThirstPercent { get { return currentThirst / maxThirst; } }
+	public float CurrentMentality { get { return currentMentality; } }
+	public float CurrentMentalityPercent { get { return currentMentality / maxMentality; } }
     public float CurrentCold { get { return currentCold; } }
-    public float CurrentColdPercont { get { return currentCold / maxCold; } }
+    public float CurrentColdPercent { get { return currentCold / maxCold; } }
 	#endregion
 
 	[HideInInspector] public bool isDead = false;
 	[HideInInspector] public bool isHunger = false;
 	[HideInInspector] public bool isThirst = false;
+	[HideInInspector] public bool isTired = false;
 	[HideInInspector] public bool isCold = false;
 
 	private void Start()
@@ -72,6 +81,7 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 		currentHp = maxHp;
         currentHunger = maxHunger;
         currentThirst = maxThirst;
+		currentMentality = maxMentality;
         currentCold = maxCold;
     }
 
@@ -86,6 +96,7 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 		{
 			currentHunger -= hungerDecreaseRate;
 			currentThirst -= thirstDecreaseRate;
+			currentMentality -= mentalityDecreaseRate;
 			currentCold -= coldDecreascRate;
 
 			statusTimer = 0;
@@ -93,6 +104,7 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 		HungerEvent();
 		ThirstEvent();
+		MentalityEvent();
 		ColdEvent();
 	}
 
@@ -150,6 +162,30 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 		}
 	}
 
+	private void MentalityEvent()
+	{
+		if (currentMentality <= 0)
+		{
+			mentalityTimer += Time.deltaTime;
+
+			if (mentalityTimer > mentalityDamageCoolDown)
+			{
+				TakeDamage(mentalityDamage);
+				mentalityTimer = 0;
+			}
+
+			currentMentality = 0;
+		}
+		else if (currentMentality / maxMentality < 10 && !isTired)
+		{
+			isTired = true;
+		}
+		else if (isTired)
+		{
+			isTired = false;
+		}
+	}
+
 	private void ColdEvent()
 	{
 		if(currentCold <= 0)
@@ -203,6 +239,13 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
         if (currentThirst > maxThirst)
             currentThirst = maxThirst;
     }
+
+	public void AddCurrentMentality(float addMentality)
+	{
+		currentMentality += addMentality;
+		if(currentMentality > maxMentality)
+			currentMentality = maxMentality;
+	}
 
     public void AddCurrentCold(float addCold)
     {

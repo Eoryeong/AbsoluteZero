@@ -2083,13 +2083,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 170248412220328136, guid: 4aeb28cd8a1f89c4484bd6a864b56fe7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 306927891701471384, guid: 4aeb28cd8a1f89c4484bd6a864b56fe7, type: 3}
       propertyPath: m_Name
       value: SecenLoader
       objectReference: {fileID: 0}
     - target: {fileID: 3030949816549294599, guid: 4aeb28cd8a1f89c4484bd6a864b56fe7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7660197794542559923, guid: 4aeb28cd8a1f89c4484bd6a864b56fe7, type: 3}
       propertyPath: m_LocalPosition.x

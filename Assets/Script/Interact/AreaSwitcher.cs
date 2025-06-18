@@ -88,6 +88,7 @@ public class AreaSwitcher : MonoBehaviour
         }
 
         // 문 열기 사운드 재생
+        SoundManager.Instance.PlayDoorOpen();
 
 
 

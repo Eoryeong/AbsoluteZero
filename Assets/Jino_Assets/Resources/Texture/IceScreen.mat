@@ -77,7 +77,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _Sides: 3.39
+    - _Sides: 31.5
     - _SrcBlend: 5
     - _Stencil: 0
     - _StencilComp: 8

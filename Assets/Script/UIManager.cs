@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -74,10 +74,10 @@ public class UIManager : MonoBehaviour
         if (PlayerStatusManager.Instance == null) return;
 
         uiPlayerHpBar.fillAmount = PlayerStatusManager.Instance.CurrentHpPercent;
-		uiPlayerHungerBar.fillAmount = PlayerStatusManager.Instance.CurrentHungerPercent;
-		uiPlayerTirstBar.fillAmount = PlayerStatusManager.Instance.CurrentThirstPercent;
-		uiPlayerMentalityBar.fillAmount = PlayerStatusManager.Instance.CurrentMentalityPercent;
-		uiPlayerColdBar.fillAmount = PlayerStatusManager.Instance.CurrentColdPercent;
+        uiPlayerHungerBar.fillAmount = PlayerStatusManager.Instance.CurrentHungerPercent;
+        uiPlayerTirstBar.fillAmount = PlayerStatusManager.Instance.CurrentThirstPercent;
+        uiPlayerMentalityBar.fillAmount = PlayerStatusManager.Instance.CurrentMentalityPercent;
+        uiPlayerColdBar.fillAmount = PlayerStatusManager.Instance.CurrentColdPercent;
     }
 
     public void CursorVisible(bool value)
@@ -132,8 +132,8 @@ public class UIManager : MonoBehaviour
     {
         SetPlayerUICanvas(false);
         CursorVisible(true);
-		playerData.SetPlayerFreeze(true);
-		MenuElementAllDisable();
+        playerData.SetPlayerFreeze(true);
+        MenuElementAllDisable();
 
         menuTitle.gameObject.SetActive(true);
         menuAcceptBtn.gameObject.SetActive(true);
@@ -146,8 +146,8 @@ public class UIManager : MonoBehaviour
     {
         MenuElementAllDisable();
 
-		SetPlayerUICanvas(false);
-		playerData.SetPlayerFreeze(true);
+        SetPlayerUICanvas(false);
+        //playerData.SetPlayerFreeze(true);
         SetMenuUICanvas(true);
         menuItemName.gameObject.SetActive(true);
         menuItemLore.gameObject.SetActive(true);
@@ -166,8 +166,8 @@ public class UIManager : MonoBehaviour
         SetMenuUICanvas(false);
         SetPlayerUICanvas(true);
         CursorVisible(false);
-		playerData.SetPlayerFreeze(true);
-	}
+        //playerData.SetPlayerFreeze(true);
+    }
 
     public void MenuElementAllDisable()
     {
@@ -186,8 +186,8 @@ public class UIManager : MonoBehaviour
         MenuElementAllDisable();
 
         SetPlayerUICanvas(false);
-		playerData.SetPlayerFreeze(true);
-		SetMenuUICanvas(true);
+        playerData.SetPlayerFreeze(true);
+        SetMenuUICanvas(true);
 
         GameRecode.instance.AddRecord(GameRecordEvent.Test);
 

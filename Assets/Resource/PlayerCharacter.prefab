@@ -1081,7 +1081,12 @@ MonoBehaviour:
   anim: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   maxGravity: -60
+  rifleRange: 300
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 448
   isCrouch: 0
+  onRifle: 0
 --- !u!114 &7560777912969995270
 MonoBehaviour:
   m_ObjectHideFlags: 0

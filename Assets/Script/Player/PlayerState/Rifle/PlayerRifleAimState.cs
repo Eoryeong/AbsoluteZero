@@ -14,6 +14,11 @@ public class PlayerRifleAimState : PlayerGroundState
     public override void Update()
     {
         base.Update();
+        if (Input.GetMouseButtonDown(1))
+        {
+            // 장탄, 총알 검사
+            player.FireRifleBullet();
+        }
     }
 
     public override void Exit()

@@ -1,3 +1,4 @@
+using Controller;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,6 +43,10 @@ public class PlayerControll : MonoBehaviour
     public float gravity { get; private set; } = -9.81f;
     public float maxGravity = -60;
 
+    // 라이플 관련
+    public float rifleRange = 300f;
+    public LayerMask hitLayers;
+
     // 기타 제어변수
     public bool isCrouch;
     public bool onRifle;
@@ -63,6 +68,7 @@ public class PlayerControll : MonoBehaviour
     public PlayerRifleSitIdleState rifleSitIdleState;
     public PlayerRifleSitWalkState rifleSitWalkState;
     public PlayerRifleSitAimState rifleSitAimState;
+    public PlayerLoggingState loggingState;
     #endregion
 
     private void Start()
@@ -79,7 +85,7 @@ public class PlayerControll : MonoBehaviour
         crouchCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - crouchCameraDown, cameraOffset.z);
         currentCameraOffset = cameraOffset;
         targetCameraOffset = cameraOffset;
-        playerLight.enabled = false;
+        // playerLight.enabled = false;
     }
 
     private void Update()
@@ -88,6 +94,11 @@ public class PlayerControll : MonoBehaviour
 
         stateMachine.Update();
         HandleMouseLook();
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            FireRifleBullet();
+        }
     }
 
     // LateUpdate에서 카메라 위치 추종 → 움직임 후 딜레이 없이 부드럽게
@@ -117,22 +128,24 @@ public class PlayerControll : MonoBehaviour
     {
         stateMachine = new PlayerStateMachine();
 
-        idleState = new PlayerIdleState(this, stateMachine, "Idle");
-        walkState = new PlayerWalkState(this, stateMachine, "Walk");
-        runState = new PlayerRunState(this, stateMachine, "Run");
-        sitState = new PlayerSitState(this, stateMachine, "Sit");
-        sitWalkState = new PlayerSitWalkState(this, stateMachine, "SitWalk");
-        slideState = new PlayerSlideState(this, stateMachine, "Slide");
-        jumpState = new PlayerJumpState(this, stateMachine, "Jump");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
+        idleState = new PlayerIdleState(this, stateMachine, "");
+        walkState = new PlayerWalkState(this, stateMachine, "");
+        runState = new PlayerRunState(this, stateMachine, "");
+        sitState = new PlayerSitState(this, stateMachine, "");
+        sitWalkState = new PlayerSitWalkState(this, stateMachine, "");
+        slideState = new PlayerSlideState(this, stateMachine, "");
+        jumpState = new PlayerJumpState(this, stateMachine, "");
+        airState = new PlayerAirState(this, stateMachine, "");
 
-        rifleIdleState = new PlayerRifleIdleState(this, stateMachine, "Fall");
-        rifleWalkState = new PlayerRifleWalkState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
+        rifleIdleState = new PlayerRifleIdleState(this, stateMachine, "");
+        rifleWalkState = new PlayerRifleWalkState(this, stateMachine, "");
+        rifleRunState = new PlayerRifleRunState(this, stateMachine, "");
+        rifleAimState = new PlayerRifleAimState(this, stateMachine, "");
+        rifleSitIdleState = new PlayerRifleSitIdleState(this, stateMachine, "");
+        rifleSitWalkState = new PlayerRifleSitWalkState(this, stateMachine, "");
+        rifleSitAimState = new PlayerRifleSitAimState(this, stateMachine, "");
+
+        loggingState = new PlayerLoggingState(this, stateMachine, "IsLogging");
 
         stateMachine.InitState(idleState);
     }
@@ -152,7 +165,6 @@ public class PlayerControll : MonoBehaviour
 
     private void FollowCamera()
     {
-        // cameraTransform.position = transform.position + currentCameraOffset;
         cameraTransform.position = cameraPoint.position + currentCameraOffset;
     }
 
@@ -174,7 +186,7 @@ public class PlayerControll : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f))
         {
             float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
-            Debug.Log(slopeAngle);
+            // Debug.Log(slopeAngle);
             return slopeAngle > slideAngleThreshold;
         }
         return false;
@@ -188,5 +200,57 @@ public class PlayerControll : MonoBehaviour
     public void ChangeCameraStand()
     {
         targetCameraOffset = cameraOffset;
+    }
+
+    public void FireRifleBullet()
+    {
+        Vector3 origin = cameraTransform.transform.position; // 혹은 총구 위치
+        Vector3 direction = cameraTransform.transform.forward;
+
+        // raycast로 모든 충돌체 감지
+        RaycastHit[] hits = Physics.RaycastAll(origin, direction, rifleRange, hitLayers);
+
+        if (hits.Length == 0) return;
+
+        // 가장 가까운 오브젝트 찾기
+        RaycastHit closestHit = hits[0];
+        float minDistance = Vector3.Distance(origin, closestHit.point);
+
+        foreach (RaycastHit hit in hits)
+        {
+            float distance = Vector3.Distance(origin, hit.point);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestHit = hit;
+            }
+        }
+
+        
+
+        // 가장 가까운 오브젝트에 Hit 함수 실행
+        GameObject hitObject = closestHit.collider.gameObject;
+
+        Debug.Log(hitObject.name);
+
+        // 여기에 오브젝트가 맞았을 때의 처리 필요
+        // 예: 몬스터가 맞았다면 데미지를 주는 Hit 함수 호출
+        // (예시)
+        // hitObject.GetComponent<Enemy>()?.Hit(damage);
+
+        Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
+    }
+
+    private void PlayerLoggingTree()
+    {
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (cameraTransform == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(cameraTransform.transform.position, cameraTransform.transform.forward * rifleRange);
     }
 }

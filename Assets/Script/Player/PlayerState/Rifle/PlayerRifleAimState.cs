@@ -16,7 +16,8 @@ public class PlayerRifleAimState : PlayerGroundState
         base.Update();
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("발사");
+            // 장탄, 총알 검사
+            player.FireRifleBullet();
         }
     }
 

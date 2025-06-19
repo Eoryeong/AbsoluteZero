@@ -1436,7 +1436,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 503
@@ -3049,7 +3049,7 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -4809,9 +4809,11 @@ MonoBehaviour:
   playerData: {fileID: 2145523780}
   playerControll: {fileID: 2145523771}
   playerUICanvas: {fileID: 62149304}
-  uiPlayerHp: {fileID: 192467097}
-  uiPlayerHunger: {fileID: 554774324}
-  uiPlayerSanity: {fileID: 168926533}
+  uiPlayerHpBar: {fileID: 0}
+  uiPlayerHungerBar: {fileID: 0}
+  uiPlayerTirstBar: {fileID: 0}
+  uiPlayerMentalityBar: {fileID: 0}
+  uiPlayerColdBar: {fileID: 0}
   uiSelectItem: {fileID: 1240576243}
   uiProgress: {fileID: 1889414229}
   uiProgressBar: {fileID: 255318233}

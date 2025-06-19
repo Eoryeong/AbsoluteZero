@@ -68,6 +68,7 @@ public class PlayerControll : MonoBehaviour
     public PlayerRifleSitIdleState rifleSitIdleState;
     public PlayerRifleSitWalkState rifleSitWalkState;
     public PlayerRifleSitAimState rifleSitAimState;
+    public PlayerLoggingState loggingState;
     #endregion
 
     private void Start()
@@ -127,22 +128,24 @@ public class PlayerControll : MonoBehaviour
     {
         stateMachine = new PlayerStateMachine();
 
-        idleState = new PlayerIdleState(this, stateMachine, "Idle");
-        walkState = new PlayerWalkState(this, stateMachine, "Walk");
-        runState = new PlayerRunState(this, stateMachine, "Run");
-        sitState = new PlayerSitState(this, stateMachine, "Sit");
-        sitWalkState = new PlayerSitWalkState(this, stateMachine, "SitWalk");
-        slideState = new PlayerSlideState(this, stateMachine, "Slide");
-        jumpState = new PlayerJumpState(this, stateMachine, "Jump");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
+        idleState = new PlayerIdleState(this, stateMachine, "");
+        walkState = new PlayerWalkState(this, stateMachine, "");
+        runState = new PlayerRunState(this, stateMachine, "");
+        sitState = new PlayerSitState(this, stateMachine, "");
+        sitWalkState = new PlayerSitWalkState(this, stateMachine, "");
+        slideState = new PlayerSlideState(this, stateMachine, "");
+        jumpState = new PlayerJumpState(this, stateMachine, "");
+        airState = new PlayerAirState(this, stateMachine, "");
 
-        rifleIdleState = new PlayerRifleIdleState(this, stateMachine, "Fall");
-        rifleWalkState = new PlayerRifleWalkState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
-        airState = new PlayerAirState(this, stateMachine, "Fall");
+        rifleIdleState = new PlayerRifleIdleState(this, stateMachine, "");
+        rifleWalkState = new PlayerRifleWalkState(this, stateMachine, "");
+        rifleRunState = new PlayerRifleRunState(this, stateMachine, "");
+        rifleAimState = new PlayerRifleAimState(this, stateMachine, "");
+        rifleSitIdleState = new PlayerRifleSitIdleState(this, stateMachine, "");
+        rifleSitWalkState = new PlayerRifleSitWalkState(this, stateMachine, "");
+        rifleSitAimState = new PlayerRifleSitAimState(this, stateMachine, "");
+
+        loggingState = new PlayerLoggingState(this, stateMachine, "IsLogging");
 
         stateMachine.InitState(idleState);
     }
@@ -162,7 +165,6 @@ public class PlayerControll : MonoBehaviour
 
     private void FollowCamera()
     {
-        // cameraTransform.position = transform.position + currentCameraOffset;
         cameraTransform.position = cameraPoint.position + currentCameraOffset;
     }
 
@@ -237,6 +239,11 @@ public class PlayerControll : MonoBehaviour
         // hitObject.GetComponent<Enemy>()?.Hit(damage);
 
         Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
+    }
+
+    private void PlayerLoggingTree()
+    {
+
     }
 
     private void OnDrawGizmos()

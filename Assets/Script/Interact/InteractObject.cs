@@ -8,6 +8,7 @@ public enum InteractionType
     Chest,
     Obstacle,
     Bed,
+    Wood,
     AreaChange
 }
 
@@ -36,6 +37,9 @@ public class InteractObject : MonoBehaviour
                 break;
             case InteractionType.Door:
                 GetComponent<AreaSwitcher>().TryOpenDoor();
+                break;
+            case InteractionType.Wood:
+                GetComponent<ObjectWood>().TryObstacleBreak();
                 break;
         }
     }

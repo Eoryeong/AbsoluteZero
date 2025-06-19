@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class Bear : Animal
 {
-
+    // 곰 고유 변수
     float sleepProbability = 0.2f;
     float sleepChangeTimer = 10f;
     public Anim_SleepState sleepState;
     public float angerGauge = 0f;
+    public Collider attcol;
+
+    protected override void Start()
+    {
+        base.Start();
+        attcol.enabled = false;
+    }
 
     protected override void InitializeStatus()
     {
@@ -15,7 +22,7 @@ public class Bear : Animal
         wanderSpeed = 2f;
         fleeSpeed = 8f;
         detectionRange = 15f;
-        attackRange = 3f;
+        attackRange = 4f;
         attackDamage = 5f;
         attackCooldown = 3f;
         wanderRadius = 20f;
@@ -48,11 +55,13 @@ public class Bear : Animal
         if(angerGauge >= 100f)
         {
             animator.SetTrigger("StrongAtt");
+            attackDamage = 10f;
             angerGauge = 0f;
         }
         else
         {
-            if(Random.Range(0f, 1f) < 0.5f)
+            attackDamage = 5f;
+            if (Random.Range(0f, 1f) < 0.5f)
             {
                 animator.SetTrigger("Att");
             }
@@ -93,5 +102,20 @@ public class Bear : Animal
         animator.ResetTrigger("Att");
         animator.ResetTrigger("Att2");
         animator.ResetTrigger("StrongAtt");
+    }
+
+    public void ActiveAttCol()
+    {
+        if (attcol != null)
+        {
+            attcol.enabled = true;
+        }
+    }
+    public void DeactiveAttCol()
+    {
+        if (attcol != null)
+        {
+            attcol.enabled = false;
+        }
     }
 }

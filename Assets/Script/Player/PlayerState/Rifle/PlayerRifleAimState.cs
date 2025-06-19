@@ -14,6 +14,10 @@ public class PlayerRifleAimState : PlayerGroundState
     public override void Update()
     {
         base.Update();
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("발사");
+        }
     }
 
     public override void Exit()

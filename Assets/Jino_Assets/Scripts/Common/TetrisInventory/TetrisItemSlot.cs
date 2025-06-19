@@ -7,6 +7,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     [SerializeField] Vector2 size = new Vector2(70f, 70f);
     public PickupItemData item;
+    public int quantity = 1;
 
     public Vector2 startPosition;
     public Vector2 oldPosition;

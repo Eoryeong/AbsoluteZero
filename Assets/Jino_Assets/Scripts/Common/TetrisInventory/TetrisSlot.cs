@@ -36,6 +36,18 @@ public class TetrisSlot : MonoBehaviour
 
     public bool addInFirstSpace(ItemBehaviour item)
     {
+        foreach (TetrisItemSlot slot in itemsInBag)
+        {
+            if (slot.item.itemCode == item.data.itemCode)
+            {
+                // 같은 아이템이 있을 경우의 처리
+                slot.quantity++;
+                // UI 업데이트 로직이 필요하다면 여기서 처리
+                Debug.Log($"Same item found: {item.data.itemName}, New quantity: {slot.quantity}");
+                return true;
+            }
+        }
+
         int contX = (int)item.data.itemSize.x;
         int contY = (int)item.data.itemSize.y;
 

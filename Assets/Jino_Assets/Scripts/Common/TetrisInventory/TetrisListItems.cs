@@ -3,13 +3,25 @@ using UnityEngine;
 
 public class TetrisListItems : MonoBehaviour
 {
+    private Vector2 finalPos;
+    private Vector2 startPos;
+
+    float timeUntilClose = 0.5f;
+    float startTime = 0;
+    float currentTime;
+
     [SerializeField] GameObject Inventory;
     public GameObject[] prefabs;
     public List<PickupItemData> items = new List<PickupItemData>();
 
+    private bool isInventoryActivated = false;
+
     //아이템 떨어뜨리는 거 구현할 때 필요
     void Start()
     {
+        startPos = new Vector2(3370f, 23f);
+        finalPos = new Vector2(337f, 23f);
+
         for (int i = 0; i < prefabs.Length; i++)
         {
             items.Add(prefabs[i].GetComponent<PickupItem>().data);
@@ -18,10 +30,34 @@ public class TetrisListItems : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKey(KeyCode.I) && currentTime >= timeUntilClose)
         {
-            Inventory.SetActive(true);
+            currentTime = startTime;
+            if (isInventoryActivated)
+            {
+                CloseInven();
+            }
+            else
+            {
+                OpenInven();
+            }
         }
+        else
+        {
+            currentTime += Time.deltaTime;
+        }
+    }
+
+    public void CloseInven()
+    {
+        isInventoryActivated = !isInventoryActivated;
+        Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPos.x, startPos.y);
+    }
+
+    private void OpenInven()
+    {
+        isInventoryActivated = !isInventoryActivated;
+        Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(finalPos.x, finalPos.y);
     }
 
 }

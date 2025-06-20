@@ -86,9 +86,22 @@ public class WorldMapController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+            OnMapButtonClicked();
+        }
+    }
+
+
+    public void OnMapButtonClicked()
+    {
+        if (worldmapPanel != null)
+        {
             worldmapPanel.SetActive(!worldmapPanel.activeSelf);
         }
     }
+
+
+
+
     void UpdatePlayerIcon()
     {
         if (player == null || minimapRect == null || playerIcon == null) return;

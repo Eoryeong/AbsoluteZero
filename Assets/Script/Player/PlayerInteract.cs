@@ -18,7 +18,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        if (playerStatus.playerFreeze) return;
+        if (PlayerManager.Instance.playerFreeze) return;
 
         TryInteract();
         if (Input.GetMouseButtonDown(0) && isFocus && hitObject != null)
@@ -50,7 +50,7 @@ public class PlayerInteract : MonoBehaviour
                     hitObject = interactable.gameObject;
 
                     string objName = interactable.GetComponent<InteractObject>().InteractNameUpdate();
-                    UIManager.instance.FocusInItem(objName);
+                    UIManager.Instance.FocusInItem(objName);
                 }
             }
             else
@@ -70,7 +70,7 @@ public class PlayerInteract : MonoBehaviour
         {
             isFocus = false;
             hitObject = null;
-            UIManager.instance.FocusOutItem();
+            UIManager.Instance.FocusOutItem();
         }
     }
 

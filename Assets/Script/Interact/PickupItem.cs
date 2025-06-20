@@ -30,8 +30,8 @@ public class PickupItem : MonoBehaviour
 
     public void TryPickupItem()
     {
-        UIManager.instance.ItemPickupMenuOpen();
-        UIManager.instance.ItemPickupMenuLoreUpdate(data);
+        UIManager.Instance.ItemPickupMenuOpen();
+        UIManager.Instance.ItemPickupMenuLoreUpdate(data);
         ShowPreview();
         tryPickup = true;
         clickDelay = 0.1f;
@@ -56,7 +56,7 @@ public class PickupItem : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(1))
         {
-            UIManager.instance.CloseMenu();
+            UIManager.Instance.CloseMenu();
             DestroyPreview();
             tryPickup = false;
         }
@@ -66,7 +66,7 @@ public class PickupItem : MonoBehaviour
     {
         yield return null; // 한 프레임 대기
         TetrisSlot.instanceSlot.addInFirstSpace(behaviour);
-        UIManager.instance.CloseMenu();
+        UIManager.Instance.CloseMenu();
         Destroy(gameObject);
     }
 
@@ -77,7 +77,7 @@ public class PickupItem : MonoBehaviour
             Destroy(previewObj);
         }
 
-        previewObj = Instantiate(data.previewPrefab, UIManager.instance.menuItemPreviewPos.position, data.previewPrefab.gameObject.transform.rotation);
+        previewObj = Instantiate(data.previewPrefab, UIManager.Instance.menuItemPreviewPos.position, data.previewPrefab.gameObject.transform.rotation);
         previewObj.layer = LayerMask.NameToLayer("ItemPreview");
 
         foreach (Transform child in previewObj.GetComponentsInChildren<Transform>())

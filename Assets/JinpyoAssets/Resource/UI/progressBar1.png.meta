@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 312c35fd900caa640bda29a69961a8a0
+guid: 624289cf5d6670048bf334509e972f36
 AssetOrigin:
   serializedVersion: 1
   productId: 53276
   packageName: Simple UI Elements
   packageVersion: 1.0
-  assetPath: Assets/Assets/UI Elements/Extras/Rects/rect4pxRy8.png
+  assetPath: Assets/Assets/UI Elements/Extras/ProgressBars/progressBar1.png
   uploadId: 96991
 TextureImporter:
   internalIDToNameTable: []
@@ -56,7 +56,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 9, y: 9, z: 9, w: 9}
+  spriteBorder: {x: 8, y: 8, z: 8, w: 8}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1

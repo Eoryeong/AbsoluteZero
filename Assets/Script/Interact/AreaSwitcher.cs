@@ -83,7 +83,7 @@ public class AreaSwitcher : MonoBehaviour
 
             if (playerStatus != null)
             {
-                playerStatus.SetPlayerFreeze(true);
+                PlayerManager.Instance.SetPlayerFreeze(true);
             }
         }
 

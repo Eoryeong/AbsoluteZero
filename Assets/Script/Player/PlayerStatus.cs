@@ -22,7 +22,7 @@ public class PlayerStatus : MonoBehaviour
     public float maxPlayerSanity;
     public float currentPlayerSanity;
 
-    public bool playerFreeze;
+    //public bool playerFreeze;
 
     private void Start()
     {
@@ -31,10 +31,7 @@ public class PlayerStatus : MonoBehaviour
         currentPlayerSanity = maxPlayerSanity;
     }
 
-    public void SetPlayerFreeze(bool freeze)
-    {
-        playerFreeze = freeze;
-    }
+
 
     private void Update()
     {

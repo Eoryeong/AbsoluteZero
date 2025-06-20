@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 312c35fd900caa640bda29a69961a8a0
+guid: 29a24a2954d64ff4a95b3678c5c6dbf2
 AssetOrigin:
   serializedVersion: 1
   productId: 53276
   packageName: Simple UI Elements
   packageVersion: 1.0
-  assetPath: Assets/Assets/UI Elements/Extras/Rects/rect4pxRy8.png
+  assetPath: Assets/Assets/UI Elements/Extras/Circle512/circlefillRy30px512px.png
   uploadId: 96991
 TextureImporter:
   internalIDToNameTable: []
@@ -56,7 +56,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 9, y: 9, z: 9, w: 9}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -89,7 +89,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0

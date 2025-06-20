@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class ObjectWood : MonoBehaviour
 {
     public bool canBreak;
     private bool isBreaking;
@@ -18,7 +18,7 @@ public class Obstacle : MonoBehaviour
             float pct = breakTimer / breakDuration;
             UIManager.Instance.ShowProgress(pct);
 
-            if(breakTimer >= breakDuration)
+            if (breakTimer >= breakDuration)
             {
                 UIManager.Instance.HideProgress();
                 isBreaking = false;

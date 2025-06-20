@@ -62,10 +62,10 @@ public class UIManager : SingletonBehaviour<UIManager>
         if (PlayerStatusManager.Instance == null) return;
 
         uiPlayerHpBar.fillAmount = PlayerStatusManager.Instance.CurrentHpPercent;
-		uiPlayerHungerBar.fillAmount = PlayerStatusManager.Instance.CurrentHungerPercent;
-		uiPlayerTirstBar.fillAmount = PlayerStatusManager.Instance.CurrentThirstPercent;
-		uiPlayerMentalityBar.fillAmount = PlayerStatusManager.Instance.CurrentMentalityPercent;
-		uiPlayerColdBar.fillAmount = PlayerStatusManager.Instance.CurrentColdPercent;
+        uiPlayerHungerBar.fillAmount = PlayerStatusManager.Instance.CurrentHungerPercent;
+        uiPlayerTirstBar.fillAmount = PlayerStatusManager.Instance.CurrentThirstPercent;
+        uiPlayerMentalityBar.fillAmount = PlayerStatusManager.Instance.CurrentMentalityPercent;
+        uiPlayerColdBar.fillAmount = PlayerStatusManager.Instance.CurrentColdPercent;
     }
 
     public void CursorVisible(bool value)
@@ -120,8 +120,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         SetPlayerUICanvas(false);
         CursorVisible(true);
-		PlayerManager.Instance.SetPlayerFreeze(true);
-		MenuElementAllDisable();
+        PlayerManager.Instance.SetPlayerFreeze(true);
+        MenuElementAllDisable();
 
         menuTitle.gameObject.SetActive(true);
         menuAcceptBtn.gameObject.SetActive(true);
@@ -134,8 +134,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         MenuElementAllDisable();
 
-		SetPlayerUICanvas(false);
-		PlayerManager.Instance.SetPlayerFreeze(true);
+        SetPlayerUICanvas(false);
+        PlayerManager.Instance.SetPlayerFreeze(true);
         SetMenuUICanvas(true);
         menuItemName.gameObject.SetActive(true);
         menuItemLore.gameObject.SetActive(true);
@@ -154,8 +154,8 @@ public class UIManager : SingletonBehaviour<UIManager>
         SetMenuUICanvas(false);
         SetPlayerUICanvas(true);
         CursorVisible(false);
-		PlayerManager.Instance.SetPlayerFreeze(true);
-	}
+        PlayerManager.Instance.SetPlayerFreeze(true);
+    }
 
     public void MenuElementAllDisable()
     {
@@ -174,8 +174,8 @@ public class UIManager : SingletonBehaviour<UIManager>
         MenuElementAllDisable();
 
         SetPlayerUICanvas(false);
-		PlayerManager.Instance.SetPlayerFreeze(true);
-		SetMenuUICanvas(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
+        SetMenuUICanvas(true);
 
         GameRecode.instance.AddRecord(GameRecordEvent.Test);
 

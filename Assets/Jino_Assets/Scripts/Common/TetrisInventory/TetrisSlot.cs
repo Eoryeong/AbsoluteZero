@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TetrisSlot : MonoBehaviour
 {
     public static TetrisSlot instanceSlot;
+    public Action Itemgain;
 
     private void Awake()
     {
@@ -36,6 +38,14 @@ public class TetrisSlot : MonoBehaviour
 
     public bool addInFirstSpace(ItemBehaviour item)
     {
+        foreach (TetrisItemSlot slot in itemsInBag)
+        {
+            if (slot.item.itemCode == item.data.itemCode)
+            {
+                slot.quantity++;
+            }
+        }
+
         int contX = (int)item.data.itemSize.x;
         int contY = (int)item.data.itemSize.y;
 

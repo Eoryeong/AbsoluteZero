@@ -97,6 +97,7 @@ public class SpawnManager : MonoBehaviour
         if (selectedMonster == null) return;
 
         GameObject monster = Instantiate(selectedMonster.monsterPrefab, spawnPosition, Quaternion.identity);
+        Debug.Log($"Spawned monster: {monster} {selectedMonster.monsterPrefab.name} at {spawnPosition} in area: {area.areaName}");
 
         area.currentMonsters.Add(monster);
         currentTotalMonsters++;

@@ -4,6 +4,6 @@ public class ObjectBed : MonoBehaviour
 {
     public void TryUseBed()
     {
-        UIManager.instance.BedMenuOpen();
+        UIManager.Instance.BedMenuOpen();
     }
 }

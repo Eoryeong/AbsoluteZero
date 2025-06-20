@@ -14,8 +14,6 @@ public class PlayerSlideState : PlayerState
 		base.Enter();
 		slideDirection = GetSlopeDirection();
 		applySpeed = player.slideSpeed;
-		if (player.navMeshObstacle != null)
-			player.navMeshObstacle.height = player.characterController.height;
 	}
 
 	public override void Update()

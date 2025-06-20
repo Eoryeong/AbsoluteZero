@@ -7,15 +7,14 @@ public class Wolf : Animal
     float sitdigTimer = 4f;
     float howlTimer = 10f;
     public Anim_ResponseHowlState responseHowlState;
-
-
-
+    public Collider attcol;
 
     protected override void Start()
     {
         base.Start();
-        agent.stoppingDistance = attackRange - 0.1f;
+        attcol.enabled = false;
     }
+
     protected override void InitializeStatus()
     {
         maxHP = 120f;
@@ -124,6 +123,21 @@ public class Wolf : Animal
         if(HP <= maxHP* 0.25f && currentState != fleeState && !isDead)
         {
             ChangeState(fleeState);
+        }
+    }
+
+    public void ActiveAttCol()
+    {
+        if (attcol != null)
+        {
+            attcol.enabled = true;
+        }
+    }
+    public void DeactiveAttCol()
+    {
+        if (attcol != null)
+        {
+            attcol.enabled = false;
         }
     }
 }

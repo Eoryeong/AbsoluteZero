@@ -34,7 +34,6 @@ public class PlayerControll : MonoBehaviour
 
     // 기타 컴포넌트
     public CharacterController characterController { get; private set; }
-    public NavMeshObstacle navMeshObstacle;
     private PlayerStatus playerStatus;
     public Animator anim;
 
@@ -131,14 +130,6 @@ public class PlayerControll : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerStatus = GetComponent<PlayerStatus>();
-
-        // NavMeshObstacle 컴포넌트 추가 또는 가져오기
-        navMeshObstacle = GetComponent<NavMeshObstacle>();
-        if (navMeshObstacle == null)
-        {
-            navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
-        }
-        SetupNavMeshObstacle();
     }
 
     private void InitState()
@@ -183,19 +174,6 @@ public class PlayerControll : MonoBehaviour
     private void FollowCamera()
     {
         cameraTransform.position = currentCameraPosition;
-    }
-
-    private void SetupNavMeshObstacle()
-    {
-        if (navMeshObstacle != null && characterController != null)
-        {
-            // CharacterController의 크기에 맞춰 NavMeshObstacle 설정
-            navMeshObstacle.shape = NavMeshObstacleShape.Capsule;
-            navMeshObstacle.radius = characterController.radius;
-            navMeshObstacle.height = characterController.height;
-            navMeshObstacle.center = characterController.center;
-            navMeshObstacle.carving = true; // 동적으로 NavMesh를 조각내기
-        }
     }
 
     public bool IsOnSteepSlope()

@@ -14,6 +14,8 @@ public class Anim_DeadState : AnimalState
         animal.isDead = true;
         animal.agent.isStopped = true;
         animal.animator.SetTrigger("Dead");
+        animal.animalCorpse.enabled = true;
+        animal.interactObject.enabled = true;
     }
 
     public override void UpdateState()

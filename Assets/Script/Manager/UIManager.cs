@@ -154,7 +154,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         SetMenuUICanvas(false);
         SetPlayerUICanvas(true);
         CursorVisible(false);
-        PlayerManager.Instance.SetPlayerFreeze(true);
+        PlayerManager.Instance.SetPlayerFreeze(false);
     }
 
     public void MenuElementAllDisable()

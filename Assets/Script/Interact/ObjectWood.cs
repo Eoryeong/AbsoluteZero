@@ -16,11 +16,11 @@ public class ObjectWood : MonoBehaviour
         {
             breakTimer += Time.deltaTime;
             float pct = breakTimer / breakDuration;
-            UIManager.instance.ShowProgress(pct);
+            UIManager.Instance.ShowProgress(pct);
 
             if (breakTimer >= breakDuration)
             {
-                UIManager.instance.HideProgress();
+                UIManager.Instance.HideProgress();
                 isBreaking = false;
                 ObstacleBreaking();
             }
@@ -28,7 +28,7 @@ public class ObjectWood : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             isBreaking = false;
-            UIManager.instance.HideProgress();
+            UIManager.Instance.HideProgress();
         }
     }
 
@@ -38,7 +38,7 @@ public class ObjectWood : MonoBehaviour
 
         isBreaking = true;
         breakTimer = 0f;
-        UIManager.instance.ShowProgress(0f);
+        UIManager.Instance.ShowProgress(0f);
     }
 
     private void ObstacleBreaking()

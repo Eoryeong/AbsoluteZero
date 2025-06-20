@@ -90,7 +90,7 @@ public class PlayerControll : MonoBehaviour
 
     private void Update()
     {
-        if (playerStatus.playerFreeze) return;
+        if (PlayerManager.Instance.playerFreeze) return;
 
         stateMachine.Update();
         HandleMouseLook();

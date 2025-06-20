@@ -1577,6 +1577,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &615136657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615136659}
+  - component: {fileID: 615136658}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &615136658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615136657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6214c40629ef754b9921e91565c8ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAreas:
+  - areaName: 
+    centerPosition: {x: 0, y: 0, z: 0}
+    radius: 0
+    spawnableMonsters:
+    - monsterPrefab: {fileID: 0}
+      spawnWeight: 0
+    maxMonsterCount: 0
+    spawnInterval: 0
+    isActive: 0
+    currentMonsters: []
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerCheckDistance: 50
+  maxTotalMonsters: 100
+  updateInterval: 2
+--- !u!4 &615136659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615136657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 195.83, y: 1.5900002, z: 210.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695933354
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,9 +3291,11 @@ MonoBehaviour:
   playerData: {fileID: 0}
   playerControll: {fileID: 0}
   playerUICanvas: {fileID: 62149304}
-  uiPlayerHp: {fileID: 192467097}
-  uiPlayerHunger: {fileID: 554774324}
-  uiPlayerSanity: {fileID: 168926533}
+  uiPlayerHpBar: {fileID: 0}
+  uiPlayerHungerBar: {fileID: 0}
+  uiPlayerTirstBar: {fileID: 0}
+  uiPlayerMentalityBar: {fileID: 0}
+  uiPlayerColdBar: {fileID: 0}
   uiSelectItem: {fileID: 1240576243}
   uiProgress: {fileID: 1889414229}
   uiProgressBar: {fileID: 255318233}
@@ -4039,3 +4102,4 @@ SceneRoots:
   - {fileID: 1045898487}
   - {fileID: 2028125206}
   - {fileID: 63288690}
+  - {fileID: 615136659}

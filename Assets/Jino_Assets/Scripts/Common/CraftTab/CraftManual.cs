@@ -90,24 +90,26 @@ public class CraftManual : BaseUI
     private void OpenWindow()
     {
         isActivated = true;
-        //GameManager.isOpenCraftManual = true;
         go_BaseUI.SetActive(true);
+        UIManager.Instance.CursorVisible(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
     }
 
     private void CloseWindow()
     {
-        //GameManager.isOpenCraftManual = false;
         isActivated = false;
         go_BaseUI.SetActive(false);
+        UIManager.Instance.CursorVisible(false);
+        PlayerManager.Instance.SetPlayerFreeze(false);
     }
 
     public void SlotClick(int _slotNumber)
     {
-        //GameManager.isOpenCraftManual = false;
         go_Preview = Instantiate(craft_fire[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
         go_Prefab = craft_fire[_slotNumber].go_Prefab;
         isPreviewActivated = true;
         go_BaseUI.SetActive(false);
-
+        UIManager.Instance.CursorVisible(false);
+        PlayerManager.Instance.SetPlayerFreeze(false);
     }
 }

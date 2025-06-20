@@ -28,9 +28,6 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         UpdateItemSize();
 
         slots = TetrisSlot.instanceSlot;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     void Update()

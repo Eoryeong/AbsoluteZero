@@ -52,12 +52,16 @@ public class TetrisListItems : MonoBehaviour
     {
         isInventoryActivated = !isInventoryActivated;
         Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPos.x, startPos.y);
+        UIManager.Instance.CursorVisible(false);
+        PlayerManager.Instance.SetPlayerFreeze(false);
     }
 
     private void OpenInven()
     {
         isInventoryActivated = !isInventoryActivated;
         Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(finalPos.x, finalPos.y);
+        UIManager.Instance.CursorVisible(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
     }
 
 }

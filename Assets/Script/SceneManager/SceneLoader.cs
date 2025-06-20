@@ -138,10 +138,10 @@ public class SceneLoader : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            PlayerStatus playerStatus = player.GetComponent<PlayerStatus>();
-            if (playerStatus != null)
+            
+            if (PlayerManager.Instance != null)
             {
-                playerStatus.SetPlayerFreeze(freeze);
+				PlayerManager.Instance.SetPlayerFreeze(freeze);
             }
         }
     }

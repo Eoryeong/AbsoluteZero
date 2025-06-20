@@ -2,13 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonBehaviour<UIManager>
 {
-    public static UIManager instance;
     public bool inMenu;
-
-    [SerializeField] private PlayerStatus playerData;
-    [SerializeField] private PlayerControll playerControll;
 
     [Header("PlayerUI")]
     [SerializeField] private GameObject playerUICanvas;
@@ -41,14 +37,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button menuBackBtn;
     [SerializeField] private Button menuAcceptBtn;
     public Transform menuItemPreviewPos;
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
 
     void Start()
     {
@@ -132,7 +120,7 @@ public class UIManager : MonoBehaviour
     {
         SetPlayerUICanvas(false);
         CursorVisible(true);
-        playerData.SetPlayerFreeze(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
         MenuElementAllDisable();
 
         menuTitle.gameObject.SetActive(true);
@@ -147,7 +135,7 @@ public class UIManager : MonoBehaviour
         MenuElementAllDisable();
 
         SetPlayerUICanvas(false);
-        //playerData.SetPlayerFreeze(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
         SetMenuUICanvas(true);
         menuItemName.gameObject.SetActive(true);
         menuItemLore.gameObject.SetActive(true);
@@ -166,7 +154,7 @@ public class UIManager : MonoBehaviour
         SetMenuUICanvas(false);
         SetPlayerUICanvas(true);
         CursorVisible(false);
-        //playerData.SetPlayerFreeze(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
     }
 
     public void MenuElementAllDisable()
@@ -186,7 +174,7 @@ public class UIManager : MonoBehaviour
         MenuElementAllDisable();
 
         SetPlayerUICanvas(false);
-        playerData.SetPlayerFreeze(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
         SetMenuUICanvas(true);
 
         GameRecode.instance.AddRecord(GameRecordEvent.Test);

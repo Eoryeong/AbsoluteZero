@@ -10,6 +10,8 @@ public class PlayerManager : SingletonBehaviour<PlayerManager>
     public PlayerControll PlayerController { get  { return playerController; } }
     public PlayerStatus PlayerState { get { return playerStatus; } }
 
+    public bool playerFreeze { get; private set; } = false;
+
 	private void Start()
 	{
         InitPlayer();
@@ -19,5 +21,10 @@ public class PlayerManager : SingletonBehaviour<PlayerManager>
     {
         playerController = player.GetComponent<PlayerControll>();
         playerStatus = player.GetComponent<PlayerStatus>();
+    }
+
+    public void SetPlayerFreeze(bool freeze)
+    {
+        playerFreeze = freeze;
     }
 }

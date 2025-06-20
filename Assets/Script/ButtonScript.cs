@@ -4,6 +4,6 @@ public class ButtonScript : MonoBehaviour
 {
     public void BackBtnOnClick()
     {
-        UIManager.instance.CloseMenu();
+        UIManager.Instance.CloseMenu();
     }
 }

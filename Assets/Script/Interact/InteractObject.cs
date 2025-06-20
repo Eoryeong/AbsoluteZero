@@ -39,7 +39,7 @@ public class InteractObject : MonoBehaviour
                 GetComponent<AreaSwitcher>().TryOpenDoor();
                 break;
             case InteractionType.Wood:
-                GetComponent<ObjectWood>().TryObstacleBreak();
+                GetComponent<ObjectWood>().TryChopTree();
                 break;
         }
     }

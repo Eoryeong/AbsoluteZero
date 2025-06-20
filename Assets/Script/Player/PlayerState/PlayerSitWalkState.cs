@@ -11,8 +11,7 @@ public class PlayerSitWalkState : PlayerGroundState
 	{
 		base.Enter();
 		applySpeed = player.sitSpeed;
-		if (player.navMeshObstacle != null)
-			player.navMeshObstacle.height = player.characterController.height * 0.5f;
+
 	}
 
 	public override void Update()
@@ -25,8 +24,6 @@ public class PlayerSitWalkState : PlayerGroundState
 	public override void Exit()
 	{
 		base.Exit();
-		if (player.navMeshObstacle != null)
-			player.navMeshObstacle.height = player.characterController.height;
 	}
 
 	protected override void ChangeState()

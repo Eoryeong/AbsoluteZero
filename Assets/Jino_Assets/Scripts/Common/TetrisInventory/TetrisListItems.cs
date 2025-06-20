@@ -35,19 +35,29 @@ public class TetrisListItems : MonoBehaviour
             currentTime = startTime;
             if (isInventoryActivated)
             {
-                isInventoryActivated = !isInventoryActivated;
-                Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPos.x, startPos.y);
+                CloseInven();
             }
             else
             {
-                isInventoryActivated = !isInventoryActivated;
-                Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(finalPos.x, finalPos.y);
+                OpenInven();
             }
         }
         else
         {
             currentTime += Time.deltaTime;
         }
+    }
+
+    public void CloseInven()
+    {
+        isInventoryActivated = !isInventoryActivated;
+        Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPos.x, startPos.y);
+    }
+
+    private void OpenInven()
+    {
+        isInventoryActivated = !isInventoryActivated;
+        Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(finalPos.x, finalPos.y);
     }
 
 }

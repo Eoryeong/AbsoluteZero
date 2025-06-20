@@ -6,6 +6,11 @@ public class ObjectWood : MonoBehaviour
     private bool isBreaking;
 
     [SerializeField] private float breakDuration;
+    [SerializeField] private GameObject fireWoodPrefab;
+    [SerializeField] private int fireWoodGenQty;
+    [SerializeField] private float fireWoodGenPosX;
+    [SerializeField] private float fireWoodGenPosZ;
+
     private float breakTimer;
 
     private void Update()
@@ -22,7 +27,7 @@ public class ObjectWood : MonoBehaviour
             {
                 UIManager.Instance.HideProgress();
                 isBreaking = false;
-                ObstacleBreaking();
+                TreeBreaking();
             }
         }
         else if (Input.GetMouseButtonUp(0))
@@ -32,7 +37,7 @@ public class ObjectWood : MonoBehaviour
         }
     }
 
-    public void TryObstacleBreak()
+    public void TryChopTree()
     {
         if (!canBreak) return;
 
@@ -41,8 +46,19 @@ public class ObjectWood : MonoBehaviour
         UIManager.Instance.ShowProgress(0f);
     }
 
-    private void ObstacleBreaking()
+    private void TreeBreaking()
     {
+        Vector3 origin = transform.position;
+
+        for (int i = 0; i < fireWoodGenQty; i++)
+        {
+            float offsetX = Random.Range(-fireWoodGenPosX, fireWoodGenPosX);
+            float offsetZ = Random.Range(-fireWoodGenPosZ, fireWoodGenPosZ);
+            Vector3 spawnPos = new Vector3(origin.x + offsetX, origin.y, origin.z + offsetZ);
+
+            Instantiate(fireWoodPrefab, spawnPos, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 }

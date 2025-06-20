@@ -30,7 +30,7 @@ public class PlayerIdleState : PlayerGroundState
 	public override void Exit()
 	{
 		base.Exit();
-	}
+    }
 
 	protected override void ChangeState()
 	{

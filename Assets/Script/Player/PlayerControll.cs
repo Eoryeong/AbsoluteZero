@@ -1,4 +1,3 @@
-using Controller;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -16,17 +15,18 @@ public class PlayerControll : MonoBehaviour
 
     // 카메라
     public Transform cameraTransform;
-    [SerializeField] private Vector3 cameraOffset = new Vector3(0f, 1.6f, 0f);
     [SerializeField] private Transform cameraPoint;
-    [SerializeField] private Vector3 crouchCameraOffset;
+
+    private Vector3 currentCameraPosition;
+    public Transform nextCameraTarget;
+    public Transform standCameraTransform;
+    public Transform crouchCameraTransform;
 
     public float mouseSensitivity = 2f;
     public float crouchCameraDown = 1f;
     private float verticalRotation = 0f;
     private float verticalLookLimit = 80f;
 
-    private Vector3 currentCameraOffset;
-    private Vector3 targetCameraOffset;
     [SerializeField] private float cameraLerpSpeed = 5f;
 
     // 라이트
@@ -50,6 +50,7 @@ public class PlayerControll : MonoBehaviour
     // 기타 제어변수
     public bool isCrouch;
     public bool onRifle;
+    private bool isCameraTransitioning;
 
     #region State
     public PlayerStateMachine stateMachine;
@@ -82,10 +83,11 @@ public class PlayerControll : MonoBehaviour
 
         InitComponent();
 
-        crouchCameraOffset = new Vector3(cameraOffset.x, cameraOffset.y - crouchCameraDown, cameraOffset.z);
-        currentCameraOffset = cameraOffset;
-        targetCameraOffset = cameraOffset;
-        // playerLight.enabled = false;
+        currentCameraPosition = standCameraTransform.position;
+        nextCameraTarget = standCameraTransform;
+
+        isCameraTransitioning = false;
+
     }
 
     private void Update()
@@ -104,8 +106,23 @@ public class PlayerControll : MonoBehaviour
     // LateUpdate에서 카메라 위치 추종 → 움직임 후 딜레이 없이 부드럽게
     private void LateUpdate()
     {
-        // 현재 카메라 오프셋에서 타겟 카메라 오프셋으로 자연스럽게 이동
-        currentCameraOffset = Vector3.Lerp(currentCameraOffset, targetCameraOffset, Time.deltaTime * cameraLerpSpeed);
+
+        if (isCameraTransitioning)
+        {
+            currentCameraPosition = Vector3.Lerp(currentCameraPosition, nextCameraTarget.position, Time.deltaTime * cameraLerpSpeed);
+
+            // 위치 거의 도달했으면 즉시 고정하고 종료
+            if (Vector3.Distance(currentCameraPosition, nextCameraTarget.position) < 0.05f)
+            {
+                currentCameraPosition = nextCameraTarget.position;
+                isCameraTransitioning = false;
+            }
+        }
+        else
+        {
+            // 즉시 위치로 설정 (회전 등 상황)
+            currentCameraPosition = nextCameraTarget.position;
+        }
 
         FollowCamera();
     }
@@ -128,11 +145,11 @@ public class PlayerControll : MonoBehaviour
     {
         stateMachine = new PlayerStateMachine();
 
-        idleState = new PlayerIdleState(this, stateMachine, "");
-        walkState = new PlayerWalkState(this, stateMachine, "");
-        runState = new PlayerRunState(this, stateMachine, "");
-        sitState = new PlayerSitState(this, stateMachine, "");
-        sitWalkState = new PlayerSitWalkState(this, stateMachine, "");
+        idleState = new PlayerIdleState(this, stateMachine, "IsStand");
+        walkState = new PlayerWalkState(this, stateMachine, "IsStand");
+        runState = new PlayerRunState(this, stateMachine, "IsStand");
+        sitState = new PlayerSitState(this, stateMachine, "IsCrouch");
+        sitWalkState = new PlayerSitWalkState(this, stateMachine, "IsCrouch");
         slideState = new PlayerSlideState(this, stateMachine, "");
         jumpState = new PlayerJumpState(this, stateMachine, "");
         airState = new PlayerAirState(this, stateMachine, "");
@@ -165,7 +182,7 @@ public class PlayerControll : MonoBehaviour
 
     private void FollowCamera()
     {
-        cameraTransform.position = cameraPoint.position + currentCameraOffset;
+        cameraTransform.position = currentCameraPosition;
     }
 
     private void SetupNavMeshObstacle()
@@ -194,12 +211,14 @@ public class PlayerControll : MonoBehaviour
 
     public void ChangeCameraCrouch()
     {
-        targetCameraOffset = crouchCameraOffset;
+        nextCameraTarget = crouchCameraTransform;
+        isCameraTransitioning = true;
     }
 
     public void ChangeCameraStand()
     {
-        targetCameraOffset = cameraOffset;
+        nextCameraTarget = standCameraTransform;
+        isCameraTransitioning = true;
     }
 
     public void FireRifleBullet()
@@ -226,7 +245,7 @@ public class PlayerControll : MonoBehaviour
             }
         }
 
-        
+
 
         // 가장 가까운 오브젝트에 Hit 함수 실행
         GameObject hitObject = closestHit.collider.gameObject;

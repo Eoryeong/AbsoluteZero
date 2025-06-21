@@ -19269,7 +19269,7 @@ PrefabInstance:
       objectReference: {fileID: 1974075372}
     - target: {fileID: 4839553971117786159, guid: bb4ca5db29e26274abeaafc9a1e17a93, type: 3}
       propertyPath: m_Name
-      value: WeatherController
+      value: WeatherManager
       objectReference: {fileID: 0}
     - target: {fileID: 8742301421860967920, guid: bb4ca5db29e26274abeaafc9a1e17a93, type: 3}
       propertyPath: m_LocalPosition.x

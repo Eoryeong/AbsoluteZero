@@ -10,5 +10,9 @@ public class DamageTest : MonoBehaviour
         {
             animal.TakeDamage(50f);
         }
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            LoadingManager.LoadScene("SampleScene");
+        }
     }
 }

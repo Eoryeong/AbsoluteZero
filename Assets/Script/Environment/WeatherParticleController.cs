@@ -83,6 +83,8 @@ public class WeatherParticleController : MonoBehaviour
 	{
 		for (int i = 0; i < particles.Length; i++)
 		{
+			if (particles[i] == null) continue;
+
 			if (particles[i].gameObject.GetComponent<VisualEffect>() != null)
 				particles[i].gameObject.GetComponent<VisualEffect>().Stop();
 			else if (particles[i].gameObject.GetComponent<ParticleSystem>() != null)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum WeatherType
 {
@@ -18,7 +19,7 @@ public class WeatherManager : SingletonBehaviour<WeatherManager>
     private int weatherCurrentHour;
     private int weatherCurrentMinute;
 
-    [SerializeField] private Light lightCompo;
+    private Light lightCompo;
     private PlayerControll player;
 
     private float currentIntensity;
@@ -51,6 +52,7 @@ public class WeatherManager : SingletonBehaviour<WeatherManager>
 	private void InitWeather()
 	{
 		player = PlayerManager.Instance.PlayerController;
+        lightCompo = RenderSettings.sun;
 
 		fog = Instantiate(fogPrefab);
         snow = Instantiate(snowPrefab);
@@ -110,7 +112,10 @@ public class WeatherManager : SingletonBehaviour<WeatherManager>
             return;
         }
 
-        lightCompo.intensity = Mathf.Lerp(lightCompo.intensity, currentIntensity, Time.deltaTime * 0.5f);
+        if(SceneManager.GetActiveScene().name == "In_Game_Scene")
+        {
+            lightCompo.intensity = Mathf.Lerp(lightCompo.intensity, currentIntensity, Time.deltaTime * 0.5f);
+        }
     }
 
     private void SetSkyBox()

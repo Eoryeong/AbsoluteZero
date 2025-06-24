@@ -15,9 +15,6 @@ public class PlayerSitState : PlayerGroundState
 
 		player.ChangeCameraCrouch();
 		player.isCrouch = true;
-
-		if(player.navMeshObstacle != null)
-			player.navMeshObstacle.height = player.characterController.height * 0.5f;
 	}
 
 	public override void Update()
@@ -27,12 +24,6 @@ public class PlayerSitState : PlayerGroundState
         ChangeState();
 	}
 
-	public override void Exit()
-	{
-		base.Exit();
-        if (player.navMeshObstacle != null)
-			player.navMeshObstacle.height = player.characterController.height;
-	}
 
 	protected override void ChangeState()
 	{

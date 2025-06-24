@@ -9,7 +9,8 @@ public enum InteractionType
     Obstacle,
     Bed,
     Wood,
-    AreaChange
+    AreaChange,
+    AnimalCorpse
 }
 
 public class InteractObject : MonoBehaviour
@@ -40,6 +41,9 @@ public class InteractObject : MonoBehaviour
                 break;
             case InteractionType.Wood:
                 GetComponent<ObjectWood>().TryChopTree();
+                break;
+            case InteractionType.AnimalCorpse:
+                GetComponent<AnimalCorpse>().TryLootCorpse();
                 break;
         }
     }

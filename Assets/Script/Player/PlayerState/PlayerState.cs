@@ -21,7 +21,7 @@ public abstract class PlayerState
 
     public virtual void Enter()
     {
-        player.anim.SetBool(animBoolName, true);
+        // player.anim.SetBool(animBoolName, true);
     }
 
     public virtual void Update()
@@ -32,7 +32,7 @@ public abstract class PlayerState
 
 	public virtual void Exit()
     {
-        player.anim.SetBool(animBoolName, false);
+        // player.anim.SetBool(animBoolName, false);
     }
 
 	private void GetInput()

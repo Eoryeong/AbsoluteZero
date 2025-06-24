@@ -7,7 +7,6 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     [SerializeField] Vector2 size = new Vector2(70f, 70f);
     public PickupItemData item;
-    public int quantity = 1;
 
     public Vector2 startPosition;
     public Vector2 oldPosition;
@@ -248,6 +247,14 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             TetrisListItems itemInGame; // list of items prefab to could be instantiated when dropping item.
             itemInGame = FindFirstObjectByType<TetrisListItems>();
+
+            int id = item.itemCode;
+            if (TetrisSlot.instanceSlot.itemCountDict.ContainsKey(id))
+            {
+                TetrisSlot.instanceSlot.itemCountDict[id]--;
+            }
+
+            TetrisSlot.instanceSlot.itemsInBag.Remove(this);
 
             for (int t = 0; t < itemInGame.prefabs.Length; t++)
             {

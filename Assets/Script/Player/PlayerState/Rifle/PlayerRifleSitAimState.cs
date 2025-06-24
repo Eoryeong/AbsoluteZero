@@ -8,15 +8,19 @@ public class PlayerRifleSitAimState : PlayerGroundState
 
     public override void Enter()
     {
+        player.ChangeCameraCrouchRifle();
         base.Enter();
+        player.anim.SetBool("IsAim", true);
     }
 
     public override void Update()
     {
         base.Update();
-        if (Input.GetMouseButtonDown(1))
+        ChangeState();
+        if (Input.GetMouseButtonDown(0))
         {
             // 장탄, 총알 검사
+            player.anim.SetTrigger("OnFire");
             player.FireRifleBullet();
         }
     }
@@ -29,9 +33,17 @@ public class PlayerRifleSitAimState : PlayerGroundState
     protected override void ChangeState()
     {
         base.ChangeState();
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftControl))
             stateMachine.ChangeState(player.rifleAimState);
+        else if (xInput != 0 || zInput != 0)
+        {
+            stateMachine.ChangeState(player.rifleSitWalkState);
+            player.anim.SetBool("IsAim", false);
+        }
         else if (Input.GetMouseButtonDown(1))
+        {
             stateMachine.ChangeState(player.rifleSitIdleState);
+            player.anim.SetBool("IsAim", false);
+        }
     }
 }

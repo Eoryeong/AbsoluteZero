@@ -10,6 +10,7 @@ public class PlayerRifleIdleState : PlayerGroundState
     {
         base.Enter();
         player.onRifle = true;
+        player.ChangeCameraStandRifle();
     }
 
     public override void Update()

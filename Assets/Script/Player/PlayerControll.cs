@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations.Rigging;
 
 public class PlayerControll : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerControll : MonoBehaviour
     public Transform nextCameraTarget;
     public Transform standCameraTransform;
     public Transform crouchCameraTransform;
+    public Transform standRifleCameraTransform;
 
     public float mouseSensitivity = 2f;
     public float crouchCameraDown = 1f;
@@ -43,8 +45,12 @@ public class PlayerControll : MonoBehaviour
     public float maxGravity = -60;
 
     // 라이플 관련
+    public GameObject rifleObj;
     public float rifleRange = 300f;
     public LayerMask hitLayers;
+    public TwoBoneIKConstraint rifleLeftHandIK;
+
+    public GameObject axeObj;
 
     // 기타 제어변수
     public bool isCrouch;
@@ -86,7 +92,8 @@ public class PlayerControll : MonoBehaviour
         nextCameraTarget = standCameraTransform;
 
         isCameraTransitioning = false;
-
+        isCrouch = false;
+        onRifle = false;
     }
 
     private void Update()
@@ -98,7 +105,23 @@ public class PlayerControll : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            FireRifleBullet();
+            // FireRifleBullet();
+            onRifle = !onRifle;
+            rifleObj.SetActive(onRifle);
+            anim.SetBool("OnRifle", onRifle);
+
+            if (onRifle)
+            {
+                stateMachine.ChangeState(rifleIdleState);
+                ChangeCameraStandRifle();
+                rifleLeftHandIK.weight = 1;
+            }
+            else
+            {
+                stateMachine.ChangeState(idleState);
+                ChangeCameraStand();
+                rifleLeftHandIK.weight = 0;
+            }
         }
     }
 
@@ -136,11 +159,11 @@ public class PlayerControll : MonoBehaviour
     {
         stateMachine = new PlayerStateMachine();
 
-        idleState = new PlayerIdleState(this, stateMachine, "IsStand");
-        walkState = new PlayerWalkState(this, stateMachine, "IsStand");
-        runState = new PlayerRunState(this, stateMachine, "IsStand");
-        sitState = new PlayerSitState(this, stateMachine, "IsCrouch");
-        sitWalkState = new PlayerSitWalkState(this, stateMachine, "IsCrouch");
+        idleState = new PlayerIdleState(this, stateMachine, "");
+        walkState = new PlayerWalkState(this, stateMachine, "");
+        runState = new PlayerRunState(this, stateMachine, "");
+        sitState = new PlayerSitState(this, stateMachine, "");
+        sitWalkState = new PlayerSitWalkState(this, stateMachine, "");
         slideState = new PlayerSlideState(this, stateMachine, "");
         jumpState = new PlayerJumpState(this, stateMachine, "");
         airState = new PlayerAirState(this, stateMachine, "");
@@ -153,7 +176,7 @@ public class PlayerControll : MonoBehaviour
         rifleSitWalkState = new PlayerRifleSitWalkState(this, stateMachine, "");
         rifleSitAimState = new PlayerRifleSitAimState(this, stateMachine, "");
 
-        loggingState = new PlayerLoggingState(this, stateMachine, "IsLogging");
+        loggingState = new PlayerLoggingState(this, stateMachine, "");
 
         stateMachine.InitState(idleState);
     }
@@ -191,12 +214,28 @@ public class PlayerControll : MonoBehaviour
     {
         nextCameraTarget = crouchCameraTransform;
         isCameraTransitioning = true;
+        anim.SetBool("IsCrouch", true);
     }
 
     public void ChangeCameraStand()
     {
         nextCameraTarget = standCameraTransform;
         isCameraTransitioning = true;
+        anim.SetBool("IsCrouch", false);
+    }
+
+    public void ChangeCameraStandRifle()
+    {
+        nextCameraTarget = standRifleCameraTransform;
+        isCameraTransitioning = true;
+        anim.SetBool("IsCrouch", false);
+    }
+
+    public void ChangeCameraCrouchRifle()
+    {
+        nextCameraTarget = crouchCameraTransform;
+        isCameraTransitioning = true;
+        anim.SetBool("IsCrouch", true);
     }
 
     public void FireRifleBullet()
@@ -238,9 +277,10 @@ public class PlayerControll : MonoBehaviour
         Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
     }
 
-    private void PlayerLoggingTree()
+    public void PlayerLoggingTree(bool value)
     {
-
+        anim.SetBool("IsLogging", value);
+        axeObj.SetActive(value);
     }
 
     private void OnDrawGizmos()

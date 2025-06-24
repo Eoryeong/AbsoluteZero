@@ -945,10 +945,9 @@ GameObject:
   - component: {fileID: 4958318431015954870}
   - component: {fileID: 5616406742343595016}
   - component: {fileID: 7560777912969995270}
-  - component: {fileID: 5108252067929070352}
   m_Layer: 0
   m_Name: PlayerCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -963,7 +962,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 209.6176, y: 0.0000009536743, z: 173.71939}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1730559541749837616}
@@ -1048,8 +1047,7 @@ MonoBehaviour:
   crouchCameraDown: 1
   cameraLerpSpeed: 10
   playerLight: {fileID: 0}
-  navMeshObstacle: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 4958318431015954870}
   velocity: {x: 0, y: 0, z: 0}
   maxGravity: -60
   rifleRange: 300
@@ -1075,32 +1073,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 384
   playerCamera: {fileID: 0}
---- !u!114 &5108252067929070352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032293262707419767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2adee9ad060248a4bab8a52c2a7cf092, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLevel: 0
-  playerExp: 0
-  maxPlayerHp: 100
-  currentPlayerHp: 0
-  maxPlayerHunger: 100
-  currentPlayerHunger: 0
-  playerHungerDecreaseRate: 0.1
-  isHungerDebuffed: 0
-  maxPlayerThirst: 0
-  currentPlayerThirst: 0
-  playerThirstDecreaseRate: 0.1
-  isThirstDebuffed: 0
-  maxPlayerSanity: 100
-  currentPlayerSanity: 0
 --- !u!1 &2121814186490948603
 GameObject:
   m_ObjectHideFlags: 0

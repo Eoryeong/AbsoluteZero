@@ -8,11 +8,6 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     [Header("PlayerUI")]
     [SerializeField] private GameObject playerUICanvas;
-    [SerializeField] private Image uiPlayerHpBar;
-    [SerializeField] private Image uiPlayerHungerBar;
-    [SerializeField] private Image uiPlayerTirstBar;
-    [SerializeField] private Image uiPlayerMentalityBar;
-    [SerializeField] private Image uiPlayerColdBar;
 
     [SerializeField] private TextMeshProUGUI uiSelectItem;
 
@@ -45,8 +40,6 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     void Update()
     {
-        UpdateUI();
-
         if (Input.GetKeyDown(KeyCode.O))
         {
             RecordMenuOpen();
@@ -57,18 +50,13 @@ public class UIManager : SingletonBehaviour<UIManager>
         }
     }
 
-    private void UpdateUI()
-    {
-        if (PlayerStatusManager.Instance == null) return;
+	protected override void Init()
+	{
+        m_IsDestroyOnLoad = true;
+		base.Init();
+	}
 
-        uiPlayerHpBar.fillAmount = PlayerStatusManager.Instance.CurrentHpPercent;
-        uiPlayerHungerBar.fillAmount = PlayerStatusManager.Instance.CurrentHungerPercent;
-        uiPlayerTirstBar.fillAmount = PlayerStatusManager.Instance.CurrentThirstPercent;
-        uiPlayerMentalityBar.fillAmount = PlayerStatusManager.Instance.CurrentMentalityPercent;
-        uiPlayerColdBar.fillAmount = PlayerStatusManager.Instance.CurrentColdPercent;
-    }
-
-    public void CursorVisible(bool value)
+	public void CursorVisible(bool value)
     {
         if (value)
         {

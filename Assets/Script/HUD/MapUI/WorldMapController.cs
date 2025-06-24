@@ -42,7 +42,6 @@ public class WorldMapController : MonoBehaviour
 
     void Update()
     {
-        HandleToggle();
         UpdatePlayerIcon();
     }
     void SetupMapCamera()
@@ -82,22 +81,10 @@ public class WorldMapController : MonoBehaviour
         }
     }
 
-    void HandleToggle()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            OnMapButtonClicked();
-        }
-    }
 
 
-    public void OnMapButtonClicked()
-    {
-        if (worldmapPanel != null)
-        {
-            worldmapPanel.SetActive(!worldmapPanel.activeSelf);
-        }
-    }
+
+
 
 
 

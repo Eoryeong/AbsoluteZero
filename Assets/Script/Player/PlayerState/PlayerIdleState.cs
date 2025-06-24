@@ -15,9 +15,6 @@ public class PlayerIdleState : PlayerGroundState
         player.ChangeCameraStand();
         player.isCrouch = false;
         player.onRifle = false;
-
-        if (player.navMeshObstacle != null)
-			player.navMeshObstacle.height = player.characterController.height;
 	}
 
 	public override void Update()

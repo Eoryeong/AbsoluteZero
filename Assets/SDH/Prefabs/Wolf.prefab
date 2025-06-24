@@ -752,6 +752,7 @@ MonoBehaviour:
   target: {fileID: 0}
   animator: {fileID: 0}
   col: {fileID: 0}
+  animalCorpse: {fileID: 0}
   distanceToTarget: 0
   isDead: 0
   dropItemPrefab: {fileID: 4592482499718207696, guid: 2b2393ac3aea17c48be3212ac9cd81d1, type: 3}
@@ -834,7 +835,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c19ce37bb54b73e45890d692ff1cd854, type: 2}
+  - {fileID: 2100000, guid: e3c3dcf3633222f478c7ebfc5d644ab0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

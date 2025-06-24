@@ -40,6 +40,8 @@ public class Animal : MonoBehaviour
     public Transform target;
     public Animator animator;
     public Collider col;
+    public AnimalCorpse animalCorpse;
+    public InteractObject interactObject;
 
     // 스테이트
     public AnimalState currentState;
@@ -93,6 +95,10 @@ public class Animal : MonoBehaviour
         animator = GetComponent<Animator>();
         col = GetComponent<Collider>();
         target = GameObject.FindGameObjectWithTag("Player")?.transform;
+        animalCorpse = GetComponent<AnimalCorpse>();
+        interactObject = GetComponent<InteractObject>();
+        animalCorpse.enabled = false;
+        interactObject.enabled = false;
     }
 
     protected virtual void InitializeStates()

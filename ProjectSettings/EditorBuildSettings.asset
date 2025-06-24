@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SungZun_Scene02.unity
     guid: 320b2d588b225f34e844dd76aed7a35b
+  - enabled: 1
+    path: Assets/Scenes/SDHSCENE.unity
+    guid: 163a66bc20345be4c8e1ca247ba9719d
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene_Test.unity
+    guid: b104ecf0ef9a0cf40920a576da21beff
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

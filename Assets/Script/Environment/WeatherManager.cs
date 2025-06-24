@@ -8,7 +8,7 @@ public enum WeatherType
 	Snowy
 }
 
-public class WeatherController : MonoBehaviour
+public class WeatherManager : SingletonBehaviour<WeatherManager>
 {
     [SerializeField] private WeatherType currentWeatherType;
 
@@ -38,7 +38,7 @@ public class WeatherController : MonoBehaviour
 
     void Start()
 	{
-		Init();
+		InitWeather();
 		SetWeather();
 	}
 
@@ -48,7 +48,7 @@ public class WeatherController : MonoBehaviour
         DebugWeather();
     }
 
-	private void Init()
+	private void InitWeather()
 	{
 		player = PlayerManager.Instance.PlayerController;
 

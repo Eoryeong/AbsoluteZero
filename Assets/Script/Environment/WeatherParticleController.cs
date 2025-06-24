@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 
 public class WeatherParticleController : MonoBehaviour
@@ -20,20 +19,20 @@ public class WeatherParticleController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		InitWeatherParticle();		
+		if(SceneManager.GetActiveScene().name == "In_Game_Scene")
+		{
+			PlayParticle();		
+		}
+		else
+		{
+			StopParticle();
+		}
 	}
 
 	private void OnDisable()
 	{
-		for (int i = 0; i < particles.Length; i++)
-		{
-			if(particles[i].gameObject.GetComponent<VisualEffect>() != null)
-				particles[i].gameObject.GetComponent<VisualEffect>().Stop();
-			else if(particles[i].gameObject.GetComponent<ParticleSystem>() != null)
-				particles[i].gameObject.GetComponent<ParticleSystem>().Stop();
-		}
+		StopParticle();
 	}
-
 
 	private void OnTriggerExit(Collider other)
 	{
@@ -50,16 +49,8 @@ public class WeatherParticleController : MonoBehaviour
 
 		for (int i = 0; i < particles.Length; i++)
 		{
-			if (particles[i] == null)
-				particles[i] = Instantiate(weatherParticle, transform.position, Quaternion.identity);
-			else
-			{
-				if (particles[i].gameObject.GetComponent<VisualEffect>() != null)
-					particles[i].gameObject.GetComponent<VisualEffect>().Play();
-				else if (particles[i].gameObject.GetComponent<ParticleSystem>() != null)
-					particles[i].gameObject.GetComponent<ParticleSystem>().Play();
-			}
-
+			
+			particles[i] = Instantiate(weatherParticle, transform.position, Quaternion.identity);
 			particles[i].transform.position = transform.position;
 		}
 	}
@@ -73,5 +64,29 @@ public class WeatherParticleController : MonoBehaviour
 		this.index++;
 		if (this.index == 3) 
 			this.index = 0;
+	}
+
+	private void PlayParticle()
+	{
+		for (int i = 0; i < particles.Length; i++)
+		{
+			if (particles[i].gameObject.GetComponent<VisualEffect>() != null)
+				particles[i].gameObject.GetComponent<VisualEffect>().Play();
+			else if (particles[i].gameObject.GetComponent<ParticleSystem>() != null)
+				particles[i].gameObject.GetComponent<ParticleSystem>().Play();
+
+			particles[i].transform.position = transform.position;
+		}
+	}
+
+	private void StopParticle()
+	{
+		for (int i = 0; i < particles.Length; i++)
+		{
+			if (particles[i].gameObject.GetComponent<VisualEffect>() != null)
+				particles[i].gameObject.GetComponent<VisualEffect>().Stop();
+			else if (particles[i].gameObject.GetComponent<ParticleSystem>() != null)
+				particles[i].gameObject.GetComponent<ParticleSystem>().Stop();
+		}
 	}
 }

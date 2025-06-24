@@ -50,6 +50,8 @@ public class PlayerControll : MonoBehaviour
     public LayerMask hitLayers;
     public TwoBoneIKConstraint rifleLeftHandIK;
 
+    public GameObject axeObj;
+
     // 기타 제어변수
     public bool isCrouch;
     public bool onRifle;
@@ -275,9 +277,10 @@ public class PlayerControll : MonoBehaviour
         Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
     }
 
-    private void PlayerLoggingTree()
+    public void PlayerLoggingTree(bool value)
     {
-
+        anim.SetBool("IsLogging", value);
+        axeObj.SetActive(value);
     }
 
     private void OnDrawGizmos()

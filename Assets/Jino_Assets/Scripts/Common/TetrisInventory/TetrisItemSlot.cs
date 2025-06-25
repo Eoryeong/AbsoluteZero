@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] Vector2 size = new Vector2(70f, 70f);
+    public ItemBehaviour itemBehaviour;
     public PickupItemData item;
 
     public Vector2 startPosition;
@@ -52,6 +53,8 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             Debug.Log(item.itemName);
+            TetrisSlot.instanceSlot.itemsInBag.Remove(this);
+            Destroy(gameObject);
         }
     }
 

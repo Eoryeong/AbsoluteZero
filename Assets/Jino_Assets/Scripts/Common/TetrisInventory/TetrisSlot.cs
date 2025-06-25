@@ -96,6 +96,7 @@ public class TetrisSlot : MonoBehaviour
         {
             TetrisItemSlot myItem = Instantiate(prefabSlot);
             myItem.startPosition = new Vector2(posItemNaBag[0].x, posItemNaBag[0].y);
+            myItem.itemBehaviour = item;
             myItem.item = item.data;
             myItem.icon.sprite = item.data.itemIcon;
             myItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;

@@ -57,10 +57,24 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             if(item.itemType == ItemTypes.Food)
             {
                 itemBehaviour.UseItem();
+                TetrisSlot.instanceSlot.itemsInBag.Remove(this);
+                Destroy(gameObject);
             }
-
-            TetrisSlot.instanceSlot.itemsInBag.Remove(this);
-            Destroy(gameObject);
+            else if(item.itemType == ItemTypes.Weapon)
+            {
+                if(item.itemCode == 10)
+                {
+                    PlayerManager.Instance.PlayerController.ToggleRifle();
+                }
+                else
+                {
+                    Debug.Log("기능없음");
+                }
+            }
+            else
+            {
+                Debug.Log("기능없음");
+            }
         }
     }
 

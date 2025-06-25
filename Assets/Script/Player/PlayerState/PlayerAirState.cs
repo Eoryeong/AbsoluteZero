@@ -29,6 +29,12 @@ public class PlayerAirState : PlayerState
 	protected override void ChangeState()
 	{
 		if (player.characterController.isGrounded)
-			stateMachine.ChangeState(player.idleState);
+		{
+			if (player.onRifle)
+				stateMachine.ChangeState(player.rifleIdleState);
+			else
+				stateMachine.ChangeState(player.idleState);
+
+		}
 	}
 }

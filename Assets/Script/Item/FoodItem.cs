@@ -9,41 +9,9 @@ public class FoodItem : ItemBehaviour
     public override void UseItem()
     {
         Debug.Log(data.itemName + " 먹기");
-    }
 
-
-
-    void Heal(PlayerStatus playerStatus)
-    {
-        playerStatus.Heal(data.healAmount);
-    }
-
-    void Cure(PlayerStatus playerStatus)
-    {
-        playerStatus.CureHungerDebuff();
-        playerStatus.CureThirstDebuff();
-    }
-
-    void Eat(PlayerStatus playerStatus)
-    {
-        playerStatus.Eat(data.hungerAmount);
-    }
-
-    void EatBad(PlayerStatus playerStatus)
-    {
-        playerStatus.Eat(data.hungerAmount);
-        playerStatus.HungerDebuff();
-
-    }
-
-    void Drink(PlayerStatus playerStatus)
-    {
-        playerStatus.Drink(data.thirstAmount);
-    }
-
-    void DrinkBad(PlayerStatus playerStatus)
-    {
-        playerStatus.Drink(data.thirstAmount);
-        playerStatus.ThirstDebuff();
+        PlayerStatusManager.Instance.Heal(data.healAmount);
+        PlayerStatusManager.Instance.AddCurrentHunger(data.hungerAmount);
+        PlayerStatusManager.Instance.AddCurrentThirst(data.thirstAmount);
     }
 }

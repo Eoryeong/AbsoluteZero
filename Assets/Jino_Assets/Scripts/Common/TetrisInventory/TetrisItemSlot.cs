@@ -53,6 +53,12 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             Debug.Log(item.itemName);
+
+            if(item.itemType == ItemTypes.Food)
+            {
+                itemBehaviour.UseItem();
+            }
+
             TetrisSlot.instanceSlot.itemsInBag.Remove(this);
             Destroy(gameObject);
         }

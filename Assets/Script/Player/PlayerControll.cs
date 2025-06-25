@@ -37,7 +37,6 @@ public class PlayerControll : MonoBehaviour
 
     // 기타 컴포넌트
     public CharacterController characterController { get; private set; }
-    private PlayerStatus playerStatus;
     public Animator anim;
 
     // CharacterController 관련
@@ -153,7 +152,6 @@ public class PlayerControll : MonoBehaviour
     private void InitComponent()
     {
         characterController = GetComponent<CharacterController>();
-        playerStatus = GetComponent<PlayerStatus>();
     }
 
     private void InitState()

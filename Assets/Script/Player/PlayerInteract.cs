@@ -16,11 +16,12 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        //if (PlayerManager.Instance.playerFreeze) return;
+        if (PlayerManager.Instance.playerFreeze) return;
 
         TryInteract();
         if (Input.GetMouseButtonDown(0) && isFocus && hitObject != null)
         {
+            Debug.Log("aaaa");
             InteractObject interactable = hitObject.GetComponentInParent<InteractObject>();
             if(interactable != null)
             {

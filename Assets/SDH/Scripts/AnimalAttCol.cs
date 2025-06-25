@@ -14,8 +14,7 @@ public class AnimalAttCol : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStatus>().TakeDamage(animal.attackDamage);
-
+            PlayerStatusManager.Instance.TakeDamage(animal.attackDamage);
             Debug.Log($"Player took {animal.attackDamage} damage from {animal.name}.");
         }
     }

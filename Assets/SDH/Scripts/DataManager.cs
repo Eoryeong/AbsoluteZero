@@ -430,18 +430,14 @@ public class DataManager : MonoBehaviour
         if (currentGameData == null || currentGameData.player == null) return;
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject == null) return;
-        PlayerStatus playerStatus = playerObject.GetComponent<PlayerStatus>();
-        if (playerStatus == null) return;
         currentGameData.player.transformX = playerObject.transform.position.x;
         currentGameData.player.transformY = playerObject.transform.position.y;
         currentGameData.player.transformZ = playerObject.transform.position.z;
-        currentGameData.player.currentHealth = playerStatus.currentPlayerHp;
-        currentGameData.player.currentHunger = playerStatus.currentPlayerHunger;
-        currentGameData.player.currentThirst = playerStatus.currentPlayerThirst;
-        currentGameData.player.isHungerDebuffed = playerStatus.isHungerDebuffed;
-        currentGameData.player.isThirstDebuffed = playerStatus.isThirstDebuffed;
-        currentGameData.player.playerLevel = playerStatus.playerLevel;
-        currentGameData.player.experience = playerStatus.playerExp;
+        currentGameData.player.currentHealth = PlayerStatusManager.Instance.CurrentHp;
+        currentGameData.player.currentHunger = PlayerStatusManager.Instance.CurrentHunger;
+        currentGameData.player.currentThirst = PlayerStatusManager.Instance.CurrentThirst;
+        currentGameData.player.isHungerDebuffed = PlayerStatusManager.Instance.isHunger;
+        currentGameData.player.isThirstDebuffed = PlayerStatusManager.Instance.isThirst;
         //스킬, 돈 구현
     }
 }

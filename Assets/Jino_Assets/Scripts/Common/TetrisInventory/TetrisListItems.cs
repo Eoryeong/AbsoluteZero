@@ -40,8 +40,8 @@ public class TetrisListItems : MonoBehaviour
     //아이템 떨어뜨리는 거 구현할 때 필요
     void Start()
     {
-        startPos = new Vector2(3370f, 23f);
-        finalPos = new Vector2(337f, 23f);
+        startPos = new Vector2(3410f, -484f);
+        finalPos = new Vector2(524f, -484f);
     }
 
     void Update()

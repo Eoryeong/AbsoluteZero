@@ -26,6 +26,9 @@ public class PickupItem : MonoBehaviour
             case ItemTypes.Material:
                 behaviour = new ToolItem(data);
                 break;
+            case ItemTypes.Clothing:
+                behaviour = new ToolItem(data);
+                break;
         }
 
         tryPickup = false;

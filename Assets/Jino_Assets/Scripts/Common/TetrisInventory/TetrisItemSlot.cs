@@ -158,6 +158,15 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                                  (int)finalSlot.x >= 0 &&
                                  (int)finalSlot.y >= 0;
 
+            // 포인터 아래의 오브젝트가 장비창인지 확인
+            GameObject hoveredObj = eventData.pointerEnter;
+            if (hoveredObj != null && hoveredObj.CompareTag("EquipmentSlot"))
+            {
+                // 장비창에 아이템 장착 로직
+                Debug.Log("장비창에 아이템을 옮깁니다.");
+                // 예: hoveredObj.GetComponent<EquipmentSlot>().Equip(item);
+            }
+
             if (isValidPosition)
             {
                 List<Vector2> newPosItem = new List<Vector2>();

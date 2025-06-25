@@ -3,11 +3,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] Vector2 size = new Vector2(70f, 70f);
+    public ItemBehaviour itemBehaviour;
     public PickupItemData item;
-    public int quantity = 1;
 
     public Vector2 startPosition;
     public Vector2 oldPosition;
@@ -19,6 +19,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     private bool isDragging = false;
     private bool isRotated = false;
+    private bool isSelected = false;
 
 
     void Start()
@@ -28,9 +29,6 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         UpdateItemSize();
 
         slots = TetrisSlot.instanceSlot;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     void Update()
@@ -47,6 +45,22 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             // UI 크기 업데이트
             UpdateItemSize();
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log(item.itemName);
+
+            if(item.itemType == ItemTypes.Food)
+            {
+                itemBehaviour.UseItem();
+            }
+
+            TetrisSlot.instanceSlot.itemsInBag.Remove(this);
+            Destroy(gameObject);
         }
     }
 
@@ -114,6 +128,8 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
     }
 
+
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         oldPosition = transform.GetComponent<RectTransform>().anchoredPosition;
@@ -161,6 +177,15 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                                  ((int)finalSlot.y + (int)item.itemSize.y) <= slots.maxGridY &&
                                  (int)finalSlot.x >= 0 &&
                                  (int)finalSlot.y >= 0;
+
+            // 포인터 아래의 오브젝트가 장비창인지 확인
+            GameObject hoveredObj = eventData.pointerEnter;
+            if (hoveredObj != null && hoveredObj.CompareTag("EquipmentSlot"))
+            {
+                // 장비창에 아이템 장착 로직
+                Debug.Log("장비창에 아이템을 옮깁니다.");
+                // 예: hoveredObj.GetComponent<EquipmentSlot>().Equip(item);
+            }
 
             if (isValidPosition)
             {
@@ -251,6 +276,14 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             TetrisListItems itemInGame; // list of items prefab to could be instantiated when dropping item.
             itemInGame = FindFirstObjectByType<TetrisListItems>();
+
+            int id = item.itemCode;
+            if (TetrisSlot.instanceSlot.itemCountDict.ContainsKey(id))
+            {
+                TetrisSlot.instanceSlot.itemCountDict[id]--;
+            }
+
+            TetrisSlot.instanceSlot.itemsInBag.Remove(this);
 
             for (int t = 0; t < itemInGame.prefabs.Length; t++)
             {

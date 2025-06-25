@@ -23,6 +23,7 @@ public class PlayerControll : MonoBehaviour
     public Transform standCameraTransform;
     public Transform crouchCameraTransform;
     public Transform standRifleCameraTransform;
+    public Transform loggingCameraTransform;
 
     public float mouseSensitivity = 2f;
     public float crouchCameraDown = 1f;
@@ -36,7 +37,6 @@ public class PlayerControll : MonoBehaviour
 
     // 기타 컴포넌트
     public CharacterController characterController { get; private set; }
-    private PlayerStatus playerStatus;
     public Animator anim;
 
     // CharacterController 관련
@@ -98,7 +98,7 @@ public class PlayerControll : MonoBehaviour
 
     private void Update()
     {
-        //if (PlayerManager.Instance.playerFreeze) return;
+        if (PlayerManager.Instance.playerFreeze) return;
 
         stateMachine.Update();
         HandleMouseLook();
@@ -152,7 +152,6 @@ public class PlayerControll : MonoBehaviour
     private void InitComponent()
     {
         characterController = GetComponent<CharacterController>();
-        playerStatus = GetComponent<PlayerStatus>();
     }
 
     private void InitState()
@@ -262,25 +261,28 @@ public class PlayerControll : MonoBehaviour
             }
         }
 
-
-
         // 가장 가까운 오브젝트에 Hit 함수 실행
         GameObject hitObject = closestHit.collider.gameObject;
 
-        Debug.Log(hitObject.name);
+        Debug.Log(hitObject.tag);
 
-        // 여기에 오브젝트가 맞았을 때의 처리 필요
-        // 예: 몬스터가 맞았다면 데미지를 주는 Hit 함수 호출
-        // (예시)
-        // hitObject.GetComponent<Enemy>()?.Hit(damage);
+        if (hitObject.tag.Contains("NpcBody"))
+        {
+            hitObject.GetComponent<Animal>().TakeDamage(50);
+        }
+        else if (hitObject.tag.Contains("NpcHead"))
+        {
+            hitObject.GetComponent<AnimalHeadShot>().HeadShot(50);
+        }
 
-        Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
+            Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
     }
 
     public void PlayerLoggingTree(bool value)
     {
         anim.SetBool("IsLogging", value);
         axeObj.SetActive(value);
+        nextCameraTarget = value ? loggingCameraTransform : standCameraTransform;
     }
 
     private void OnDrawGizmos()

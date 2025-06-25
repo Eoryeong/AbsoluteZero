@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TetrisListItems : MonoBehaviour
 {
+    public static TetrisListItems instance;
+
     private Vector2 finalPos;
     private Vector2 startPos;
 
@@ -16,16 +18,30 @@ public class TetrisListItems : MonoBehaviour
 
     private bool isInventoryActivated = false;
 
-    //아이템 떨어뜨리는 거 구현할 때 필요
-    void Start()
+    private void Awake()
     {
-        startPos = new Vector2(3370f, 23f);
-        finalPos = new Vector2(337f, 23f);
+        if (null == instance)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
         for (int i = 0; i < prefabs.Length; i++)
         {
             items.Add(prefabs[i].GetComponent<PickupItem>().data);
         }
+    }
+
+    //아이템 떨어뜨리는 거 구현할 때 필요
+    void Start()
+    {
+        startPos = new Vector2(3410f, -484f);
+        finalPos = new Vector2(524f, -484f);
     }
 
     void Update()
@@ -52,12 +68,16 @@ public class TetrisListItems : MonoBehaviour
     {
         isInventoryActivated = !isInventoryActivated;
         Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPos.x, startPos.y);
+        UIManager.Instance.CursorVisible(false);
+        PlayerManager.Instance.SetPlayerFreeze(false);
     }
 
     private void OpenInven()
     {
         isInventoryActivated = !isInventoryActivated;
         Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(finalPos.x, finalPos.y);
+        UIManager.Instance.CursorVisible(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
     }
 
 }

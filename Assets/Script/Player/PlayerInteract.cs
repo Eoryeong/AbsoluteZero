@@ -9,11 +9,9 @@ public class PlayerInteract : MonoBehaviour
     private bool isFocus;
     private GameObject hitObject;
 
-    private PlayerStatus playerStatus;
-
     private void Start()
     {
-        playerStatus = GetComponent<PlayerStatus>();
+        
     }
 
     private void Update()

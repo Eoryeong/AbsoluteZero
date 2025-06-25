@@ -12,7 +12,7 @@ public class DamageTest : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F9))
         {
-            LoadingManager.LoadScene("SampleScene");
+            LoadingManager.LoadScene("LoadSceneTest");
         }
     }
 }

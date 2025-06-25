@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 0
   itemName: "\uC870\uB9AC\uB41C \uACE0\uAE30"
   itemCode: 7
-  itemLore: If you don't eat it, you'll be in trouble
+  itemLore: "\uBA39\uC9C0 \uC54A\uC73C\uBA74 \uD070\uC77C\uB0A9\uB2C8\uB2E4"
   previewPrefab: {fileID: 1651194722622744994, guid: 06c39900278bd0b4485e1c0d797d882d, type: 3}
   itemWeight: 0
   itemIcon: {fileID: 0}
@@ -23,8 +23,8 @@ MonoBehaviour:
   stackable: 0
   maxStackSize: 1
   healAmount: 0
-  hungerAmount: 0
-  thirstAmount: 0
+  hungerAmount: 60
+  thirstAmount: -10
   foodDurability: 0
   hungerDecreaseRate: 0
   thirstDecreaseRate: 0

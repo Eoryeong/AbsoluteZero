@@ -4,6 +4,8 @@ using UnityEngine;
 public class Craft
 {
     public string craftName;
+    public int needItemCode;
+    public int needItemNum;
     public GameObject go_Prefab;
     public GameObject go_PreviewPrefab;
 }
@@ -18,6 +20,9 @@ public class CraftManual : BaseUI
 
     private GameObject go_Preview;
     private GameObject go_Prefab;
+
+    private int selectedItemCode;
+    private int selectedItemNum;
 
     [SerializeField] private Transform tf_Player;
 
@@ -34,10 +39,10 @@ public class CraftManual : BaseUI
         if (isPreviewActivated)
             PreviewPositionUpdate();
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
             Build();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isPreviewActivated)
             Cancel();
     }
 
@@ -45,12 +50,28 @@ public class CraftManual : BaseUI
     {
         if (isPreviewActivated && go_Preview.GetComponent<PreviewObject>().isBuildable())
         {
+            TetrisSlot.instanceSlot.itemCountDict[selectedItemCode] -= selectedItemNum;
+            for (int i = 0; i < selectedItemNum; i++)
+            {
+                foreach (TetrisItemSlot slot in TetrisSlot.instanceSlot.itemsInBag)
+                {
+                    if (slot.item.itemCode == selectedItemCode)
+                    {
+                        TetrisSlot.instanceSlot.itemsInBag.Remove(slot);
+                        Destroy(slot.gameObject);
+                        break;
+                    }
+                }
+            }
+
             Instantiate(go_Prefab, hitInfo.point, Quaternion.identity);
             Destroy(go_Preview);
             isActivated = false;
             isPreviewActivated = false;
             go_Preview = null;
             go_Prefab = null;
+            selectedItemCode = 0;
+            selectedItemNum = 0;
         }
     }
 
@@ -75,6 +96,8 @@ public class CraftManual : BaseUI
         isPreviewActivated = false;
         go_Preview = null;
         go_Prefab = null;
+        selectedItemCode = 0;
+        selectedItemNum = 0;
 
         go_BaseUI.SetActive(false);
     }
@@ -90,24 +113,50 @@ public class CraftManual : BaseUI
     private void OpenWindow()
     {
         isActivated = true;
-        //GameManager.isOpenCraftManual = true;
         go_BaseUI.SetActive(true);
+        UIManager.Instance.CursorVisible(true);
+        PlayerManager.Instance.SetPlayerFreeze(true);
     }
 
     private void CloseWindow()
     {
-        //GameManager.isOpenCraftManual = false;
         isActivated = false;
         go_BaseUI.SetActive(false);
+        UIManager.Instance.CursorVisible(false);
+        PlayerManager.Instance.SetPlayerFreeze(false);
     }
 
     public void SlotClick(int _slotNumber)
     {
-        //GameManager.isOpenCraftManual = false;
-        go_Preview = Instantiate(craft_fire[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
-        go_Prefab = craft_fire[_slotNumber].go_Prefab;
-        isPreviewActivated = true;
-        go_BaseUI.SetActive(false);
+        if (CheckIngredient(_slotNumber))
+        {
+            go_Preview = Instantiate(craft_fire[_slotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
+            go_Prefab = craft_fire[_slotNumber].go_Prefab;
+            selectedItemCode = craft_fire[_slotNumber].needItemCode;
+            selectedItemNum = craft_fire[_slotNumber].needItemNum;
+            isPreviewActivated = true;
+            go_BaseUI.SetActive(false);
+            UIManager.Instance.CursorVisible(false);
+            PlayerManager.Instance.SetPlayerFreeze(false);
+        }
+    }
 
+    public bool CheckIngredient(int _slotNumber)
+    {
+        if (TetrisSlot.instanceSlot.itemCountDict.ContainsKey(craft_fire[_slotNumber].needItemCode))
+        {
+            if (TetrisSlot.instanceSlot.itemCountDict[craft_fire[_slotNumber].needItemCode] < craft_fire[_slotNumber].needItemNum)
+            {
+                Debug.Log("아이템 재료의 개수가 부족합니다.");
+                return false;
+            }
+        }
+        else
+        {
+            Debug.Log("아이템의 재료 자체가 없습니다.");
+            return false;
+        }
+
+        return true;
     }
 }

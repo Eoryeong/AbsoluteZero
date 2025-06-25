@@ -18,8 +18,8 @@ MonoBehaviour:
   itemLore: "\uBC29\uC218\uC5D0 \uC88B\uC2B5\uB2C8\uB2E4"
   previewPrefab: {fileID: 788855224566437142, guid: 5949e803c36bc034fa3fd8af2ff334bd, type: 3}
   itemWeight: 0
-  itemIcon: {fileID: 0}
-  itemSize: {x: 0, y: 0}
+  itemIcon: {fileID: 21300000, guid: 1f88794ddecfaff4c9289a9ac370c66c, type: 3}
+  itemSize: {x: 3, y: 4}
   stackable: 0
   maxStackSize: 1
   healAmount: 0

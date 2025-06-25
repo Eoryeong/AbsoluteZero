@@ -17,3 +17,20 @@ MonoBehaviour:
   itemCode: 4
   itemLore: It's a must to live
   previewPrefab: {fileID: 6052599689122290104, guid: fd860ce16b8ee7942876c7dfd5b2cc43, type: 3}
+  itemWeight: 0
+  itemIcon: {fileID: 21300000, guid: 65659273698469849992ca4a0016acfc, type: 3}
+  itemSize: {x: 1, y: 2}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: 0
+  hungerAmount: 0
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

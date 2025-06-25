@@ -122,7 +122,7 @@ public class UIManager : SingletonBehaviour<UIManager>
 
         menuTitle.gameObject.SetActive(true);
         menuAcceptBtn.gameObject.SetActive(true);
-        menuAcceptBtn.onClick.AddListener(() => bed.Sleep(int.Parse(menuSleepTime.text)));
+        menuAcceptBtn.onClick.AddListener(() => StartCoroutine(bed.Sleep(int.Parse(menuSleepTime.text))));
         menuBackBtn.gameObject.SetActive(true);
         menuSleepTime.gameObject.SetActive(true);
         menuTitle.text = "Go to bed";

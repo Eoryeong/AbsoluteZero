@@ -5373,9 +5373,13 @@ MonoBehaviour:
   go_BaseUI: {fileID: 1705065202}
   craft_fire:
   - craftName: CampFire1
+    needItemCode: 0
+    needItemNum: 0
     go_Prefab: {fileID: 6466033828742862053, guid: dedb1352b76bede4d95fdcbff054a860, type: 3}
     go_PreviewPrefab: {fileID: 6121790304577944299, guid: 082787873f1a6a14d8a30462b8e0f41c, type: 3}
   - craftName: CampFire2
+    needItemCode: 0
+    needItemNum: 0
     go_Prefab: {fileID: 9068145026302262132, guid: 58d10a2858c8c2e43a84f3bdb36678c5, type: 3}
     go_PreviewPrefab: {fileID: 5372483504377522786, guid: 51d7a4d928f42d344ae93c57cdcb4b01, type: 3}
   tf_Player: {fileID: 346667372}

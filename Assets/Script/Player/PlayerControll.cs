@@ -13,6 +13,9 @@ public class PlayerControll : MonoBehaviour
     public float jumpForce = 2f;
     public float slideAngleThreshold = 50f;//미끄러지는 경사면각도
 
+    //플레이어 추락정보
+    public float fallingHight = 8f;
+    public float fallDamageRate = 5f;
 
     // 카메라
     public Transform cameraTransform;

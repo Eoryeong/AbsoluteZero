@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerAirState : PlayerState
 {
+	private Vector3 FallingStartPos;
+	private Vector3 FallingEndPos;
+
 	public PlayerAirState(PlayerControll player, PlayerStateMachine stateMachine, string animBoolName)
 		: base(player, stateMachine, animBoolName)
 	{
@@ -10,6 +13,7 @@ public class PlayerAirState : PlayerState
 	public override void Enter()
 	{
 		base.Enter();
+		FallingStartPos = player.transform.position;
 	}
 
 	public override void Update()
@@ -24,6 +28,15 @@ public class PlayerAirState : PlayerState
 		base.Exit();
 		player.velocity.x = 0;
 		player.velocity.z = 0;
+
+		FallingEndPos = player.transform.position;
+
+		float hight = FallingStartPos.y - FallingEndPos.y;
+
+		if (hight > player.fallingHight)
+		{
+			PlayerStatusManager.Instance.TakeDamage(hight * player.fallDamageRate);
+		}
 	}
 
 	protected override void ChangeState()

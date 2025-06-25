@@ -32,7 +32,9 @@ public class Animal : MonoBehaviour
     public float wanderProbability = 0.5f;
     public float idleProbability = 0.5f;
     public AnimalType animalType = AnimalType.Predator;
+    public string targetLayer = "Structure";
     bool isInDamagedState = false;
+
 
     // 컴포넌트
     [Header("Components")]
@@ -57,8 +59,6 @@ public class Animal : MonoBehaviour
     [Header("Runtime Variables")]
     public float distanceToTarget;
     public bool isDead = false;
-
-    public GameObject dropItemPrefab;
 
 
     protected virtual void Awake()
@@ -175,14 +175,10 @@ public class Animal : MonoBehaviour
         ChangeState(deadState);
     }
 
-    public void DropItem()
+    public void ChangeLayer()
     {
-        if (dropItemPrefab != null)
-        {
-            Instantiate(dropItemPrefab, transform.position + Vector3.up, Quaternion.identity);
-        }
+        gameObject.layer = LayerMask.NameToLayer(targetLayer);
     }
-
     public virtual void OnIdleEnter() { }
     public virtual void OnIdleUpdate() { }
     public virtual void OnIdleExit() { }

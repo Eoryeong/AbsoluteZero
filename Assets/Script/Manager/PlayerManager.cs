@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class PlayerManager : SingletonBehaviour<PlayerManager>
 {
-    [SerializeField] private GameObject player;
+    private GameObject player;
     private PlayerControll playerController;
-    private PlayerStatus playerStatus;
 
-    public GameObject Player { get { return player; } }
     public PlayerControll PlayerController { get  { return playerController; } }
-    public PlayerStatus PlayerState { get { return playerStatus; } }
 
     public bool playerFreeze { get; private set; } = false;
 
@@ -17,10 +14,18 @@ public class PlayerManager : SingletonBehaviour<PlayerManager>
         InitPlayer();
 	}
 
-    private void InitPlayer()
+	private void OnEnable()
+	{
+        InitPlayer();
+	}
+
+	private void InitPlayer()
     {
+        player = GameObject.FindWithTag("Player");
+
+        Debug.Log(player.name);
+
         playerController = player.GetComponent<PlayerControll>();
-        playerStatus = player.GetComponent<PlayerStatus>();
     }
 
     public void SetPlayerFreeze(bool freeze)

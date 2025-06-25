@@ -25,7 +25,7 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : SingletonBehaviour<
 
 			if (!m_IsDestroyOnLoad)
 			{
-				DontDestroyOnLoad(this);
+				DontDestroyOnLoad(this.gameObject);
 			}
 		}
 		else

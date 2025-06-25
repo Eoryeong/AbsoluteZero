@@ -12,7 +12,7 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	[SerializeField] private float StartSecond = 0f;
 
 	[SerializeField] private float timeScale = 5f;
-	[HideInInspector] public bool isPause = false;
+	[HideInInspector] public bool isPause;
 
 	private void Start()
 	{
@@ -27,6 +27,8 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 
 	public void InitTime()
 	{
+		isPause = false;
+
 		gameHour = StartHour;
 		gameMinute = StartMinute;
 		gameSecond = StartSecond;

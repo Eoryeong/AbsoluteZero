@@ -4,6 +4,7 @@ public class ObjectWood : MonoBehaviour
 {
     public bool canBreak;
     private bool isBreaking;
+    private GameObject player;
 
     [SerializeField] private float breakDuration;
     [SerializeField] private GameObject fireWoodPrefab;
@@ -34,12 +35,20 @@ public class ObjectWood : MonoBehaviour
         {
             isBreaking = false;
             UIManager.Instance.HideProgress();
+            player.GetComponent<PlayerControll>().PlayerLoggingTree(false);
         }
     }
 
     public void TryChopTree()
     {
         if (!canBreak) return;
+
+        if(player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }        
+
+        player.GetComponent<PlayerControll>().PlayerLoggingTree(true);
 
         isBreaking = true;
         breakTimer = 0f;
@@ -49,6 +58,8 @@ public class ObjectWood : MonoBehaviour
     private void TreeBreaking()
     {
         Vector3 origin = transform.position;
+
+        player.GetComponent<PlayerControll>().PlayerLoggingTree(false);
 
         for (int i = 0; i < fireWoodGenQty; i++)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8742301421860967920}
   - component: {fileID: 2209305286951634805}
   m_Layer: 0
-  m_Name: WeatherController
+  m_Name: WeatherManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

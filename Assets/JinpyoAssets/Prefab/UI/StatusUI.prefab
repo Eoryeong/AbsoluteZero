@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 90727ef1e5c911a4ebb89c62265b4dd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b181fcee70960e4e9c6c9abfd19d133, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -159,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8468112489887074898}
+  - component: {fileID: 7248986829138607450}
   m_Layer: 5
   m_Name: StatusUI
   m_TagString: Untagged
@@ -190,6 +191,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7248986829138607450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035419047972580716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c74ad31aff1bd4187e7e226995b980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPlayerHpBar: {fileID: 6774914862154268269}
+  uiPlayerHungerBar: {fileID: 7335488710438197795}
+  uiPlayerTirstBar: {fileID: 7257453586495129974}
+  uiPlayerMentalityBar: {fileID: 4120788031016779827}
+  uiPlayerColdBar: {fileID: 3134590325568403305}
 --- !u!1 &3110727162104000478
 GameObject:
   m_ObjectHideFlags: 0

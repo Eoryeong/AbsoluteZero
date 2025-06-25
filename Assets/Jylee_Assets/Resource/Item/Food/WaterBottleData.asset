@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterBottleData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Water Bottle
+  itemName: "\uBB3C\uBCD1"
   itemCode: 4
   itemLore: It's a must to live
   previewPrefab: {fileID: 6052599689122290104, guid: fd860ce16b8ee7942876c7dfd5b2cc43, type: 3}

@@ -13,9 +13,24 @@ MonoBehaviour:
   m_Name: CookedMeatData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Cooked Meat
+  itemName: "\uC870\uB9AC\uB41C \uACE0\uAE30"
   itemCode: 7
   itemLore: If you don't eat it, you'll be in trouble
   previewPrefab: {fileID: 1651194722622744994, guid: 06c39900278bd0b4485e1c0d797d882d, type: 3}
+  itemWeight: 0
   itemIcon: {fileID: 0}
   itemSize: {x: 0, y: 0}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: 0
+  hungerAmount: 0
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

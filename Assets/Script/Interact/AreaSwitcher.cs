@@ -17,10 +17,6 @@ public class AreaSwitcher : MonoBehaviour
     [SerializeField] private string lockedMessage = "문이 잠겨있습니다.";
 
 
-
-
-    private PlayerStatus playerStatus;
-
     void Start()
     {
         // 씬 시작 시 플레이어 위치 설정
@@ -79,12 +75,8 @@ public class AreaSwitcher : MonoBehaviour
         if (player != null)
         {
 
-            playerStatus = player.GetComponent<PlayerStatus>();
-
-            if (playerStatus != null)
-            {
-                PlayerManager.Instance.SetPlayerFreeze(true);
-            }
+            PlayerManager.Instance.SetPlayerFreeze(true);
+            
         }
 
         // 문 열기 사운드 재생

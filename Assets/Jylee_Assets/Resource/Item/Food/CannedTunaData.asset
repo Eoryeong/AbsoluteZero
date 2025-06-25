@@ -23,7 +23,7 @@ MonoBehaviour:
   stackable: 0
   maxStackSize: 1
   healAmount: 0
-  hungerAmount: 0
+  hungerAmount: 40
   thirstAmount: 0
   foodDurability: 0
   hungerDecreaseRate: 0

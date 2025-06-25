@@ -49,6 +49,8 @@ public class PlayerControll : MonoBehaviour
     public float rifleRange = 300f;
     public LayerMask hitLayers;
     public TwoBoneIKConstraint rifleLeftHandIK;
+    [SerializeField] private Transform muzzlePos;
+    [SerializeField] private GameObject gunFireEff;
 
     public GameObject axeObj;
 
@@ -239,6 +241,10 @@ public class PlayerControll : MonoBehaviour
 
     public void FireRifleBullet()
     {
+        // 이펙트
+        GameObject eff = Instantiate(gunFireEff, muzzlePos.position, Quaternion.identity);
+        Destroy(eff, 0.5f);
+
         Vector3 origin = cameraTransform.transform.position; // 혹은 총구 위치
         Vector3 direction = cameraTransform.transform.forward;
 
@@ -291,5 +297,26 @@ public class PlayerControll : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(cameraTransform.transform.position, cameraTransform.transform.forward * rifleRange);
+    }
+
+    public void ToggleRifle()
+    {
+        // FireRifleBullet();
+        onRifle = !onRifle;
+        rifleObj.SetActive(onRifle);
+        anim.SetBool("OnRifle", onRifle);
+
+        if (onRifle)
+        {
+            stateMachine.ChangeState(rifleIdleState);
+            ChangeCameraStandRifle();
+            rifleLeftHandIK.weight = 1;
+        }
+        else
+        {
+            stateMachine.ChangeState(idleState);
+            ChangeCameraStand();
+            rifleLeftHandIK.weight = 0;
+        }
     }
 }

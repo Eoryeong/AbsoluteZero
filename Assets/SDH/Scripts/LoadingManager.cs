@@ -34,6 +34,7 @@ public class LoadingManager : MonoBehaviour
     {
         if (isLoadingComplete && Input.GetKeyDown(continueKey))
         {
+            Debug.Log("Continuing to next scene: " + nextSceneName);
             ContinueToNextScene();
         }
     }
@@ -91,6 +92,7 @@ public class LoadingManager : MonoBehaviour
 
     private void OnLoadingComplete()
     {
+        isLoadingComplete = true;
         if (loadingBar != null)
         {
             loadingBar.fillAmount = 1f;

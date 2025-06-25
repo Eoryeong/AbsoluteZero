@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5491557503079185892}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5529669719643483069}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013079149736729214}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf_tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9136136164236637225}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLeg2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 69258895367260611}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLeg1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5015045311351860589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfHub005Bone003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6995334644276362053}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3539582101725413947}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4177255972290618047}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLeg3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7663303190060062024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLegAnkle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8180356665906190995}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLegPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117617180156662487}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfHub005Bone002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6050761831312846957}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -419,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 845661220803093613}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfHub003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7143922333076399238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLegPlatform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 905710820142575387}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7313113630940951556}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3561703321078838193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfSpine3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5394107000410456987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfSpine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,9 +617,11 @@ GameObject:
   - component: {fileID: 871758309724879216}
   - component: {fileID: 2063124767412284469}
   - component: {fileID: 5542280925644209463}
-  m_Layer: 0
+  - component: {fileID: 3943802055411492409}
+  - component: {fileID: 4083872157555499816}
+  m_Layer: 10
   m_Name: Wolf
-  m_TagString: Untagged
+  m_TagString: NpcBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,6 +647,7 @@ Transform:
   - {fileID: 3539582101725413947}
   - {fileID: 7143922333076399238}
   - {fileID: 7782213698582950599}
+  - {fileID: 3806831777848479108}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -33.28, z: 0}
 --- !u!95 &7309617638494070381
@@ -748,14 +751,15 @@ MonoBehaviour:
   wanderProbability: 0.5
   idleProbability: 0.5
   animalType: 0
+  targetLayer: Structure
   agent: {fileID: 0}
   target: {fileID: 0}
   animator: {fileID: 0}
   col: {fileID: 0}
   animalCorpse: {fileID: 0}
+  interactObject: {fileID: 0}
   distanceToTarget: 0
   isDead: 0
-  dropItemPrefab: {fileID: 4592482499718207696, guid: 2b2393ac3aea17c48be3212ac9cd81d1, type: 3}
   attcol: {fileID: 7773173939625020941}
 --- !u!136 &5542280925644209463
 CapsuleCollider:
@@ -780,6 +784,35 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 2
   m_Center: {x: 0, y: 1.32, z: -0.15}
+--- !u!114 &3943802055411492409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486398800520589625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21323d381d7ddc44bfe8a89144d5bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBreak: 1
+  breakDuration: 2
+  DropItem: {fileID: 4809479898912152209, guid: 115413fa10a3ec041a6ad9c406de3457, type: 3}
+--- !u!114 &4083872157555499816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486398800520589625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faeb2e19fcdaa094684a0cb0803f8543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: "\uB291\uB300\uC2DC\uCCB4"
+  objectType: 8
 --- !u!1 &3652227385099678987
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6418205917977427508}
   - component: {fileID: 3762322335132530202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7139359763447027900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLegAnkle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4198693286921922513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLeg3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,7 +1005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 682724697641712976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfSpine2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1004,7 +1037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9111148519351003343}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLeg1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1292947348498332393}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1068,7 +1101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7049147647201817150}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLegAnkle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1099,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3046358444872407211}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,7 +1164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1443291315560714640}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfSpine1 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1163,7 +1196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6708481492196537070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLeg2 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,7 +1228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5253699558709658740}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfSpine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1227,7 +1260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4375823724748557240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLegPlatform 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,7 +1291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9173392326848482324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfLLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1290,7 +1323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5898928932499332540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wolf3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1313,6 +1346,72 @@ Transform:
   - {fileID: 6050761831312846957}
   m_Father: {fileID: 1292947348498332393}
   m_LocalEulerAnglesHint: {x: -0.0000053400745, y: -0.000015611282, z: 21.03726}
+--- !u!1 &7239724376315590766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3806831777848479108}
+  - component: {fileID: 4602111071242002879}
+  - component: {fileID: 8226949105097913011}
+  m_Layer: 10
+  m_Name: Head
+  m_TagString: NpcHead
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3806831777848479108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239724376315590766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.023, y: 2.105, z: 1.167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6996083581199725817}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &4602111071242002879
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239724376315590766}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.29
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8226949105097913011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239724376315590766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b92764470e47941867af91380ac4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7627390727759340362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7534867518295191485}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfRLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6481532954283465458}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfHub005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1388,7 +1487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3838376440210865195}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfHub004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1422,7 +1521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5080801803581925946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfHub005Bone001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1453,7 +1552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5666559521441734653}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WolfTail5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1486,7 +1585,7 @@ GameObject:
   - component: {fileID: 7782213698582950599}
   - component: {fileID: 7773173939625020941}
   - component: {fileID: 871035047672554381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttCol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

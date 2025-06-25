@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Item
   - Target
+  - NpcBody
+  - NpcHead
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Item Object
   - Structure
   - Player
-  - 
+  - Npc
   - 
   - 
   - 

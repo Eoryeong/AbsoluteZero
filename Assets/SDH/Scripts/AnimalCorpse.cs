@@ -48,6 +48,7 @@ public class AnimalCorpse : MonoBehaviour
         Vector3 origin = transform.position;
 
         Instantiate(DropItem, origin, Quaternion.identity);
+        Debug.Log("Looting completed, item dropped!");
 
         Destroy(gameObject);
     }

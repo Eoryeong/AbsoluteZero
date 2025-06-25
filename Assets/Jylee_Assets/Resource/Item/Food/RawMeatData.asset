@@ -13,9 +13,24 @@ MonoBehaviour:
   m_Name: RawMeatData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Raw Meat
+  itemName: "\uC0DD\uACE0\uAE30"
   itemCode: 6
-  itemLore: Uncooked meat. You'll be in trouble if you eat it
+  itemLore: "\uBA39\uC73C\uBA74 \uD070\uC77C\uB0A9\uB2C8\uB2E4"
   previewPrefab: {fileID: 214028948364071943, guid: 3ca17070768cf7d48b8690ccb7b1033d, type: 3}
+  itemWeight: 0
   itemIcon: {fileID: 0}
   itemSize: {x: 0, y: 0}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: -20
+  hungerAmount: 50
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

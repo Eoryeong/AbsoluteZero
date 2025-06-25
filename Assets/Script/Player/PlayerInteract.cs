@@ -9,20 +9,19 @@ public class PlayerInteract : MonoBehaviour
     private bool isFocus;
     private GameObject hitObject;
 
-    private PlayerStatus playerStatus;
-
     private void Start()
     {
-        playerStatus = GetComponent<PlayerStatus>();
+        
     }
 
     private void Update()
     {
-        //if (PlayerManager.Instance.playerFreeze) return;
+        if (PlayerManager.Instance.playerFreeze) return;
 
         TryInteract();
         if (Input.GetMouseButtonDown(0) && isFocus && hitObject != null)
         {
+            Debug.Log("aaaa");
             InteractObject interactable = hitObject.GetComponentInParent<InteractObject>();
             if(interactable != null)
             {

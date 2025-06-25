@@ -13,9 +13,24 @@ MonoBehaviour:
   m_Name: CannedHamData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Canned Ham
+  itemName: "\uD584 \uD1B5\uC870\uB9BC"
   itemCode: 9
-  itemLore: This is the perfect gift
+  itemLore: "\uC120\uBB3C\uC6A9\uC73C\uB85C \uC544\uC8FC \uC88B\uC2B5\uB2C8\uB2E4"
   previewPrefab: {fileID: 6734026647045441479, guid: 0bbaf9b44dddea146ba832df9d3016cf, type: 3}
+  itemWeight: 0
   itemIcon: {fileID: 0}
   itemSize: {x: 0, y: 0}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: 0
+  hungerAmount: 50
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

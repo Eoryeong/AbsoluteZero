@@ -13,7 +13,24 @@ MonoBehaviour:
   m_Name: RifleAmmoData
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Rifle Ammo
+  itemName: "\uC18C\uCD1D \uD0C4\uC57D"
   itemCode: 11
-  itemLore: It's ammunition
+  itemLore: "\uD0C4\uD53C\uB294 \uAF2D \uCC59\uAE30\uC154\uC57C \uD569\uB2C8\uB2E4"
   previewPrefab: {fileID: 6807606832257750498, guid: 38cf80bacfc64434e890a239548e7183, type: 3}
+  itemWeight: 0
+  itemIcon: {fileID: 0}
+  itemSize: {x: 0, y: 0}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: 0
+  hungerAmount: 0
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

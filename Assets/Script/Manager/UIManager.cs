@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,9 +32,17 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField] private TextMeshProUGUI test;
     [SerializeField] private Button menuBackBtn;
     [SerializeField] private Button menuAcceptBtn;
+    [SerializeField] private Text menuSleepTime;
+    [SerializeField] private Image fadeImage;
     public Transform menuItemPreviewPos;
 
-    void Start()
+    [Header("Fade In/Out Setting")]
+    [SerializeField] float fadeDuration = 1f;
+
+	private Coroutine currentFade;
+	private enum FadeDirection { In, Out }
+
+	void Start()
     {
         inMenu = false;
     }
@@ -104,7 +113,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         uiProgress.SetActive(false);
     }
 
-    public void BedMenuOpen()
+    public void BedMenuOpen(ObjectBed bed)
     {
         SetPlayerUICanvas(false);
         CursorVisible(true);
@@ -113,7 +122,9 @@ public class UIManager : SingletonBehaviour<UIManager>
 
         menuTitle.gameObject.SetActive(true);
         menuAcceptBtn.gameObject.SetActive(true);
+        menuAcceptBtn.onClick.AddListener(() => StartCoroutine(bed.Sleep(int.Parse(menuSleepTime.text))));
         menuBackBtn.gameObject.SetActive(true);
+        menuSleepTime.gameObject.SetActive(true);
         menuTitle.text = "Go to bed";
         SetMenuUICanvas(true);
     }
@@ -139,6 +150,7 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void CloseMenu()
     {
+        menuAcceptBtn.onClick.RemoveAllListeners();
         SetMenuUICanvas(false);
         SetPlayerUICanvas(true);
         CursorVisible(false);
@@ -155,6 +167,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         menuBackBtn.gameObject.SetActive(false);
         menuAcceptBtn.gameObject.SetActive(false);
         recordPanel.gameObject.SetActive(false);
+        menuSleepTime.gameObject.SetActive(false);
     }
 
     public void RecordMenuOpen()
@@ -176,4 +189,49 @@ public class UIManager : SingletonBehaviour<UIManager>
         totalDrinkWater.text = "마신 물의 양 : " + GameRecode.instance.totalDrinkWater;
         test.text = "해당 메뉴를 열은 횟수 : " + GameRecode.instance.test;
     }
+
+	public void FadeIn()
+	{
+		StartFade(FadeDirection.In);
+	}
+
+	public void FadeOut()
+	{
+		StartFade(FadeDirection.Out);
+	}
+
+	private void StartFade(FadeDirection direction)
+	{
+		if (currentFade != null)
+		{
+			StopCoroutine(currentFade);
+		}
+
+		currentFade = StartCoroutine(FadeRoutine(direction));
+	}
+
+	private IEnumerator FadeRoutine(FadeDirection direction)
+	{
+		float time = 0f;
+		Color color = fadeImage.color;
+
+		float startAlpha = (direction == FadeDirection.In) ? 1f : 0f;
+		float endAlpha = (direction == FadeDirection.In) ? 0f : 1f;
+
+		color.a = startAlpha;
+		fadeImage.color = color;
+
+		while (time < fadeDuration)
+		{
+			time += Time.deltaTime;
+			float t = Mathf.Clamp01(time / fadeDuration);
+			color.a = Mathf.Lerp(startAlpha, endAlpha, t);
+			fadeImage.color = color;
+			yield return null;
+		}
+
+		color.a = endAlpha;
+		fadeImage.color = color;
+		currentFade = null;
+	}
 }

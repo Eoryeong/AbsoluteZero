@@ -3011,37 +3011,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &417864533
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 417864534}
-  m_Layer: 7
-  m_Name: MuzzlePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &417864534
+--- !u!4 &417864534 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 61612103225666332, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
+  m_PrefabInstance: {fileID: 6556738331294759833}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417864533}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0153, y: 0.159, z: -1.105}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2067378920}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &431048674
 GameObject:
   m_ObjectHideFlags: 0
@@ -10531,11 +10505,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8468112489887074898, guid: b32c2f737b7d4ce41ab50a3478fefacf, type: 3}
   m_PrefabInstance: {fileID: 195232503}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1910326600 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 954409146111481407, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
-  m_PrefabInstance: {fileID: 6556738331294759833}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1924142654
 GameObject:
   m_ObjectHideFlags: 0
@@ -11497,11 +11466,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063914552}
   m_CullTransparentMesh: 1
---- !u!4 &2067378920 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9018433411582800551, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
-  m_PrefabInstance: {fileID: 6556738331294759833}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2071747010
 GameObject:
   m_ObjectHideFlags: 0
@@ -12222,10 +12186,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 457682734}
     - target: {fileID: 5616406742343595016, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
-      propertyPath: fireEff
-      value: 
-      objectReference: {fileID: 6177719056195393336, guid: 2c3d0a8116c35f64f9cd6f9c43341e71, type: 3}
-    - target: {fileID: 5616406742343595016, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
       propertyPath: muzzlePos
       value: 
       objectReference: {fileID: 417864534}
@@ -12237,14 +12197,6 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 330585546}
-    - target: {fileID: 5616406742343595016, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
-      propertyPath: standRifleCameraTransform
-      value: 
-      objectReference: {fileID: 1910326600}
-    - target: {fileID: 5834995871410689985, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7143332802440048635, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -12303,10 +12255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 9018433411582800551, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 417864534}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a87c6f32d3b3ac6459bd429975cba835, type: 3}
 --- !u!1001 &6592511577299257744

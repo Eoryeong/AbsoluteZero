@@ -178,6 +178,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             {
                 // 장비창에 아이템 장착 로직
                 Debug.Log("장비창에 아이템을 옮깁니다.");
+                Equipment.instance.Equip(itemBehaviour, hoveredObj.GetComponent<RectTransform>().anchoredPosition);
                 // 예: hoveredObj.GetComponent<EquipmentSlot>().Equip(item);
             }
 

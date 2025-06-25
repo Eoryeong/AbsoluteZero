@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] Vector2 size = new Vector2(70f, 70f);
     public PickupItemData item;
@@ -18,6 +18,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     private bool isDragging = false;
     private bool isRotated = false;
+    private bool isSelected = false;
 
 
     void Start()
@@ -43,6 +44,14 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             // UI 크기 업데이트
             UpdateItemSize();
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log(item.itemName);
         }
     }
 
@@ -109,6 +118,8 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             }
         }
     }
+
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {

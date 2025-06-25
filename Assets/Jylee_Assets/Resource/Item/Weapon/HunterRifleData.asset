@@ -13,9 +13,24 @@ MonoBehaviour:
   m_Name: HunterRifleData
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Hunter's Rifle
+  itemName: "\uC0AC\uB0E5\uC6A9 \uC18C\uCD1D"
   itemCode: 10
   itemLore: be a hunting rifle
   previewPrefab: {fileID: 7694597754047989336, guid: 1dd5a89ddf5c2f242aef66ab34d9a169, type: 3}
+  itemWeight: 0
   itemIcon: {fileID: 0}
   itemSize: {x: 0, y: 0}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: 0
+  hungerAmount: 0
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

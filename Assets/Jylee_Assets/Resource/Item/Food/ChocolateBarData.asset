@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChocolateBarData
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Chocolate Bar
+  itemName: "\uCD08\uCF54\uBC14"
   itemCode: 2
   itemLore: This is sweet
   previewPrefab: {fileID: 2065093534574123761, guid: 6dce7d15e51a6914a9c28a0def81b89c, type: 3}
@@ -22,8 +22,8 @@ MonoBehaviour:
   itemSize: {x: 2, y: 1}
   stackable: 0
   maxStackSize: 1
-  healAmount: 0
-  hungerAmount: 0
+  healAmount: 10
+  hungerAmount: 10
   thirstAmount: 0
   foodDurability: 0
   hungerDecreaseRate: 0

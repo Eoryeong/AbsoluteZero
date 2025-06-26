@@ -29,6 +29,7 @@ MonoBehaviour:
   hungerDecreaseRate: 0
   thirstDecreaseRate: 0
   grillTime: 5
+  eatSoundType: 1
   attackDamage: 0
   attackSpeed: 0
   weaponRange: 0

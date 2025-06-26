@@ -15,14 +15,14 @@ public class PlayerSitState : PlayerGroundState
 
 		player.ChangeCameraCrouch();
 		player.isCrouch = true;
-	}
+    }
 
 	public override void Update()
 	{
 		base.Update();
         MoveLogic();
         ChangeState();
-	}
+    }
 
 
 	protected override void ChangeState()

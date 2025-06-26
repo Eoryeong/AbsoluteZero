@@ -35,6 +35,7 @@ public class PickupItemData : ScriptableObject
     public float foodDurability;
     public float hungerDecreaseRate;
     public float thirstDecreaseRate;
+    public float grillTime;
 
     [Header("Weapon")]
     public float attackDamage;

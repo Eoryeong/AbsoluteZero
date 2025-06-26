@@ -56,6 +56,11 @@ public class PlayerControll : MonoBehaviour
 
     public GameObject axeObj;
 
+    // 발걸음
+    public float soundDelay;
+    public float walkSoundDelay;
+    public float RunSoundDelay;
+
     // 기타 제어변수
     public bool isCrouch;
     public bool onRifle;

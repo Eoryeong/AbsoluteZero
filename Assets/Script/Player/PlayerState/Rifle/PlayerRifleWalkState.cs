@@ -10,6 +10,7 @@ public class PlayerRifleWalkState : PlayerGroundState
     {
         base.Enter();
         applySpeed = player.walkSpeed;
+        MoveSoundChoice();
     }
 
     public override void Update()
@@ -17,6 +18,7 @@ public class PlayerRifleWalkState : PlayerGroundState
         base.Update();
         MoveLogic();
         ChangeState();
+        MoveSoundApply();
     }
 
     public override void Exit()

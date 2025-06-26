@@ -11,14 +11,16 @@ public class PlayerRunState : PlayerGroundState
 	{
 		base.Enter();
 		applySpeed = player.runSpeed;
-	}
+        MoveSoundChoice();
+    }
 
 	public override void Update()
 	{
 		base.Update();
 		MoveLogic();
 		ChangeState();
-	}
+        MoveSoundApply();
+    }
 
 	public override void Exit()
 	{

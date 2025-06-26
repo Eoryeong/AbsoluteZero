@@ -34,7 +34,7 @@ public class PlayerGroundState : PlayerState
 
 	protected void MoveLogic()
 	{
-		Vector3 move = player.transform.right * xInput + player.transform.forward * zInput;
+        Vector3 move = player.transform.right * xInput + player.transform.forward * zInput;
 		move = move.normalized * applySpeed;
 
 		Vector3 finalMove = move + Vector3.up * player.velocity.y;
@@ -43,7 +43,29 @@ public class PlayerGroundState : PlayerState
         player.anim.SetFloat("ForwardSpeed", applySpeed, 0.2f, Time.deltaTime);        
     }
 
-	protected override void ChangeState()
+	protected void MoveSoundChoice()
+	{
+        if (applySpeed == player.runSpeed)
+        {
+            player.soundDelay = player.RunSoundDelay;
+        }
+        else
+        {
+            player.soundDelay = player.walkSoundDelay;
+        }
+    }
+
+    protected void MoveSoundApply()
+    {
+		player.soundDelay -= Time.deltaTime;
+		if(player.soundDelay <= 0)
+		{
+            SoundManager.Instance.PlayFootstep(SoundManager.FootstepType.Snow);
+            MoveSoundChoice();
+        }
+    }
+
+    protected override void ChangeState()
 	{
 		if (!player.characterController.isGrounded)
 			stateMachine.ChangeState(player.airState);

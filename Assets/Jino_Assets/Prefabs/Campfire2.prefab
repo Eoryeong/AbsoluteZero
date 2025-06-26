@@ -14512,6 +14512,7 @@ GameObject:
   - component: {fileID: 2036589459321307249}
   - component: {fileID: 1578932178513286305}
   - component: {fileID: 8046027213421042642}
+  - component: {fileID: 6284890027601155338}
   m_Layer: 0
   m_Name: Campfire2
   m_TagString: Untagged
@@ -14588,3 +14589,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6284890027601155338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068145026302262132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec17bb314b9f5154b84fa58013e04734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 3
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 640
+  fireSoundDelay: 100

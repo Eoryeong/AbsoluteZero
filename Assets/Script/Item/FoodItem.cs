@@ -23,5 +23,18 @@ public class FoodItem : ItemBehaviour
         {
             GameRecode.instance.AddRecord(GameRecordEvent.DrinkWater, data.thirstAmount);
         }
+
+        switch (data.eatSoundType)
+        {
+            case 1:
+                SoundManager.Instance.PlayFoodSound(SoundManager.FoodType.Eating);
+                break;
+            case 2:
+                SoundManager.Instance.PlayFoodSound(SoundManager.FoodType.Drinking);
+                break;
+            case 3:
+                SoundManager.Instance.PlayFoodSound(SoundManager.FoodType.Crunchy);
+                break;
+        }
     }
 }

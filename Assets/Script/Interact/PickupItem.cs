@@ -10,6 +10,9 @@ public class PickupItem : MonoBehaviour
     private bool tryPickup;
     private float clickDelay;
 
+    // 고기 굽기용 변수
+    public float grillTime;
+
     private void Awake()
     {
         switch (data.itemType)
@@ -32,6 +35,7 @@ public class PickupItem : MonoBehaviour
         }
 
         tryPickup = false;
+        grillTime = data.grillTime;
     }
 
     public void TryPickupItem()

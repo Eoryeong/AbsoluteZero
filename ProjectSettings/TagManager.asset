@@ -8,6 +8,9 @@ TagManager:
   - Target
   - NpcBody
   - NpcHead
+  - EquipmentSlot
+  - Inventory
+  - Category
   layers:
   - Default
   - TransparentFX

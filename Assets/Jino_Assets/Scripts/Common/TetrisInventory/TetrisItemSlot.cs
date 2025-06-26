@@ -19,7 +19,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     private bool isDragging = false;
     private bool isRotated = false;
-    private bool isSelected = false;
+    //private bool isSelected = false;
 
 
     void Start()
@@ -54,15 +54,22 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             Debug.Log(item.itemName);
 
-            if(item.itemType == ItemTypes.Food)
+            if (item.itemType == ItemTypes.Food)
             {
                 itemBehaviour.UseItem();
+                for (int i = 0; i < item.itemSize.y; i++)
+                {
+                    for (int j = 0; j < item.itemSize.x; j++)
+                    {
+                        slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                    }
+                }
                 TetrisSlot.instanceSlot.itemsInBag.Remove(this);
                 Destroy(gameObject);
             }
-            else if(item.itemType == ItemTypes.Weapon)
+            else if (item.itemType == ItemTypes.Weapon)
             {
-                if(item.itemCode == 10)
+                if (item.itemCode == 10)
                 {
                     PlayerManager.Instance.PlayerController.ToggleRifle();
                 }
@@ -196,9 +203,16 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             GameObject hoveredObj = eventData.pointerEnter;
             if (hoveredObj != null && hoveredObj.CompareTag("EquipmentSlot"))
             {
-                // 장비창에 아이템 장착 로직
-                Debug.Log("장비창에 아이템을 옮깁니다.");
-                // 예: hoveredObj.GetComponent<EquipmentSlot>().Equip(item);
+                for (int i = 0; i < item.itemSize.y; i++)
+                {
+                    for (int j = 0; j < item.itemSize.x; j++)
+                    {
+                        slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                    }
+                }
+                Equipment.instance.Equip(itemBehaviour, hoveredObj);
+                TetrisSlot.instanceSlot.itemsInBag.Remove(this);
+                Destroy(gameObject);
             }
 
             if (isValidPosition)
@@ -308,7 +322,6 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                     Destroy(this.gameObject);
                     break;
                 }
-
             }
         }
 

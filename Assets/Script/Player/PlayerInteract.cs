@@ -21,7 +21,6 @@ public class PlayerInteract : MonoBehaviour
         TryInteract();
         if (Input.GetMouseButtonDown(0) && isFocus && hitObject != null)
         {
-            Debug.Log("aaaa");
             InteractObject interactable = hitObject.GetComponentInParent<InteractObject>();
             if(interactable != null)
             {

@@ -33,9 +33,27 @@ public class PlayerSlideState : PlayerState
 		if (!player.IsOnSteepSlope())
 		{
 			if (player.onRifle)
-				stateMachine.ChangeState(player.rifleIdleState);
+			{
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    stateMachine.ChangeState(player.rifleRunState);
+                }
+                else
+                {
+                    stateMachine.ChangeState(player.rifleIdleState);
+                }
+            }
 			else
-				stateMachine.ChangeState(player.idleState);
+			{
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    stateMachine.ChangeState(player.runState);
+                }
+                else
+                {
+                    stateMachine.ChangeState(player.idleState);
+                }
+            }
 		}
 	}
 

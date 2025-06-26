@@ -14,7 +14,7 @@ public class PlayerSlideState : PlayerState
 		base.Enter();
 		slideDirection = GetSlopeDirection();
 		applySpeed = player.slideSpeed;
-	}
+    }
 
 	public override void Update()
 	{

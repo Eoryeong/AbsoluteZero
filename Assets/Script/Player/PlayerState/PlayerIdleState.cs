@@ -15,7 +15,7 @@ public class PlayerIdleState : PlayerGroundState
         player.ChangeCameraStand();
         player.isCrouch = false;
         player.onRifle = false;
-	}
+    }
 
 	public override void Update()
 	{

@@ -28,6 +28,8 @@ MonoBehaviour:
   foodDurability: 0
   hungerDecreaseRate: 0
   thirstDecreaseRate: 0
+  grillTime: 0
+  eatSoundType: 3
   attackDamage: 0
   attackSpeed: 0
   weaponRange: 0

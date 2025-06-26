@@ -24,13 +24,22 @@ public class TetrisSlot : MonoBehaviour
 
     private void Awake()
     {
-        instanceSlot = this;
+        if (null == instanceSlot)
+        {
+            instanceSlot = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        Inventory = TetrisInventory.instanceTetris;
     }
 
     private void Start()
     {
-        Inventory = TetrisInventory.instanceTetris;
-
         maxGridX = 10;
         maxGridY = (int)(Inventory.numberSlots + 1) / maxGridX;
 

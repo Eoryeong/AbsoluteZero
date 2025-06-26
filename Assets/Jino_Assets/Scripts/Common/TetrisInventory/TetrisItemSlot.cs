@@ -80,7 +80,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             }
             else if (item.itemType == ItemTypes.Clothing)
             {
-                Equipment.instance.Equip(itemBehaviour, GameObject.FindWithTag("EquipmentSlot"));
+                Equipment.instance.Equip(itemBehaviour);
                 TetrisSlot.instanceSlot.itemsInBag.Remove(this);
                 Destroy(gameObject);
             }
@@ -216,7 +216,7 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                         slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
                     }
                 }
-                Equipment.instance.Equip(itemBehaviour, hoveredObj);
+                Equipment.instance.Equip(itemBehaviour);
                 TetrisSlot.instanceSlot.itemsInBag.Remove(this);
                 Destroy(gameObject);
             }

@@ -37,7 +37,7 @@ public class AreaSwitcher : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null && startPoint != null)
         {
-            SetPlayerPosition(player, startPoint.position + spawnOffset);
+            // SetPlayerPosition(player, startPoint.position + spawnOffset);
         }
     }
 

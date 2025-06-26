@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
 public class PlayerControll : MonoBehaviour
@@ -61,6 +60,7 @@ public class PlayerControll : MonoBehaviour
     public bool isCrouch;
     public bool onRifle;
     private bool isCameraTransitioning;
+    private int cameraPosType;
 
     #region State
     public PlayerStateMachine stateMachine;
@@ -99,6 +99,7 @@ public class PlayerControll : MonoBehaviour
         isCameraTransitioning = false;
         isCrouch = false;
         onRifle = false;
+        cameraPosType = 0;
     }
 
     private void Update()
@@ -159,6 +160,18 @@ public class PlayerControll : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+    public void PlayerDying()
+    {
+        PlayerManager.Instance.SetPlayerFreeze(true);
+
+        anim.SetBool("IsLogging", false);
+        anim.SetBool("IsDying", true);
+
+        nextCameraTarget = loggingCameraTransform;
+
+        cameraTransform.localRotation = Quaternion.Euler(45, cameraTransform.rotation.y, cameraTransform.rotation.z);
+    }
+
     private void InitState()
     {
         stateMachine = new PlayerStateMachine();
@@ -205,6 +218,7 @@ public class PlayerControll : MonoBehaviour
 
     public bool IsOnSteepSlope()
     {
+
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f))
         {
             float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
@@ -216,6 +230,9 @@ public class PlayerControll : MonoBehaviour
 
     public void ChangeCameraCrouch()
     {
+        if (cameraPosType == 1) return;
+
+        cameraPosType = 1;
         nextCameraTarget = crouchCameraTransform;
         isCameraTransitioning = true;
         anim.SetBool("IsCrouch", true);
@@ -223,6 +240,9 @@ public class PlayerControll : MonoBehaviour
 
     public void ChangeCameraStand()
     {
+        if (cameraPosType == 0) return;
+
+        cameraPosType = 0;
         nextCameraTarget = standCameraTransform;
         isCameraTransitioning = true;
         anim.SetBool("IsCrouch", false);
@@ -230,6 +250,9 @@ public class PlayerControll : MonoBehaviour
 
     public void ChangeCameraStandRifle()
     {
+        if (cameraPosType == 2) return;
+
+        cameraPosType = 2;
         nextCameraTarget = standRifleCameraTransform;
         isCameraTransitioning = true;
         anim.SetBool("IsCrouch", false);
@@ -237,6 +260,9 @@ public class PlayerControll : MonoBehaviour
 
     public void ChangeCameraCrouchRifle()
     {
+        if (cameraPosType == 1) return;
+
+        cameraPosType = 1;
         nextCameraTarget = crouchCameraTransform;
         isCameraTransitioning = true;
         anim.SetBool("IsCrouch", true);
@@ -247,6 +273,9 @@ public class PlayerControll : MonoBehaviour
         // 이펙트
         GameObject eff = Instantiate(gunFireEff, muzzlePos.position, Quaternion.identity);
         Destroy(eff, 0.5f);
+
+        // 사운드
+        SoundManager.Instance.PlayWeaponSound(SoundManager.WeaponType.Gun);
 
         Vector3 origin = cameraTransform.transform.position; // 혹은 총구 위치
         Vector3 direction = cameraTransform.transform.forward;
@@ -289,7 +318,11 @@ public class PlayerControll : MonoBehaviour
 
     public void PlayerLoggingTree(bool value)
     {
+        if (cameraPosType == 3) return;
+
+        cameraPosType = 3;
         anim.SetBool("IsLogging", value);
+        SoundManager.Instance.PlayWeaponSound(SoundManager.WeaponType.Axe);
         axeObj.SetActive(value);
         nextCameraTarget = value ? loggingCameraTransform : standCameraTransform;
     }

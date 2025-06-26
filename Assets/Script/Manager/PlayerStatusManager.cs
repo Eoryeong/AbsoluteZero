@@ -66,6 +66,8 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 	[HideInInspector] public bool isTired = false;
 	[HideInInspector] public bool isCold = false;
 
+	private bool deadTrigger = false;
+
 	private void Start()
 	{
         InitStatus();
@@ -74,6 +76,12 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 	private void Update()
 	{
         UpdateStatus();
+
+        if (currentHp <= 0 && !deadTrigger)
+		{
+            deadTrigger = true;
+			player.PlayerDying();
+		}
 	}
 
 	private void InitStatus()
@@ -122,20 +130,20 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 			currentHunger = 0;
 		}
-		else if (currentHunger / maxHunger < 10 && !isHunger)
+		else if (maxHunger / currentHunger > 10 && !isHunger)
 		{
 			player.runSpeed = 5;
 			player.walkSpeed = 3;
 			player.sitSpeed = 1;
 			isHunger = true;
 		}
-		else if (isHunger)
+		/*else if (isHunger)
 		{
 			player.runSpeed = 8;
 			player.walkSpeed = 5;
 			player.sitSpeed = 3;
 			isHunger = false;
-		}
+		}*/
 	}
 
 	private void ThirstEvent()
@@ -152,14 +160,14 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 			currentThirst = 0;
 		}
-		else if (currentThirst / maxThirst < 10 && !isThirst)
+		else if (maxThirst / currentThirst > 10 && !isThirst)
 		{
 			isThirst = true;
 		}
-		else if (isThirst)
+		/*else if (isThirst)
 		{
 			isThirst = false;
-		}
+		}*/
 	}
 
 	private void MentalityEvent()

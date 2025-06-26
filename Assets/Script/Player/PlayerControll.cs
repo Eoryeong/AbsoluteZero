@@ -277,6 +277,9 @@ public class PlayerControll : MonoBehaviour
         // 사운드
         SoundManager.Instance.PlayWeaponSound(SoundManager.WeaponType.Gun);
 
+        // 사격 기록
+        GameRecode.instance.AddRecord(GameRecordEvent.GunFire);
+
         Vector3 origin = cameraTransform.transform.position; // 혹은 총구 위치
         Vector3 direction = cameraTransform.transform.forward;
 
@@ -306,10 +309,12 @@ public class PlayerControll : MonoBehaviour
 
         if (hitObject.tag.Contains("NpcBody"))
         {
+            GameRecode.instance.AddRecord(GameRecordEvent.ShootHit);
             hitObject.GetComponent<Animal>().TakeDamage(50);
         }
         else if (hitObject.tag.Contains("NpcHead"))
         {
+            GameRecode.instance.AddRecord(GameRecordEvent.ShootHit);
             hitObject.GetComponent<AnimalHeadShot>().HeadShot(50);
         }
 
@@ -318,8 +323,6 @@ public class PlayerControll : MonoBehaviour
 
     public void PlayerLoggingTree(bool value)
     {
-        if (cameraPosType == 3) return;
-
         cameraPosType = 3;
         anim.SetBool("IsLogging", value);
         SoundManager.Instance.PlayWeaponSound(SoundManager.WeaponType.Axe);

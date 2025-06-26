@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &133295705864113837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 8716212243796042890}
   - component: {fileID: 6357937290962176243}
   - component: {fileID: 980417257063557760}
+  - component: {fileID: 6571099832163557874}
   m_Layer: 0
   m_Name: EquipSlot
   m_TagString: Untagged
@@ -164,3 +165,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5b54ca0b1b0594c88f07b6d8ffa6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 5274144384886706482}
+--- !u!225 &6571099832163557874
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579434887050177778}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -9,6 +9,8 @@ TagManager:
   - NpcBody
   - NpcHead
   - EquipmentSlot
+  - Inventory
+  - Category
   layers:
   - Default
   - TransparentFX

@@ -13,9 +13,12 @@ public class Equipment : MonoBehaviour
         instance = this;
     }
 
-    public void Equip(ItemBehaviour item, Vector3 position)
+    public void Equip(ItemBehaviour item, GameObject hovered)
     {
-        EquipmentSlot myItem = Instantiate(prefabSlot, position, Quaternion.identity);
-
+        EquipmentSlot myItem = Instantiate(prefabSlot);
+        myItem.itemBehaviour = item;
+        myItem.icon.sprite = item.data.itemIcon;
+        myItem.transform.SetParent(hovered.GetComponent<RectTransform>(), false);
+        equipmentSlot.Add(myItem);
     }
 }

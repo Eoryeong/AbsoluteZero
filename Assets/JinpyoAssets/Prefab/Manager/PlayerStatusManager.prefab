@@ -49,10 +49,10 @@ MonoBehaviour:
   maxThirst: 100
   maxMentality: 100
   maxCold: 100
-  hungerDecreaseRate: 1
-  thirstDecreaseRate: 1
-  mentalityDecreaseRate: 1
-  coldDecreascRate: 1
+  hungerDecreaseRate: 0.05
+  thirstDecreaseRate: 0.05
+  mentalityDecreaseRate: 0.05
+  coldDecreascRate: 0.05
   hungerDamage: 15
   thirstDamage: 10
   mentalityDamage: 10

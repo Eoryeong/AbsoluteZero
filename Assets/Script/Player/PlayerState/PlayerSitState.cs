@@ -29,7 +29,12 @@ public class PlayerSitState : PlayerGroundState
 	{
 		base.ChangeState();
 		if (Input.GetKeyUp(KeyCode.LeftControl))
-			stateMachine.ChangeState(player.idleState);
+		{
+			if (player.onRifle)
+				stateMachine.ChangeState(player.rifleIdleState);
+			else
+				stateMachine.ChangeState(player.idleState);
+		}
 		else if (xInput != 0 || zInput != 0)
 			stateMachine.ChangeState(player.sitWalkState);
 	}

@@ -31,7 +31,12 @@ public class PlayerSlideState : PlayerState
 	protected override void ChangeState()
 	{
 		if (!player.IsOnSteepSlope())
-			stateMachine.ChangeState(player.idleState);
+		{
+			if (player.onRifle)
+				stateMachine.ChangeState(player.rifleIdleState);
+			else
+				stateMachine.ChangeState(player.idleState);
+		}
 	}
 
 	private void SlideLogic()

@@ -210,14 +210,39 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 		}
 	}
 
+	public float GetHungerDecreaseRate()
+	{
+		return hungerDecreaseRate;
+	}
+
 	public void SetHungerDecreaseRate(float decreaseRate)
     {
         hungerDecreaseRate = decreaseRate;
     }
 
+	public float GetThirstDecreaseRate()
+	{
+		return thirstDecreaseRate;
+	}
+
 	public void SetThirstDecreaseRate(float decreaseRate)
 	{
 		thirstDecreaseRate = decreaseRate;
+	}
+
+	public float GetMentalityDecreaseRate()
+	{
+		return mentalityDecreaseRate;
+	}
+
+	public void SetMentalittDecreaseRate(float decreaseRate)
+	{
+		mentalityDecreaseRate = decreaseRate;
+	}
+
+	public float GetColdDecreaseRate()
+	{
+		return coldDecreascRate;
 	}
 
 	public void SetColdDecreaseRate(float decreaseRate)

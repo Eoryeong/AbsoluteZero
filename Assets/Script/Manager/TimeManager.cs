@@ -7,6 +7,8 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	public int gameMinute { get; private set; }
 	public float gameSecond { get; private set; }
 
+	public float TimeScale { get { return timeScale; } }
+
 	[SerializeField] private int StartHour = 20;
 	[SerializeField] private int StartMinute = 0;
 	[SerializeField] private float StartSecond = 0f;

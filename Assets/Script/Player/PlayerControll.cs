@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -330,9 +331,20 @@ public class PlayerControll : MonoBehaviour
     {
         cameraPosType = 3;
         anim.SetBool("IsLogging", value);
-        SoundManager.Instance.PlayWeaponSound(SoundManager.WeaponType.Axe);
         axeObj.SetActive(value);
         nextCameraTarget = value ? loggingCameraTransform : standCameraTransform;
+
+        if (value == true)
+        {
+            StartCoroutine(LoggingSound());
+        }
+    }
+
+    IEnumerator LoggingSound()
+    {
+        yield return new WaitForSeconds(0.8f);
+
+        SoundManager.Instance.PlayWeaponSound(SoundManager.WeaponType.Hit);
     }
 
     private void OnDrawGizmos()

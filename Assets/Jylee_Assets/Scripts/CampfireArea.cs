@@ -8,8 +8,14 @@ public class CampfireArea : MonoBehaviour
 
     private HashSet<PickupItem> grillTargets = new(); // 현재 영역 내 고기
 
+    private void Start()
+    {
+        SoundManager.Instance.PlaySurvivalSound(SoundManager.SurvivalSoundType.Campfire);
+    }
+
     private void Update()
     {
+
         foreach (var item in grillTargets)
         {
             if (item == null) continue;

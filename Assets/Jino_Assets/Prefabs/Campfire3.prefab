@@ -9770,6 +9770,7 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 640
+  fireSoundDelay: 100
 --- !u!1 &8137137481712216818
 GameObject:
   m_ObjectHideFlags: 0

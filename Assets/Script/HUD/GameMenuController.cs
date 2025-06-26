@@ -10,6 +10,7 @@ public enum PanelType
     Inventory,
     Crafting,
     Map,
+    Record,
     Settings
 }
 
@@ -242,6 +243,7 @@ public class GameMenuController : MonoBehaviour
     public void OnInventoryButton() => HandlePanelToggle(PanelType.Inventory);  // 인벤토리 버튼 클릭
     public void OnCraftingButton() => HandlePanelToggle(PanelType.Crafting);    // 제작 버튼 클릭
     public void OnMapButton() => HandlePanelToggle(PanelType.Map);              // 지도 버튼 클릭
+    public void OnRecordButton() => HandlePanelToggle(PanelType.Record);        // 기록 버튼 클릭
     public void OnSettingsButton() => HandlePanelToggle(PanelType.Settings);    // 설정 버튼 클릭
 
     #endregion

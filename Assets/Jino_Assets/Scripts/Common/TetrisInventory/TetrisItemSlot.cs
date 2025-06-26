@@ -78,6 +78,12 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                     Debug.Log("기능없음");
                 }
             }
+            else if (item.itemType == ItemTypes.Clothing)
+            {
+                Equipment.instance.Equip(itemBehaviour, GameObject.FindWithTag("EquipmentSlot"));
+                TetrisSlot.instanceSlot.itemsInBag.Remove(this);
+                Destroy(gameObject);
+            }
             else
             {
                 Debug.Log("기능없음");

@@ -59,7 +59,6 @@ public class CampfireArea : MonoBehaviour
 
         HashSet<PickupItem> currentFrame = new();
         bool playerHot = false;
-        GameObject playerObj = null;
 
         foreach (var col in hits)
         {

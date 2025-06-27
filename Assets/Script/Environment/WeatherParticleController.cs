@@ -68,6 +68,8 @@ public class WeatherParticleController : MonoBehaviour
 
 	private void PlayParticle()
 	{
+		transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 9, player.transform.position.z);
+
 		for (int i = 0; i < particles.Length; i++)
 		{
 			if (particles[i].gameObject.GetComponent<VisualEffect>() != null)

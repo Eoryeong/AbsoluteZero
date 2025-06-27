@@ -61,7 +61,6 @@ public class UIManager : SingletonBehaviour<UIManager>
 
 	protected override void Init()
 	{
-        m_IsDestroyOnLoad = true;
 		base.Init();
 	}
 

@@ -30,6 +30,7 @@ public class PlayerManager : SingletonBehaviour<PlayerManager>
 
     public void SetPlayerFreeze(bool freeze)
     {
+        Debug.Log(freeze);
         playerFreeze = freeze;
     }
 }

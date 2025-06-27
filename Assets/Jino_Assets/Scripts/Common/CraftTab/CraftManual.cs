@@ -33,9 +33,6 @@ public class CraftManual : BaseUI
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !isPreviewActivated)
-            Window();
-
         if (isPreviewActivated)
             PreviewPositionUpdate();
 
@@ -99,7 +96,7 @@ public class CraftManual : BaseUI
         selectedItemCode = 0;
         selectedItemNum = 0;
 
-        go_BaseUI.SetActive(false);
+        go_BaseUI.GetComponent<GameMenuController>().HandlePanelToggle(PanelType.Crafting);
     }
 
     private void Window()
@@ -113,7 +110,7 @@ public class CraftManual : BaseUI
     private void OpenWindow()
     {
         isActivated = true;
-        go_BaseUI.SetActive(true);
+        go_BaseUI.GetComponent<GameMenuController>().HandlePanelToggle(PanelType.Crafting);
         UIManager.Instance.CursorVisible(true);
         PlayerManager.Instance.SetPlayerFreeze(true);
     }
@@ -121,7 +118,7 @@ public class CraftManual : BaseUI
     private void CloseWindow()
     {
         isActivated = false;
-        go_BaseUI.SetActive(false);
+        go_BaseUI.GetComponent<GameMenuController>().HandlePanelToggle(PanelType.Crafting);
         UIManager.Instance.CursorVisible(false);
         PlayerManager.Instance.SetPlayerFreeze(false);
     }
@@ -135,7 +132,7 @@ public class CraftManual : BaseUI
             selectedItemCode = craft_fire[_slotNumber].needItemCode;
             selectedItemNum = craft_fire[_slotNumber].needItemNum;
             isPreviewActivated = true;
-            go_BaseUI.SetActive(false);
+            go_BaseUI.GetComponent<GameMenuController>().HandlePanelToggle(PanelType.Crafting);
             UIManager.Instance.CursorVisible(false);
             PlayerManager.Instance.SetPlayerFreeze(false);
         }

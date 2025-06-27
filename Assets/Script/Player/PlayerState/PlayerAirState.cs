@@ -43,7 +43,8 @@ public class PlayerAirState : PlayerState
 	{
 		if (player.characterController.isGrounded)
 		{
-			if (player.onRifle)
+            SoundManager.Instance.PlayFootstep(SoundManager.FootstepType.Snow);
+            if (player.onRifle)
 				stateMachine.ChangeState(player.rifleIdleState);
 			else
 				stateMachine.ChangeState(player.idleState);

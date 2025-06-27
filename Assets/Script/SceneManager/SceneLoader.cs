@@ -45,8 +45,7 @@ public class SceneLoader : MonoBehaviour
         isLoading = true;
         float startTime = Time.time;
 
-        // 플레이어 동작 정지
-        FreezePlayer(true);
+
 
         // 페이드 인 (화면을 어둡게)
         yield return StartCoroutine(FadeIn());
@@ -133,18 +132,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    private void FreezePlayer(bool freeze)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            
-            if (PlayerManager.Instance != null)
-            {
-				PlayerManager.Instance.SetPlayerFreeze(freeze);
-            }
-        }
-    }
+
 
     private void PlayLoadingSound()
     {
@@ -213,7 +201,6 @@ public class SceneLoader : MonoBehaviour
         // 페이드 아웃 (화면을 밝게)
         yield return StartCoroutine(FadeOut());
 
-        // 플레이어 동작 재개
-        FreezePlayer(false);
+
     }
 }

@@ -184,27 +184,27 @@ public class WeatherManager : SingletonBehaviour<WeatherManager>
             DestroyParticle(WeatherType.Foggy);
             DestroyParticle(WeatherType.Snowy);
 			currentWeatherType = WeatherType.Sunny;
-			currentIntensity = 2;
+			currentIntensity = sunnyIntensity;
 		}
         else if(Input.GetKeyDown(KeyCode.F2))
         {
             DestroyParticle(WeatherType.Foggy);
             DestroyParticle(WeatherType.Snowy);
 			currentWeatherType = WeatherType.Cloudy;
-			currentIntensity = 0.5f;
+			currentIntensity = cloudyIntensity;
 		}
         else if (Input.GetKeyDown(KeyCode.F3))
         {
             DestroyParticle(WeatherType.Snowy);
 			currentWeatherType = WeatherType.Foggy;
-			currentIntensity = 0.5f;
+			currentIntensity = cloudyIntensity;
 			SpawnParticle(currentWeatherType);
 		}
         else if (Input.GetKeyDown(KeyCode.F4))
         {
             DestroyParticle(WeatherType.Foggy);
 			currentWeatherType = WeatherType.Snowy;
-			currentIntensity = 0.5f;
+            currentIntensity = cloudyIntensity;
 			SpawnParticle(currentWeatherType);
 		}
 

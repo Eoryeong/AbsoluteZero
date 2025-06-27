@@ -18,8 +18,8 @@ MonoBehaviour:
   itemLore: "\uC637\uC774 \uACE7 \uB0A0\uAC1C\uB2E4"
   previewPrefab: {fileID: 7267546358522165639, guid: 1c4b9f414ffdd604388e8132c06b0b0c, type: 3}
   itemWeight: 0
-  itemIcon: {fileID: 0}
-  itemSize: {x: 0, y: 0}
+  itemIcon: {fileID: 21300000, guid: 59953e923707a69459761b74e166ae5b, type: 3}
+  itemSize: {x: 3, y: 4}
   stackable: 0
   maxStackSize: 1
   healAmount: 0
@@ -28,6 +28,8 @@ MonoBehaviour:
   foodDurability: 0
   hungerDecreaseRate: 0
   thirstDecreaseRate: 0
+  grillTime: 0
+  eatSoundType: 0
   attackDamage: 0
   attackSpeed: 0
   weaponRange: 0

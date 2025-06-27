@@ -123,7 +123,7 @@ public class GameMenuController : MonoBehaviour
     }
 
 
-    private void HandlePanelToggle(PanelType panelType)
+    public void HandlePanelToggle(PanelType panelType)
     {
         if (!isMenuOpen)
         {

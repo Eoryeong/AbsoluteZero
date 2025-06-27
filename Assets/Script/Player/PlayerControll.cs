@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-public class PlayerControll : SingletonBehaviour<PlayerControll>
+public class PlayerControll : MonoBehaviour
 {
     // 플레이어 이동 속도 
     public float walkSpeed = 5f;
@@ -87,12 +87,6 @@ public class PlayerControll : SingletonBehaviour<PlayerControll>
     public PlayerRifleSitAimState rifleSitAimState;
     public PlayerLoggingState loggingState;
     #endregion
-
-    private void Awake()
-    {
-        // 씬 전환 시 파괴되지 않도록 설정
-        m_IsDestroyOnLoad = false;
-    }
 
     private void Start()
     {

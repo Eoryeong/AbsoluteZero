@@ -112,7 +112,8 @@ public class PlayerControll : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerManager.Instance.playerFreeze) {
+        if (PlayerManager.Instance.playerFreeze)
+        {
             return;
         }
 
@@ -280,6 +281,27 @@ public class PlayerControll : MonoBehaviour
 
     public void FireRifleBullet()
     {
+        if (TetrisSlot.instanceSlot.itemCountDict[11] > 0)
+        {
+            TetrisSlot.instanceSlot.itemCountDict[11] -= 1;
+            for (int i = 0; i < 1; i++)
+            {
+                foreach (TetrisItemSlot slot in TetrisSlot.instanceSlot.itemsInBag)
+                {
+                    if (slot.item.itemCode == 11)
+                    {
+                        TetrisSlot.instanceSlot.itemsInBag.Remove(slot);
+                        Destroy(slot.gameObject);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("총알이 없습니다.");
+        }
+
         // 이펙트
         GameObject eff = Instantiate(gunFireEff, muzzlePos.position, Quaternion.identity);
         Destroy(eff, 0.5f);
@@ -328,7 +350,7 @@ public class PlayerControll : MonoBehaviour
             hitObject.GetComponent<AnimalHeadShot>().HeadShot(50);
         }
 
-            Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
+        Debug.DrawLine(origin, closestHit.point, Color.red, 1f); // 디버그용
     }
 
     public void PlayerLoggingTree(bool value)

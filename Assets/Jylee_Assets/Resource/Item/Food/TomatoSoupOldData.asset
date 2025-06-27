@@ -17,5 +17,22 @@ MonoBehaviour:
   itemCode: 1
   itemLore: Emergency food
   previewPrefab: {fileID: 8501894133212684738, guid: 4946408ea63fdb340ae15c14722a7ce1, type: 3}
-  itemIcon: {fileID: 0}
-  itemSize: {x: 0, y: 0}
+  itemWeight: 0
+  itemIcon: {fileID: 21300000, guid: 51e66da429a2c2f4e923c5af5430a78b, type: 3}
+  itemSize: {x: 1, y: 2}
+  stackable: 0
+  maxStackSize: 1
+  healAmount: 0
+  hungerAmount: 0
+  thirstAmount: 0
+  foodDurability: 0
+  hungerDecreaseRate: 0
+  thirstDecreaseRate: 0
+  grillTime: 0
+  eatSoundType: 0
+  attackDamage: 0
+  attackSpeed: 0
+  weaponRange: 0
+  weaponDurability: 0
+  toolEfficiency: 0
+  toolDurability: 0

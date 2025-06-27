@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBreak: 1
   breakDuration: 2
-  DropItem: {fileID: 1878430145516033628, guid: 08e471e3c4fc0ff47ba6c7780e2fff75, type: 3}
+  DropItem: {fileID: 3998879330008071264, guid: e989a428f51e82c409c20bc162d42a59, type: 3}
 --- !u!114 &4686236962190053571
 MonoBehaviour:
   m_ObjectHideFlags: 0

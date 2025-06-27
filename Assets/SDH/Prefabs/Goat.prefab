@@ -3261,7 +3261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBreak: 1
   breakDuration: 2
-  DropItem: {fileID: 4775549740019032798, guid: 9a94624cfe8fbdf4e8ac22249f7de62f, type: 3}
+  DropItem: {fileID: 3998879330008071264, guid: e989a428f51e82c409c20bc162d42a59, type: 3}
 --- !u!114 &8691236265126282657
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,12 +34,12 @@ public class TetrisSlot : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        Inventory = TetrisInventory.instanceTetris;
     }
 
     private void Start()
     {
+        Inventory = TetrisInventory.instanceTetris;
+
         maxGridX = 10;
         maxGridY = (int)(Inventory.numberSlots + 1) / maxGridX;
 

@@ -7,7 +7,6 @@ public class TetrisListItems : MonoBehaviour
 
     public GameObject[] prefabs;
     public List<PickupItemData> items = new List<PickupItemData>();
-    [SerializeField] GameObject[] invenandEquip;
 
     private void Awake()
     {
@@ -26,7 +25,5 @@ public class TetrisListItems : MonoBehaviour
         {
             items.Add(prefabs[i].GetComponent<PickupItem>().data);
         }
-
     }
-
 }

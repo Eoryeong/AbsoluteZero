@@ -10,11 +10,11 @@ public class TetrisInventory : BaseUI
         {
             instanceTetris = this;
 
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
     }

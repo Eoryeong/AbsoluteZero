@@ -72,13 +72,13 @@ public class AreaSwitcher : MonoBehaviour
     private void LoadNewScene()
     {
         // 플레이어 동작 정지
-        // GameObject player = GameObject.FindGameObjectWithTag("Player");
-        // if (player != null)
-        // {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
 
-        //     PlayerManager.Instance.SetPlayerFreeze(true);
+            PlayerManager.Instance.SetPlayerFreeze(true);
 
-        // }
+        }
 
         // 문 열기 사운드 재생
         SoundManager.Instance.PlayDoorOpen();

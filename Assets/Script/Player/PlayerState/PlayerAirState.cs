@@ -21,6 +21,7 @@ public class PlayerAirState : PlayerState
 		base.Update();
 		player.characterController.Move(player.velocity * Time.deltaTime);
 		ChangeState();
+		Debug.Log("에어 상태");
 	}
 
 	public override void Exit()
@@ -43,8 +44,9 @@ public class PlayerAirState : PlayerState
 	{
 		if (player.characterController.isGrounded)
 		{
-            SoundManager.Instance.PlayFootstep(SoundManager.FootstepType.Snow);
-            if (player.onRifle)
+			SoundManager.Instance.PlayFootstep(SoundManager.FootstepType.Snow);
+			Debug.Log("에어 사운드 오류");
+			if (player.onRifle)
 				stateMachine.ChangeState(player.rifleIdleState);
 			else
 				stateMachine.ChangeState(player.idleState);

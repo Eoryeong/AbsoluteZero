@@ -88,7 +88,6 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 {
                     Equipment.instance.EquipLower(itemBehaviour);
                 }
-
                 TetrisSlot.instanceSlot.itemsInBag.Remove(this);
                 Destroy(gameObject);
             }

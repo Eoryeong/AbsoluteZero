@@ -6,18 +6,28 @@ public class CampfireArea : MonoBehaviour
 {
     public float detectionRadius = 3f;
     public float playerIncCold = 0.1f;
+    public float duration = 30f;
     public LayerMask detectionLayer;
 
     private HashSet<PickupItem> grillTargets = new(); // 현재 영역 내 고기
     private bool playerIn;
+    private bool soundOn;
 
     private void Start()
     {
-        SoundManager.Instance.PlaySurvivalSound(SoundManager.SurvivalSoundType.Campfire);
+        playerIn = false;
+        soundOn = false;
     }
 
     private void Update()
     {
+        duration -= Time.deltaTime;
+        if(duration <= 0)
+        {
+            SoundManager.Instance.StopFireSound();
+            Destroy(gameObject);
+        }
+
         if (playerIn)
         {
             PlayerStatusManager.Instance.AddCurrentCold(playerIncCold * Time.deltaTime);
@@ -74,10 +84,20 @@ public class CampfireArea : MonoBehaviour
         if(playerHot)
         {
             playerIn = true;
+            if (!soundOn)
+            {
+                soundOn = true;
+                SoundManager.Instance.PlaySurvivalSound(SoundManager.SurvivalSoundType.Campfire);
+            }
         }
         else
         {
             playerIn = false;
+            if (soundOn)
+            {
+                soundOn = false;
+                SoundManager.Instance.StopFireSound();
+            }
         }
     }
 

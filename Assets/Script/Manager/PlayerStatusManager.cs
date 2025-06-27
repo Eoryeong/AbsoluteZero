@@ -120,7 +120,11 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 	{
 		if(currentHunger <= 0)
 		{
-			hungerDamageTimer += Time.deltaTime;
+            player.runSpeed = 5;
+            player.walkSpeed = 3;
+            player.sitSpeed = 1;
+            isHunger = true;
+            hungerDamageTimer += Time.deltaTime;
 
 			if(hungerDamageTimer > hungerDamageCoolDown)
 			{
@@ -130,27 +134,21 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 			currentHunger = 0;
 		}
-		else if (maxHunger / currentHunger > 10 && !isHunger)
+		else
 		{
-			player.runSpeed = 5;
-			player.walkSpeed = 3;
-			player.sitSpeed = 1;
-			isHunger = true;
-		}
-		/*else if (isHunger)
-		{
-			player.runSpeed = 8;
-			player.walkSpeed = 5;
-			player.sitSpeed = 3;
-			isHunger = false;
-		}*/
+            player.runSpeed = 8;
+            player.walkSpeed = 5;
+            player.sitSpeed = 2;
+            isHunger = false;
+        }
 	}
 
 	private void ThirstEvent()
 	{
 		if(currentThirst <= 0)
 		{
-			thirstDamageTimer += Time.deltaTime;
+            isThirst = true;
+            thirstDamageTimer += Time.deltaTime;
 
 			if (thirstDamageTimer > thirstDamageCoolDown)
 			{
@@ -160,21 +158,18 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 			currentThirst = 0;
 		}
-		else if (maxThirst / currentThirst > 10 && !isThirst)
+		else
 		{
-			isThirst = true;
-		}
-		/*else if (isThirst)
-		{
-			isThirst = false;
-		}*/
+            isThirst = false;
+        }
 	}
 
 	private void MentalityEvent()
 	{
 		if (currentMentality <= 0)
 		{
-			mentalityTimer += Time.deltaTime;
+            isTired = true;
+            mentalityTimer += Time.deltaTime;
 
 			if (mentalityTimer > mentalityDamageCoolDown)
 			{
@@ -184,21 +179,18 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 			currentMentality = 0;
 		}
-		else if (currentMentality / maxMentality < 10 && !isTired)
+		else
 		{
-			isTired = true;
-		}
-		else if (isTired)
-		{
-			isTired = false;
-		}
+            isTired = false;
+        }
 	}
 
 	private void ColdEvent()
 	{
 		if(currentCold <= 0)
 		{
-			coldrDamageTimer += Time.deltaTime;
+            isCold = true;
+            coldrDamageTimer += Time.deltaTime;
 
 			if (coldrDamageTimer > coldDamageCoolDown)
 			{
@@ -208,14 +200,10 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 
 			currentCold = 0;
 		}
-		else if (currentCold / maxCold < 10 && !isCold)
+		else
 		{
-			isCold = true;
-		}
-		else if (isCold)
-		{
-			isCold = false;
-		}
+            isCold = false;
+        }
 	}
 
 	public float GetHungerDecreaseRate()

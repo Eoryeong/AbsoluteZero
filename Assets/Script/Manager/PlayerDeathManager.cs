@@ -73,27 +73,27 @@ public class PlayerDeathManager : SingletonBehaviour<PlayerDeathManager>
         // 우선순위 순으로 체크
 
         // 1. 체온 (저체온증)
-        if (enableHpDeath && status.CurrentColdPercent <= deathThreshold)
+        if (enableHpDeath && status.isCold && status.CurrentHpPercent <= deathThreshold)
         {
             return "저체온증";
         }
 
         // 2. 탈수
-        if (enableThirstDeath && status.CurrentThirstPercent <= deathThreshold)
+        if (enableHpDeath && status.isThirst && status.CurrentHpPercent <= deathThreshold)
         {
             return "탈수";
         }
 
         // 3. 굶주림
-        if (enableHungerDeath && status.CurrentHungerPercent <= deathThreshold)
+        if (enableHpDeath && status.isHunger && status.CurrentHpPercent <= deathThreshold)
         {
             return "굶주림";
         }
 
         // 4. 정신력 (정신 붕괴)
-        if (enableMentalDeath && status.CurrentMentalityPercent <= deathThreshold)
+        if (enableHpDeath && status.isTired && status.CurrentHpPercent <= deathThreshold)
         {
-            return "정신 붕괴";
+            return "정신력";
         }
 
         // 5. 기본 사망 원인 (체력 관련)

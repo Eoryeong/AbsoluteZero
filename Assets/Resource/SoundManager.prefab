@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &83634572016400973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2703961986674665273}
+  - component: {fileID: 977182229183155489}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2703961986674665273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83634572016400973}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977182229183155489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83634572016400973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef16da4d862496a4cafc5001bb29bd87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmSource: {fileID: 0}
+  ambientSource: {fileID: 0}
+  campfireSource: {fileID: 0}
+  torchSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  footstepSource: {fileID: 0}
+  weaponSource: {fileID: 0}
+  weatherSource: {fileID: 0}
+  bgmFadeTime: 2
+  sceneBGMSettings:
+  - sceneName: StartScene
+    bgmClip: {fileID: 8300000, guid: 0a91d8bc0ee0983418151f632649d360, type: 3}
+    ambientType: 0
+    weatherType: 0
+    useFadeIn: 0
+  - sceneName: In_Game_Scene
+    bgmClip: {fileID: 8300000, guid: b9e7ae1bf328c534c92e6d1575ba4044, type: 3}
+    ambientType: 4
+    weatherType: 0
+    useFadeIn: 0
+  - sceneName: SungZun_Scene02
+    bgmClip: {fileID: 8300000, guid: a3f22cc4d9f86e44db7e4484abd1630c, type: 3}
+    ambientType: 5
+    weatherType: 0
+    useFadeIn: 0
+  snowFootsteps:
+    groupName: "\uB208\uC704"
+    clips:
+    - {fileID: 8300000, guid: 233128fb9f1d95143a374411f0863e79, type: 3}
+    - {fileID: 8300000, guid: 181d260cfa5cc664d9a6992a9eaefc5d, type: 3}
+  iceFootsteps:
+    groupName: "\uC5BC\uC74C\uC704"
+    clips:
+    - {fileID: 8300000, guid: 4e54cb259e54a954b94d55d399b452f3, type: 3}
+  stoneFootsteps:
+    groupName: "\uB3CC\uC704"
+    clips:
+    - {fileID: 8300000, guid: f74e87bdd5bb33943a6f06150695107f, type: 3}
+  gunShoot:
+    groupName: "\uCD1D\uBC1C\uC0AC \uC18C\uB9AC"
+    clips:
+    - {fileID: 8300000, guid: 9d697acb61f05b140ba6949602c4ba18, type: 3}
+  gunReload:
+    groupName: "\uC7AC\uC7A5\uC804"
+    clips:
+    - {fileID: 8300000, guid: c4ba78acbbf6e4443abc2e7875020399, type: 3}
+  swordSwing:
+    groupName: "\uCE7C \uBC14\uB78C"
+    clips:
+    - {fileID: 8300000, guid: 725bc4044c2e3aa419c48f80fce92ae3, type: 3}
+  axeSwing:
+    groupName: "\uB3C4\uB07C \uBC14\uB78C\uC18C\uB9AC"
+    clips:
+    - {fileID: 8300000, guid: 4902db5bee8cff54dbddfced04a90e9a, type: 3}
+  bowShoot:
+    groupName: "\uD65C \uC18C\uB9AC"
+    clips:
+    - {fileID: 8300000, guid: 2cc1267f25dd0d945bb8bcc73fed9782, type: 3}
+  bowDraw:
+    groupName: "\uD65C \uB2F9\uAE30\uAE30"
+    clips:
+    - {fileID: 8300000, guid: c1f30853754dba34ca68734934d8c9ee, type: 3}
+  hitSounds:
+    groupName: "\uB3C4\uB07C\uB85C \uB9DE\uC744\uACBD\uC6B0"
+    clips:
+    - {fileID: 8300000, guid: 0c53f1a05246ed34d9eb5e2626ec3317, type: 3}
+  windSound: {fileID: 8300000, guid: 9a5c50f0f67b09643bdc3ec7a90a13ec, type: 3}
+  snowSound: {fileID: 0}
+  thunderSound: {fileID: 8300000, guid: db20b4e6344a1ee4fafe7c1eb9a0bdf3, type: 3}
+  natureAmbient:
+    groupName: "\uC0C8\uC18C\uB9AC"
+    clips:
+    - {fileID: 8300000, guid: f9c42af30503a0a4698ac53c0dbc3b26, type: 3}
+  caveAmbient:
+    groupName: "\uB3D9\uAD74\uC18D \uBB3C\uB5A8\uC5B4\uC9C0\uB294"
+    clips:
+    - {fileID: 8300000, guid: 56408aa5e6645c948be6e2792b26d3e2, type: 3}
+  snowAmbient:
+    groupName: "\uC794\uC794\uD55C \uBC14\uB78C"
+    clips:
+    - {fileID: 8300000, guid: 2003a42026997714eb101700c8c81c78, type: 3}
+  buttonClickSound: {fileID: 8300000, guid: f05a496901cbecc4b97ae2afd4c57e4a, type: 3}
+  itemPickupSound: {fileID: 8300000, guid: aa7272eb846d2d74bafa29ba94d243e8, type: 3}
+  doorOpenSound: {fileID: 8300000, guid: e7b4c521a5382614ca7f9fee02947eed, type: 3}
+  abilityUpSound: {fileID: 8300000, guid: defb3bed98c2247448d81849d37fc587, type: 3}
+  eatingSounds:
+    groupName: 
+    clips:
+    - {fileID: 8300000, guid: 747bab7c619ff304fbaca40fb9854ee5, type: 3}
+  drinkingSounds:
+    groupName: 
+    clips:
+    - {fileID: 8300000, guid: 7cf52402ce21f30438d8b7cef4d6f712, type: 3}
+  crunchySounds:
+    groupName: 
+    clips:
+    - {fileID: 8300000, guid: 460706528f433ff42adaa5a8a8668c8a, type: 3}
+  lighterSounds:
+    groupName: 
+    clips:
+    - {fileID: 8300000, guid: 6b7ebd6c1db25e8478cbcd78a1b3b6c7, type: 3}
+  campfireSounds:
+    groupName: 
+    clips:
+    - {fileID: 8300000, guid: e2174d91edd5f9c45a14a63d7bac1b21, type: 3}
+  clothingChangeSounds:
+    groupName: 
+    clips:
+    - {fileID: 8300000, guid: ecad51913fd741544a47209d25a52f67, type: 3}
+  waterSplashSounds:
+    groupName: "\uBB3C\uC5D0 \uBE60\uC9C8\uB54C"
+    clips:
+    - {fileID: 8300000, guid: 51218218a68b9f547a7eae279a788db3, type: 3}
+  waterDrownSounds:
+    groupName: "\uBB3C\uC5D0 \uC8FD\uC744\uB54C"
+    clips:
+    - {fileID: 8300000, guid: 6b2fc0534410e054ca1124a3a0fb8b3c, type: 3}
+  masterVolume: 0.5
+  bgmVolume: 0.5
+  sfxVolume: 0.5
+  ambientVolume: 0.5
+  isMasterMuted: 0
+  isBGMMuted: 0
+  isSFXMuted: 0
+  isAmbientMuted: 0

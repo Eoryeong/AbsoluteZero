@@ -35,5 +35,6 @@ public class PlayerJumpState : PlayerState
 	private void JumpLogic()
 	{
 		player.velocity.y = Mathf.Sqrt(player.jumpForce * 2f * -player.gravity);
-	}
+        SoundManager.Instance.PlayFootstep(SoundManager.FootstepType.Snow);
+    }
 }

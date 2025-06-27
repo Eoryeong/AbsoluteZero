@@ -42,6 +42,7 @@ public class PickupItem : MonoBehaviour
     {
         UIManager.Instance.ItemPickupMenuOpen();
         UIManager.Instance.ItemPickupMenuLoreUpdate(data);
+        SoundManager.Instance.PlayItemPickup();
         ShowPreview();
         tryPickup = true;
         clickDelay = 0.1f;

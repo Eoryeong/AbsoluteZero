@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class EquipmentSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class EquipmentSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     public ItemBehaviour itemBehaviour;
     public Image icon;
@@ -50,5 +50,15 @@ public class EquipmentSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Equipment.instance.equipmentSlot.Remove(this);
+            TetrisSlot.instanceSlot.addInFirstSpace(itemBehaviour);
+            Destroy(gameObject);
+        }
     }
 }

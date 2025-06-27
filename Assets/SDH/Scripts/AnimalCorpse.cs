@@ -45,7 +45,7 @@ public class AnimalCorpse : MonoBehaviour
 
     private void CompleteLooting()
     {
-        Vector3 origin = transform.position;
+        Vector3 origin = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
 
         Instantiate(DropItem, origin, Quaternion.identity);
         Debug.Log("Looting completed, item dropped!");

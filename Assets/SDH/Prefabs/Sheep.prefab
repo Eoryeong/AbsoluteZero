@@ -2005,7 +2005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBreak: 1
   breakDuration: 2
-  DropItem: {fileID: 7918767786397100751, guid: 5c2b5f75f73ae7d47ab6f9a8c17a5c12, type: 3}
+  DropItem: {fileID: 3998879330008071264, guid: e989a428f51e82c409c20bc162d42a59, type: 3}
 --- !u!114 &7994440949875075355
 MonoBehaviour:
   m_ObjectHideFlags: 0

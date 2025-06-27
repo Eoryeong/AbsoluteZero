@@ -9766,11 +9766,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec17bb314b9f5154b84fa58013e04734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 3
+  detectionRadius: 5
+  playerIncCold: 0.3
   detectionLayer:
     serializedVersion: 2
     m_Bits: 640
-  fireSoundDelay: 100
 --- !u!1 &8137137481712216818
 GameObject:
   m_ObjectHideFlags: 0

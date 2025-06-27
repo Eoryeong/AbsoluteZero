@@ -707,7 +707,7 @@ public class SoundManager : SingletonBehaviour<SoundManager>
 
     public void StopFireSound()
     {
-        if (ambientSource.isPlaying && ambientSource.clip != null)
+        if (campfireSource.isPlaying && campfireSource.clip != null)
         {
             campfireSource.Stop();
             Debug.Log("불 소리가 정지되었습니다.");

@@ -80,7 +80,15 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             }
             else if (item.itemType == ItemTypes.Clothing)
             {
-                Equipment.instance.Equip(itemBehaviour);
+                if (item.itemCode == 40)
+                {
+                    Equipment.instance.EquipUpper(itemBehaviour);
+                }
+                else if (item.itemCode == 41)
+                {
+                    Equipment.instance.EquipLower(itemBehaviour);
+                }
+
                 TetrisSlot.instanceSlot.itemsInBag.Remove(this);
                 Destroy(gameObject);
             }
@@ -205,21 +213,6 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                                  (int)finalSlot.x >= 0 &&
                                  (int)finalSlot.y >= 0;
 
-            // 포인터 아래의 오브젝트가 장비창인지 확인
-            GameObject hoveredObj = eventData.pointerEnter;
-            if (hoveredObj != null && hoveredObj.CompareTag("EquipmentSlot"))
-            {
-                for (int i = 0; i < item.itemSize.y; i++)
-                {
-                    for (int j = 0; j < item.itemSize.x; j++)
-                    {
-                        slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
-                    }
-                }
-                Equipment.instance.Equip(itemBehaviour);
-                TetrisSlot.instanceSlot.itemsInBag.Remove(this);
-                Destroy(gameObject);
-            }
 
             if (isValidPosition)
             {

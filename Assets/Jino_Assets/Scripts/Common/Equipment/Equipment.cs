@@ -6,7 +6,8 @@ public class Equipment : MonoBehaviour
     public static Equipment instance;
     public List<EquipmentSlot> equipmentSlot = new List<EquipmentSlot>();
 
-    [SerializeField] GameObject ParentObject;
+    [SerializeField] GameObject ParentUpper;
+    [SerializeField] GameObject ParentLower;
     [SerializeField] EquipmentSlot prefabSlot;
 
     private void Awake()
@@ -23,12 +24,21 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    public void Equip(ItemBehaviour item)
+    public void EquipUpper(ItemBehaviour item)
     {
         EquipmentSlot myItem = Instantiate(prefabSlot);
         myItem.itemBehaviour = item;
         myItem.icon.sprite = item.data.itemIcon;
-        myItem.transform.SetParent(ParentObject.GetComponent<RectTransform>(), false);
+        myItem.transform.SetParent(ParentUpper.GetComponent<RectTransform>(), false);
+        equipmentSlot.Add(myItem);
+    }
+
+    public void EquipLower(ItemBehaviour item)
+    {
+        EquipmentSlot myItem = Instantiate(prefabSlot);
+        myItem.itemBehaviour = item;
+        myItem.icon.sprite = item.data.itemIcon;
+        myItem.transform.SetParent(ParentLower.GetComponent<RectTransform>(), false);
         equipmentSlot.Add(myItem);
     }
 }

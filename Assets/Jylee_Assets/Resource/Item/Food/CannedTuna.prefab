@@ -3085,6 +3085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b0df06ef833c6f641a90634250525ffc, type: 2}
+  grillTime: 0
 --- !u!1 &3792872953334446302
 GameObject:
   m_ObjectHideFlags: 0

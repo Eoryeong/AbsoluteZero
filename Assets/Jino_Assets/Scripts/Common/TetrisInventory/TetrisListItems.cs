@@ -5,18 +5,8 @@ public class TetrisListItems : MonoBehaviour
 {
     public static TetrisListItems instance;
 
-    private Vector2 finalPos;
-    private Vector2 startPos;
-
-    float timeUntilClose = 0.5f;
-    float startTime = 0;
-    float currentTime;
-
-    [SerializeField] GameObject Inventory;
     public GameObject[] prefabs;
     public List<PickupItemData> items = new List<PickupItemData>();
-
-    private bool isInventoryActivated = false;
 
     private void Awake()
     {
@@ -36,48 +26,4 @@ public class TetrisListItems : MonoBehaviour
             items.Add(prefabs[i].GetComponent<PickupItem>().data);
         }
     }
-
-    //아이템 떨어뜨리는 거 구현할 때 필요
-    void Start()
-    {
-        startPos = new Vector2(3410f, -484f);
-        finalPos = new Vector2(524f, -484f);
-    }
-
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.I) && currentTime >= timeUntilClose)
-        {
-            currentTime = startTime;
-            if (isInventoryActivated)
-            {
-                CloseInven();
-            }
-            else
-            {
-                OpenInven();
-            }
-        }
-        else
-        {
-            currentTime += Time.deltaTime;
-        }
-    }
-
-    public void CloseInven()
-    {
-        isInventoryActivated = !isInventoryActivated;
-        Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(startPos.x, startPos.y);
-        UIManager.Instance.CursorVisible(false);
-        PlayerManager.Instance.SetPlayerFreeze(false);
-    }
-
-    private void OpenInven()
-    {
-        isInventoryActivated = !isInventoryActivated;
-        Inventory.GetComponent<RectTransform>().anchoredPosition = new Vector2(finalPos.x, finalPos.y);
-        UIManager.Instance.CursorVisible(true);
-        PlayerManager.Instance.SetPlayerFreeze(true);
-    }
-
 }

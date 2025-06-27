@@ -56,7 +56,6 @@ public class GameMenuController : MonoBehaviour
     {
         InitializeLookupTables(); // 조회 테이블 초기화
         InitializeMenuState();    // 메뉴 상태 초기화
-
     }
 
 

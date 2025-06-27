@@ -6,7 +6,17 @@ public class TetrisInventory : BaseUI
 
     private void Awake()
     {
-        instanceTetris = this;
+        if (null == instanceTetris)
+        {
+            instanceTetris = this;
+
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     public int numberSlots;

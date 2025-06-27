@@ -24,7 +24,16 @@ public class TetrisSlot : MonoBehaviour
 
     private void Awake()
     {
-        instanceSlot = this;
+        if (null == instanceSlot)
+        {
+            instanceSlot = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Start()

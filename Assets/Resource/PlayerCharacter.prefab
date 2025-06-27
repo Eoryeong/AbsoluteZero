@@ -1466,8 +1466,8 @@ MonoBehaviour:
   gunFireEff: {fileID: 6177719056195393336, guid: 2c3d0a8116c35f64f9cd6f9c43341e71, type: 3}
   axeObj: {fileID: 2487037639217099730}
   soundDelay: 0
-  walkSoundDelay: 0
-  RunSoundDelay: 0
+  walkSoundDelay: 0.5
+  RunSoundDelay: 0.4
   isCrouch: 0
   onRifle: 0
 --- !u!114 &7560777912969995270

@@ -48984,7 +48984,7 @@ GameObject:
   - component: {fileID: 1902787350}
   m_Layer: 0
   m_Name: Menu
-  m_TagString: Untagged
+  m_TagString: Category
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52661,8 +52661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentSlot: []
-  ParentUpper: {fileID: 0}
-  ParentLower: {fileID: 0}
+  ParentUpper: {fileID: 904318059}
+  ParentLower: {fileID: 958981813}
   prefabSlot: {fileID: 980417257063557760, guid: 9fdce744477cfa8408286e1a64bfc1bc, type: 3}
 --- !u!1 &2048197607
 GameObject:

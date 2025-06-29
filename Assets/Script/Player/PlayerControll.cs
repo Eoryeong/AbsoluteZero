@@ -68,6 +68,9 @@ public class PlayerControll : MonoBehaviour
     private bool isCameraTransitioning;
     private int cameraPosType;
 
+    // 이동 거리 기록
+    private Vector3 previousPosition;
+
     #region State
     public PlayerStateMachine stateMachine;
     public PlayerIdleState idleState;
@@ -107,6 +110,8 @@ public class PlayerControll : MonoBehaviour
         onRifle = false;
         cameraPosType = 0;
 
+        previousPosition = transform.position;
+
         PlayerManager.Instance.SetPlayerFreeze(false);
 
         PlayerManager.Instance.SceneManageUpdate();
@@ -122,6 +127,7 @@ public class PlayerControll : MonoBehaviour
 
         stateMachine.Update();
         HandleMouseLook();
+        TrackDistanceMoved();
 
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -402,6 +408,24 @@ public class PlayerControll : MonoBehaviour
             stateMachine.ChangeState(idleState);
             ChangeCameraStand();
             rifleLeftHandIK.weight = 0;
+        }
+    }
+
+    private void TrackDistanceMoved()
+    {
+        Vector3 currentPosition = transform.position;
+
+        // 수직 이동 제외하고 수평 거리만 추적하고 싶다면:
+        Vector3 flatPrev = new Vector3(previousPosition.x, 0, previousPosition.z);
+        Vector3 flatCurrent = new Vector3(currentPosition.x, 0, currentPosition.z);
+
+        float distance = Vector3.Distance(flatPrev, flatCurrent);
+
+        // 너무 미세한 움직임은 무시
+        if (distance > 0.001f)
+        {
+            GameRecode.instance.AddRecord(GameRecordEvent.TraveledDistance, distance);
+            previousPosition = currentPosition;
         }
     }
 }

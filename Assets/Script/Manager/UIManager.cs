@@ -184,7 +184,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void RecordMenuOpen()
     {
         totalSurvivedTime.text = "생존한 시간 : " + GameRecode.instance.totalSurvivedTime;
-        totalTraveledDistance.text = "이동한 거리 : " + GameRecode.instance.totalTraveledDistance;
+        totalTraveledDistance.text = "이동한 거리 : " + Mathf.RoundToInt(GameRecode.instance.totalTraveledDistance * 100f) / 100f + "M";
         totalSleepTime.text = "잠을 잔 시간 : " + GameRecode.instance.totalSleepTime;
         totalEatFood.text = "회복한 배고픔 : " + GameRecode.instance.totalEatFood;
         totalDrinkWater.text = "회복한 갈증 : " + GameRecode.instance.totalDrinkWater;

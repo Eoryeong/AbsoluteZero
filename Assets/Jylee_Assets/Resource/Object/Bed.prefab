@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faeb2e19fcdaa094684a0cb0803f8543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Bed
+  objectName: "\uCE68\uB300"
   objectType: 5
 --- !u!114 &7202543790391650000
 MonoBehaviour:

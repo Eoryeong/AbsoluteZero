@@ -31,10 +31,12 @@ public class GameMenuController : MonoBehaviour
     [Header("메뉴 루트")]
     [SerializeField] private GameObject menuRoot; // ESC 누르면 전체 메뉴 꺼짐
 
+    [Header("인게임 UI")]
+    [SerializeField] private GameObject canvasPlayerUI;
+
     [Header("설정")]
     [SerializeField] private bool pauseGameWhenOpen = true; // 메뉴 열 때 게임 일시정지 여부
     [SerializeField] private bool showCursorWhenOpen = true; // 메뉴 열 때 커서 표시 여부
-
 
 
 
@@ -166,6 +168,11 @@ public class GameMenuController : MonoBehaviour
         // 이벤트 발생
         OnMenuOpened?.Invoke();
         OnMenuStateChanged?.Invoke(true);
+
+        PlayerManager.Instance.SetPlayerFreeze(true);
+        canvasPlayerUI.SetActive(false);
+
+        UIManager.Instance.RecordMenuOpen();
     }
 
 
@@ -191,6 +198,9 @@ public class GameMenuController : MonoBehaviour
         // 이벤트 발생
         OnMenuClosed?.Invoke();
         OnMenuStateChanged?.Invoke(false);
+
+        PlayerManager.Instance.SetPlayerFreeze(false);
+        canvasPlayerUI.SetActive(true);
     }
 
 

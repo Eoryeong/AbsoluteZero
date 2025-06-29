@@ -50,7 +50,11 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if(eventData.button == PointerEventData.InputButton.Left)
+        {
+            UIManager.Instance.MenuItemLoreUpdate(item);
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
         {
             Debug.Log(item.itemName);
 

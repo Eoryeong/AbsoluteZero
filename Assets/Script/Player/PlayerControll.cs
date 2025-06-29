@@ -108,6 +108,9 @@ public class PlayerControll : MonoBehaviour
         cameraPosType = 0;
 
         PlayerManager.Instance.SetPlayerFreeze(false);
+
+        PlayerManager.Instance.SceneManageUpdate();
+        PlayerManager.Instance.PlayerSetPos();
     }
 
     private void Update()

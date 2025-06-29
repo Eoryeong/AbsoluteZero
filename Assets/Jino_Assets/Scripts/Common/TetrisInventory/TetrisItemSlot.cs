@@ -88,6 +88,14 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 {
                     Equipment.instance.EquipLower(itemBehaviour);
                 }
+
+                for (int i = 0; i < item.itemSize.y; i++)
+                {
+                    for (int j = 0; j < item.itemSize.x; j++)
+                    {
+                        slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                    }
+                }
                 TetrisSlot.instanceSlot.itemsInBag.Remove(this);
                 Destroy(gameObject);
             }
@@ -307,6 +315,14 @@ public class TetrisItemSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             if (TetrisSlot.instanceSlot.itemCountDict.ContainsKey(id))
             {
                 TetrisSlot.instanceSlot.itemCountDict[id]--;
+            }
+
+            for (int i = 0; i < item.itemSize.y; i++)
+            {
+                for (int j = 0; j < item.itemSize.x; j++)
+                {
+                    slots.grid[(int)startPosition.x + j, (int)startPosition.y + i] = 0;
+                }
             }
 
             TetrisSlot.instanceSlot.itemsInBag.Remove(this);

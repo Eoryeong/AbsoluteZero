@@ -44,10 +44,14 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 	private float thirstDamageTimer;
 	private float mentalityTimer;
 	private float coldrDamageTimer;
-	#endregion
 
-	#region getter
-	public float CurrentHp { get { return currentHp; } }
+	private float runDebugSpeed = 20f;
+    private float runDefaultSpeed = 8f;
+    private float runCurrSpeed = 8f;
+    #endregion
+
+    #region getter
+    public float CurrentHp { get { return currentHp; } }
 	public float CurrentHpPercent { get { return currentHp / maxHp; } }
 	public float CurrentHunger { get { return currentHunger; } }  
 	public float CurrentHungerPercent { get { return currentHunger / maxHunger; } }  
@@ -81,7 +85,19 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
             deadTrigger = true;
 			player.PlayerDying();
 		}
-	}
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (runCurrSpeed == 8f)
+            {
+                runCurrSpeed = runDebugSpeed;
+            }
+            else
+            {
+                runCurrSpeed = runDefaultSpeed;
+            }
+        }
+    }
 
 	private void InitStatus()
     {
@@ -135,7 +151,7 @@ public class PlayerStatusManager : SingletonBehaviour<PlayerStatusManager>
 		}
 		else
 		{
-            player.runSpeed = 8;
+            player.runSpeed = runCurrSpeed;
             player.walkSpeed = 5;
             player.sitSpeed = 2;
             isHunger = false;

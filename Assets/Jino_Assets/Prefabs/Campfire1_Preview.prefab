@@ -102,3 +102,13 @@ MonoBehaviour:
   layerGround: 6
   green: {fileID: 2100000, guid: 5ff230f784f7e7b48ab1b56cc8ca579c, type: 2}
   red: {fileID: 2100000, guid: 4dcf01ff9c7feb248b829a5d549f27a6, type: 2}
+  craft_fire:
+    craftName: 
+    needItemCode: 0
+    needItemNum: 0
+    go_Prefab: {fileID: 0}
+    go_PreviewPrefab: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  range: 10

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 
 public enum PanelType
@@ -326,4 +327,22 @@ public class GameMenuController : MonoBehaviour
     }
 
     #endregion
+
+    public void SettingSaveButtonClick()
+    {
+        DataManager.Instance.SaveGameData(0);
+    }
+
+    public void SettingLoadButtonClick()
+    {
+        DataManager.Instance.LoadGameData(0);
+        UIManager.Instance.RecordMenuOpen();
+
+        PlayerManager.Instance.PlayerController.transform.position = new Vector3(DataManager.Instance.currentGameData.player.transformX, DataManager.Instance.currentGameData.player.transformY, DataManager.Instance.currentGameData.player.transformZ);
+    }
+
+    public void ExitButtonClick()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
 }

@@ -16,6 +16,35 @@ public class PreviewObject : MonoBehaviour
         ChangeColor();
     }
 
+    // private void Build()
+    // {
+    //     if (isBuildable())
+    //     {
+    //         TetrisSlot.instanceSlot.itemCountDict[selectedItemCode] -= selectedItemNum;
+    //         for (int i = 0; i < selectedItemNum; i++)
+    //         {
+    //             foreach (TetrisItemSlot slot in TetrisSlot.instanceSlot.itemsInBag)
+    //             {
+    //                 if (slot.item.itemCode == selectedItemCode)
+    //                 {
+    //                     TetrisSlot.instanceSlot.itemsInBag.Remove(slot);
+    //                     Destroy(slot.gameObject);
+    //                     break;
+    //                 }
+    //             }
+    //         }
+
+    //         Instantiate(go_Prefab, hitInfo.point, Quaternion.identity);
+    //         Destroy(go_Preview);
+    //         isActivated = false;
+    //         isPreviewActivated = false;
+    //         go_Preview = null;
+    //         go_Prefab = null;
+    //         selectedItemCode = 0;
+    //         selectedItemNum = 0;
+    //     }
+    // }
+
     private void ChangeColor()
     {
         if (colliderList.Count > 0)

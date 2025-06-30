@@ -29,6 +29,7 @@ public class SoundUI : MonoBehaviour
     [Header("UI Settings")]
     [SerializeField] private Button closeButton;
     [SerializeField] private GameObject soundPanel;
+    [SerializeField] private GameObject exitBtn;
 
     private void Start()
     {
@@ -257,6 +258,8 @@ public class SoundUI : MonoBehaviour
         }
 
         SoundManager.Instance?.PlayButtonClick();
+
+        exitBtn.SetActive(false);
     }
 
 
@@ -266,6 +269,7 @@ public class SoundUI : MonoBehaviour
             soundPanel.SetActive(false);
 
         SoundManager.Instance?.PlayButtonClick();
+        exitBtn.SetActive(true);
     }
 
 

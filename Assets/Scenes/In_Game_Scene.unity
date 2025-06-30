@@ -8392,6 +8392,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1886593742419185974, guid: 40763f0ef8ec4194796d0f7c19bb1e7e, type: 3}
+      propertyPath: exitBtn
+      value: 
+      objectReference: {fileID: 297271891}
     - target: {fileID: 2476186455653644919, guid: 40763f0ef8ec4194796d0f7c19bb1e7e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

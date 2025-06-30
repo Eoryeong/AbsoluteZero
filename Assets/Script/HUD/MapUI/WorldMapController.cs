@@ -24,20 +24,13 @@ public class WorldMapController : MonoBehaviour
     [Header("UI Size Settings")]
     public Vector2 mapUISize = new Vector2(800, 800); // 월드맵 UI 크기 설정
 
-    void Start()
+    void OnEnable()
     {
+        // 플레이어와 카메라 자동 참조
+        FindReferencesIfNeeded();
+
         // 터레인 자동 감지 및 설정
         DetectAndSetupTerrain();
-
-        // // 월드맵 UI 크기 자동 설정
-        // SetupWorldMapUISize(); if (player == null)
-        // {
-        //     PlayerControll playerControll = FindFirstObjectByType<PlayerControll>();
-        //     if (playerControll != null)
-        //     {
-        //         player = playerControll.transform;
-        //     }
-        // }
     }
 
     void Update()
@@ -91,6 +84,12 @@ public class WorldMapController : MonoBehaviour
 
     void UpdatePlayerIcon()
     {
+        // 플레이어 참조가 없다면 다시 찾기 시도
+        if (player == null)
+        {
+            FindReferencesIfNeeded();
+        }
+
         if (player == null || minimapRect == null || playerIcon == null) return;
 
         Vector3 playerPos = player.position;
@@ -150,5 +149,32 @@ public class WorldMapController : MonoBehaviour
         // 카메라 및 UI 재설정
         SetupMapCamera();
         SetupWorldMapUISize();
+    }
+
+
+    private void FindReferencesIfNeeded()
+    {
+        // 플레이어 참조가 없는 경우
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.Find("PlayerCharacter");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+
+            }
+
+        }
+
+        // 월드맵 카메라 참조가 없는 경우
+        if (mapCamera == null)
+        {
+            GameObject cameraObj = GameObject.Find("WorldMapCamera");
+            if (cameraObj != null)
+            {
+                mapCamera = cameraObj.GetComponent<Camera>();
+            }
+
+        }
     }
 }

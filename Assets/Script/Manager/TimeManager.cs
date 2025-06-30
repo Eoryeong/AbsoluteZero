@@ -39,8 +39,10 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	private void TimeUpdate()
 	{
 		gameSecond += Time.deltaTime * timeScale;
+        GameRecode.instance.AddRecord(GameRecordEvent.SurvivedTime, Time.deltaTime * timeScale);
 
-		if (gameSecond > 60)
+
+        if (gameSecond > 60)
 		{
 			gameMinute += (int)(gameSecond/60);
 			gameSecond = gameSecond%60;
@@ -64,7 +66,10 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	{
 		gameHour += hour;
 
-		if(gameHour > 24)
+        GameRecode.instance.AddRecord(GameRecordEvent.SurvivedTime, hour * 3360);
+
+
+        if (gameHour > 24)
 		{
 			gameDay += gameHour/24;
 			gameHour = gameHour%24;
@@ -75,7 +80,10 @@ public class TimeManager : SingletonBehaviour<TimeManager>
 	{
 		gameMinute += minute;
 
-		if (gameMinute > 60)
+        GameRecode.instance.AddRecord(GameRecordEvent.SurvivedTime, minute * 60);
+
+
+        if (gameMinute > 60)
 		{
 			gameHour += gameMinute / 60;
 			gameMinute = gameMinute % 60;

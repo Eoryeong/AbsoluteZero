@@ -189,11 +189,34 @@ public class SurvivalRecordUI : SingletonBehaviour<SurvivalRecordUI>
         var data = new SurvivalData();
 
         // 시간 정보
-        if (TimeManager.Instance != null)
+        if (PlayerStatusManager.Instance != null)
         {
-            data.survivalDays = TimeManager.Instance.gameDay;
-            data.survivalHours = TimeManager.Instance.gameHour;
-            data.survivalMinutes = TimeManager.Instance.gameMinute;
+            int day = 0;
+            int hour = 0;
+            int min = 0;
+            float sec = GameRecode.instance.totalSurvivedTime;
+
+            if (GameRecode.instance.totalSurvivedTime > 60)
+            {
+                min += (int)(sec / 60);
+                sec = sec % 60;
+
+                if (min > 60)
+                {
+                    hour += min / 60;
+                    min = min % 60;
+
+                    if (hour > 24)
+                    {
+                        day += hour / 24;
+                        hour = hour % 24;
+                    }
+                }
+            }
+
+            data.survivalDays = day;
+            data.survivalHours = hour;
+            data.survivalMinutes = min;
         }
 
         // 플레이어 상태

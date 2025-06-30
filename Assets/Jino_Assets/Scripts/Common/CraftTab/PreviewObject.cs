@@ -11,9 +11,63 @@ public class PreviewObject : MonoBehaviour
     [SerializeField] private Material green;
     [SerializeField] private Material red;
 
+    public Craft craft_fire;
+
+    private Transform tf_Player;
+
+    private RaycastHit hitInfo;
+
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float range;
+
+    void Start()
+    {
+        tf_Player = Camera.main.transform;
+    }
+
     void Update()
     {
+        PreviewPositionUpdate();
+
         ChangeColor();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            Build();
+    }
+
+    private void PreviewPositionUpdate()
+    {
+        if (Physics.Raycast(tf_Player.position, tf_Player.forward, out hitInfo, range, layerMask))
+        {
+            if (hitInfo.transform != null)
+            {
+                Vector3 _location = hitInfo.point;
+                transform.position = _location;
+            }
+        }
+    }
+
+    private void Build()
+    {
+        if (isBuildable())
+        {
+            TetrisSlot.instanceSlot.itemCountDict[craft_fire.needItemCode] -= craft_fire.needItemNum;
+            for (int i = 0; i < craft_fire.needItemNum; i++)
+            {
+                foreach (TetrisItemSlot slot in TetrisSlot.instanceSlot.itemsInBag)
+                {
+                    if (slot.item.itemCode == craft_fire.needItemCode)
+                    {
+                        TetrisSlot.instanceSlot.itemsInBag.Remove(slot);
+                        Destroy(slot.gameObject);
+                        break;
+                    }
+                }
+            }
+
+            Instantiate(craft_fire.go_Prefab, hitInfo.point, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
     private void ChangeColor()

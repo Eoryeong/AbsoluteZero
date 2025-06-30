@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : SingletonBehaviour<UIManager>
@@ -15,12 +16,12 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField] private GameObject uiProgress;
     [SerializeField] private Image uiProgressBar;
 
-    [Header("MenuUI")]
+    [Header("ItemPreviewMenuUI")]
     [SerializeField] private GameObject menuUICanvas;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private TextMeshProUGUI menuTitle;
-    [SerializeField] private TextMeshProUGUI menuItemName;
-    [SerializeField] private TextMeshProUGUI menuItemLore;
+    [SerializeField] private TextMeshProUGUI itemPreviewName;
+    [SerializeField] private TextMeshProUGUI itemPreviewLore;
     [SerializeField] private TextMeshProUGUI menuItemMouseLeft;
     [SerializeField] private TextMeshProUGUI menuItemMouseRight;
     [SerializeField] private GameObject recordPanel;
@@ -29,12 +30,18 @@ public class UIManager : SingletonBehaviour<UIManager>
     [SerializeField] private TextMeshProUGUI totalSleepTime;
     [SerializeField] private TextMeshProUGUI totalEatFood;
     [SerializeField] private TextMeshProUGUI totalDrinkWater;
-    [SerializeField] private TextMeshProUGUI test;
+    [SerializeField] private TextMeshProUGUI totalGunFire;
+    [SerializeField] private TextMeshProUGUI totalHitCount;
+    [SerializeField] private TextMeshProUGUI totalSuccHunt;
     [SerializeField] private Button menuBackBtn;
     [SerializeField] private Button menuAcceptBtn;
     [SerializeField] private Text menuSleepTime;
     [SerializeField] private Image fadeImage;
     public Transform menuItemPreviewPos;
+
+    [Header("ItemMenuUI")]
+    [SerializeField] private TextMeshProUGUI menuItemName;
+    [SerializeField] private TextMeshProUGUI menuItemLore;
 
     [Header("Fade In/Out Setting")]
     [SerializeField] float fadeDuration = 1f;
@@ -135,13 +142,19 @@ public class UIManager : SingletonBehaviour<UIManager>
         SetPlayerUICanvas(false);
         PlayerManager.Instance.SetPlayerFreeze(true);
         SetMenuUICanvas(true);
-        menuItemName.gameObject.SetActive(true);
-        menuItemLore.gameObject.SetActive(true);
+        itemPreviewName.gameObject.SetActive(true);
+        itemPreviewLore.gameObject.SetActive(true);
         menuItemMouseLeft.gameObject.SetActive(true);
         menuItemMouseRight.gameObject.SetActive(true);
     }
 
     public void ItemPickupMenuLoreUpdate(PickupItemData pItem)
+    {
+        itemPreviewName.text = pItem.itemName;
+        itemPreviewLore.text = pItem.itemLore;
+    }
+
+    public void MenuItemLoreUpdate(PickupItemData pItem)
     {
         menuItemName.text = pItem.itemName;
         menuItemLore.text = pItem.itemLore;
@@ -159,8 +172,8 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void MenuElementAllDisable()
     {
         menuTitle.gameObject.SetActive(false);
-        menuItemName.gameObject.SetActive(false);
-        menuItemLore.gameObject.SetActive(false);
+        itemPreviewName.gameObject.SetActive(false);
+        itemPreviewLore.gameObject.SetActive(false);
         menuItemMouseLeft.gameObject.SetActive(false);
         menuItemMouseRight.gameObject.SetActive(false);
         menuBackBtn.gameObject.SetActive(false);
@@ -171,22 +184,37 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void RecordMenuOpen()
     {
-        MenuElementAllDisable();
+        int day = 0;
+        int hour = 0;
+        int min = 0;
+        float sec = GameRecode.instance.totalSurvivedTime;
 
-        SetPlayerUICanvas(false);
-        PlayerManager.Instance.SetPlayerFreeze(true);
-        SetMenuUICanvas(true);
+        if (GameRecode.instance.totalSurvivedTime > 60)
+        {
+            min += (int)(sec / 60);
+            sec = sec % 60;
 
-        GameRecode.instance.AddRecord(GameRecordEvent.Test);
+            if (min > 60)
+            {
+                hour += min / 60;
+                min= min % 60;
 
-        menuTitle.gameObject.SetActive(true);
-        recordPanel.gameObject.SetActive(true);
-        totalSurvivedTime.text = "생존한 시간 : " + GameRecode.instance.totalSurvivedTime;
-        totalTraveledDistance.text = "이동한 거리 : " + GameRecode.instance.totalTraveledDistance;
+                if (hour > 24)
+                {
+                    day += hour / 24;
+                    hour = hour % 24;
+                }
+            }
+        }
+
+        totalSurvivedTime.text = "생존한 시간 : " + day + "D " + hour + "H " + min + "M " + Mathf.Floor(sec) + "S";
+        totalTraveledDistance.text = "이동한 거리 : " + Mathf.RoundToInt(GameRecode.instance.totalTraveledDistance * 100f) / 100f + "M";
         totalSleepTime.text = "잠을 잔 시간 : " + GameRecode.instance.totalSleepTime;
-        totalEatFood.text = "먹은 음식의 수 : " + GameRecode.instance.totalEatFood;
-        totalDrinkWater.text = "마신 물의 양 : " + GameRecode.instance.totalDrinkWater;
-        test.text = "해당 메뉴를 열은 횟수 : " + GameRecode.instance.test;
+        totalEatFood.text = "회복한 배고픔 : " + GameRecode.instance.totalEatFood;
+        totalDrinkWater.text = "회복한 갈증 : " + GameRecode.instance.totalDrinkWater;
+        totalGunFire.text = "사격을 실행 한 횟수 : " + GameRecode.instance.totalGunFire;
+        totalHitCount.text = "명중한 횟수 : " + GameRecode.instance.totalShootHit;
+        totalSuccHunt.text = "사냥에 성공한 횟수 : " + GameRecode.instance.totalSuccessHunt;
     }
 
 	public void FadeIn()

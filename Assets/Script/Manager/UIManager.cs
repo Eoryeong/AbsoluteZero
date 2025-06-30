@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : SingletonBehaviour<UIManager>
@@ -183,7 +184,30 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     public void RecordMenuOpen()
     {
-        totalSurvivedTime.text = "생존한 시간 : " + GameRecode.instance.totalSurvivedTime;
+        int day = 0;
+        int hour = 0;
+        int min = 0;
+        float sec = GameRecode.instance.totalSurvivedTime;
+
+        if (GameRecode.instance.totalSurvivedTime > 60)
+        {
+            min += (int)(sec / 60);
+            sec = sec % 60;
+
+            if (min > 60)
+            {
+                hour += min / 60;
+                min= min % 60;
+
+                if (hour > 24)
+                {
+                    day += hour / 24;
+                    hour = hour % 24;
+                }
+            }
+        }
+
+        totalSurvivedTime.text = "생존한 시간 : " + day + "D " + hour + "H " + min + "M " + Mathf.Floor(sec) + "S";
         totalTraveledDistance.text = "이동한 거리 : " + Mathf.RoundToInt(GameRecode.instance.totalTraveledDistance * 100f) / 100f + "M";
         totalSleepTime.text = "잠을 잔 시간 : " + GameRecode.instance.totalSleepTime;
         totalEatFood.text = "회복한 배고픔 : " + GameRecode.instance.totalEatFood;
